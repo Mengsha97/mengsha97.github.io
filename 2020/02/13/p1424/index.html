@@ -12,7 +12,7 @@
 
 
 
-<title>P1035 级数求和 | Mosan&#39;s blog</title>
+<title>p1424 小鱼的航程（改进版） | Mosan&#39;s blog</title>
 
 
 
@@ -210,7 +210,7 @@
     
     <article class="post-wrap">
         <header class="post-header">
-            <h1 class="post-title">P1035 级数求和</h1>
+            <h1 class="post-title">p1424 小鱼的航程（改进版）</h1>
             
                 <div class="post-meta">
                     
@@ -219,7 +219,7 @@
 
                     
                         <span class="post-time">
-                        Date: <a href="#">February 10, 2020&nbsp;&nbsp;19:20:00</a>
+                        Date: <a href="#">February 13, 2020&nbsp;&nbsp;16:00:50</a>
                         </span>
                     
                     
@@ -235,16 +235,9 @@
         </header>
 
         <div class="post-content">
-            <h2 id="题目详情"><a href="#题目详情" class="headerlink" title="题目详情"></a>题目详情</h2><p><img src="/image/p1035.png" alt="p1035" title="级数求和"></p>
-<h2 id="解题思路"><a href="#解题思路" class="headerlink" title="解题思路"></a>解题思路</h2><h3 id="错误思路"><a href="#错误思路" class="headerlink" title="错误思路"></a>错误思路</h3><p>范围太大了，这个方法要考虑到计算机的数值范围</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br></pre></td><td class="code"><pre><span class="line">#include &lt;iomanip&gt;</span><br><span class="line">#include &lt;iostream&gt;</span><br><span class="line">#include &lt;limits&gt;</span><br><span class="line"></span><br><span class="line">using namespace std;</span><br><span class="line"></span><br><span class="line">int main()</span><br><span class="line">&#123;</span><br><span class="line">    int a,sum &#x3D; 1,temp &#x3D; 1;</span><br><span class="line">    cin&gt;&gt;a;</span><br><span class="line">    for(int i &#x3D; 2;;i++)&#123;</span><br><span class="line">        &#x2F;&#x2F; cout&lt;&lt;&quot;i:&quot;&lt;&lt;i&lt;&lt;&quot; &quot;;</span><br><span class="line">        sum &#x3D; sum*i + temp;</span><br><span class="line">        &#x2F;&#x2F; cout&lt;&lt;&quot;sum:&quot;&lt;&lt;sum&lt;&lt;&quot; &quot;;</span><br><span class="line">        temp*&#x3D;i;</span><br><span class="line">        a*&#x3D;i;</span><br><span class="line">        &#x2F;&#x2F; cout&lt;&lt;&quot;a:&quot;&lt;&lt;a&lt;&lt;endl;</span><br><span class="line">        if(sum&gt;a)&#123;</span><br><span class="line">            cout&lt;&lt;i;</span><br><span class="line">            break;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    return 0;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<h3 id="正解"><a href="#正解" class="headerlink" title="正解"></a>正解</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line">#include &lt;iomanip&gt;</span><br><span class="line">#include &lt;iostream&gt;</span><br><span class="line">#include &lt;limits&gt;</span><br><span class="line"></span><br><span class="line">using namespace std;</span><br><span class="line"></span><br><span class="line">int main()</span><br><span class="line">&#123;</span><br><span class="line">    int k,n &#x3D; 0;</span><br><span class="line">    cin&gt;&gt;k;</span><br><span class="line">    for(double Sn &#x3D; 0;Sn&lt;&#x3D;k;++n,Sn+&#x3D;1.0&#x2F;n); &#x2F;&#x2F;此处结尾要加分号，这里就解释了所有逻辑，用++n，而不是n++</span><br><span class="line">    cout&lt;&lt;n;</span><br><span class="line">    return 0;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<h2 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h2><ul>
-<li>巧用循环</li>
-<li>第一种方法是超过了范围，要学会使用double</li>
-</ul>
+            <h2 id="题目详情"><a href="#题目详情" class="headerlink" title="题目详情"></a>题目详情</h2><p><img src="/image/p1424.png" alt="p1424" title="小鱼的航程（改进版）"></p>
+<h2 id="解题思路"><a href="#解题思路" class="headerlink" title="解题思路"></a>解题思路</h2><p>第一版答案：测试用例有一项没通过</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br></pre></td><td class="code"><pre><span class="line">#include &lt;iomanip&gt;</span><br><span class="line">#include &lt;iostream&gt;</span><br><span class="line">#include &lt;limits&gt;</span><br><span class="line"></span><br><span class="line">using namespace std;</span><br><span class="line"></span><br><span class="line">int main()</span><br><span class="line">&#123;</span><br><span class="line">    int x,n,sum &#x3D; 0;</span><br><span class="line">    cin&gt;&gt;x&gt;&gt;n;</span><br><span class="line">    for(int i &#x3D; x,day &#x3D; 1;day&lt;&#x3D;n;)&#123;</span><br><span class="line">        if(i&lt;6)&#123;</span><br><span class="line">            sum+&#x3D;250;</span><br><span class="line">            ++day;</span><br><span class="line">            ++i;</span><br><span class="line">        &#125;else&#123;</span><br><span class="line">            i &#x3D; 1;</span><br><span class="line">            day+&#x3D;2;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    cout&lt;&lt;sum;</span><br><span class="line">    return 0;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 
         </div>
 
@@ -259,7 +252,7 @@
                 
                     <p class="copyright-item">
                         <span>Permalink:</span>
-                        <span><a href="https://mengsha97.github.io/2020/02/10/P1035/">https://mengsha97.github.io/2020/02/10/P1035/</a></span>
+                        <span><a href="https://mengsha97.github.io/2020/02/13/p1424/">https://mengsha97.github.io/2020/02/13/p1424/</a></span>
                     </p>
                 
                 
@@ -275,8 +268,6 @@
                     
                         <a href="/tags/%E7%AE%97%E6%B3%95/"># 算法</a>
                     
-                        <a href="/tags/%E7%BA%A7%E6%95%B0/"># 级数</a>
-                    
                         <a href="/tags/%E5%BE%AA%E7%8E%AF/"># 循环</a>
                     
                         
@@ -290,8 +281,10 @@
         </section>
         <section class="post-nav">
             
-                <a class="prev" rel="prev" href="/2020/02/12/p1423/">p1423 小玉在游泳</a>
+                <a class="prev" rel="prev" href="/2020/02/13/p1046/">p1046 陶陶摘苹果</a>
             
+            
+            <a class="next" rel="next" href="/2020/02/12/p1423/">p1423 小玉在游泳</a>
             
         </section>
 
