@@ -12,7 +12,7 @@
 
 
 
-<title>p1046 陶陶摘苹果 | Mosan&#39;s blog</title>
+<title>JS2020 | Mosan&#39;s blog</title>
 
 
 
@@ -144,73 +144,11 @@
             <div class="container">
     
     
-        <div class="post-toc">
-    <div class="tocbot-list">
-    </div>
-    <div class="tocbot-list-menu">
-        <a class="tocbot-toc-expand" onclick="expand_toc()">Expand all</a>
-        <a onclick="go_top()">Back to top</a>
-        <a onclick="go_bottom()">Go to bottom</a>
-    </div>
-</div>
-
-<script>
-    document.ready(
-        function () {
-            tocbot.init({
-                tocSelector: '.tocbot-list',
-                contentSelector: '.post-content',
-                headingSelector: 'h1, h2, h3, h4, h5',
-                collapseDepth: 1,
-                orderedList: false,
-                scrollSmooth: true,
-            })
-        }
-    )
-
-    function expand_toc() {
-        var b = document.querySelector(".tocbot-toc-expand");
-        tocbot.init({
-            tocSelector: '.tocbot-list',
-            contentSelector: '.post-content',
-            headingSelector: 'h1, h2, h3, h4, h5',
-            collapseDepth: 6,
-            orderedList: false,
-            scrollSmooth: true,
-        });
-        b.setAttribute("onclick", "collapse_toc()");
-        b.innerHTML = "Collapse all"
-    }
-
-    function collapse_toc() {
-        var b = document.querySelector(".tocbot-toc-expand");
-        tocbot.init({
-            tocSelector: '.tocbot-list',
-            contentSelector: '.post-content',
-            headingSelector: 'h1, h2, h3, h4, h5',
-            collapseDepth: 1,
-            orderedList: false,
-            scrollSmooth: true,
-        });
-        b.setAttribute("onclick", "expand_toc()");
-        b.innerHTML = "Expand all"
-    }
-
-    function go_top() {
-        window.scrollTo(0, 0);
-    }
-
-    function go_bottom() {
-        window.scrollTo(0, document.body.scrollHeight);
-    }
-
-</script>
-    
 
     
     <article class="post-wrap">
         <header class="post-header">
-            <h1 class="post-title">p1046 陶陶摘苹果</h1>
+            <h1 class="post-title">JS2020</h1>
             
                 <div class="post-meta">
                     
@@ -219,14 +157,18 @@
 
                     
                         <span class="post-time">
-                        Date: <a href="#">February 13, 2020&nbsp;&nbsp;16:20:16</a>
+                        Date: <a href="#">February 16, 2020&nbsp;&nbsp;23:03:54</a>
                         </span>
                     
                     
                         <span class="post-category">
                     Category:
                             
-                                <a href="/categories/%E6%B4%9B%E8%B0%B7%E6%96%B0%E6%89%8B%E6%9D%91/">洛谷新手村</a>
+                                <a href="/categories/%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/">学习笔记</a>
+                            
+                                <a href="/categories/%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/%E5%89%8D%E7%AB%AF/">前端</a>
+                            
+                                <a href="/categories/%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/%E5%89%8D%E7%AB%AF/JavaScript/">JavaScript</a>
                             
                         </span>
                     
@@ -235,10 +177,8 @@
         </header>
 
         <div class="post-content">
-            <h2 id="题目详情"><a href="#题目详情" class="headerlink" title="题目详情"></a>题目详情</h2><p><img src="/image/p1046.png" alt="p1046" title="陶陶摘苹果"></p>
-<h2 id="解题思路"><a href="#解题思路" class="headerlink" title="解题思路"></a>解题思路</h2><p>比较简单</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br></pre></td><td class="code"><pre><span class="line">#include &lt;iomanip&gt;</span><br><span class="line">#include &lt;iostream&gt;</span><br><span class="line">#include &lt;limits&gt;</span><br><span class="line"></span><br><span class="line">using namespace std;</span><br><span class="line"></span><br><span class="line">int main()</span><br><span class="line">&#123;</span><br><span class="line">    int a[10],b;</span><br><span class="line">    for(int i &#x3D; 0;i&lt;10;i++)&#123;</span><br><span class="line">        cin&gt;&gt;a[i];</span><br><span class="line">    &#125;</span><br><span class="line">    cin&gt;&gt;b;</span><br><span class="line">    int high &#x3D; b+30,num &#x3D; 0;</span><br><span class="line">    for(int i &#x3D; 0;i&lt;10;i++)&#123;</span><br><span class="line">        if(high&gt;&#x3D;a[i])&#123;</span><br><span class="line">            num++;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    cout&lt;&lt;num;</span><br><span class="line">    return 0;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
+            <p><strong>1. 将<code>&lt;script&gt;</code> 放在HTML文件的底部附近的原因</strong></p>
+<pre><code>浏览器会按照代码在文件中的顺序加载 HTML，如果先加载的 JavaScript 期望修改其下方的 HTML，那么它可能由于 HTML 尚未被加载而失效。因此，将 JavaScript 代码放在 HTML页面的底部附近通常是最好的策略。</code></pre>
         </div>
 
         
@@ -252,7 +192,7 @@
                 
                     <p class="copyright-item">
                         <span>Permalink:</span>
-                        <span><a href="https://mengsha97.github.io/2020/02/13/p1046/">https://mengsha97.github.io/2020/02/13/p1046/</a></span>
+                        <span><a href="https://mengsha97.github.io/2020/02/16/JS2020/">https://mengsha97.github.io/2020/02/16/JS2020/</a></span>
                     </p>
                 
                 
@@ -266,9 +206,9 @@
                 <span class="tag">
                     
                     
-                        <a href="/tags/%E7%AE%97%E6%B3%95/"># 算法</a>
+                        <a href="/tags/JavaScript/"># JavaScript</a>
                     
-                        <a href="/tags/%E6%95%B0%E7%BB%84/"># 数组</a>
+                        <a href="/tags/%E9%9D%A2%E8%AF%95/"># 面试</a>
                     
                         
                 </span>
@@ -281,10 +221,8 @@
         </section>
         <section class="post-nav">
             
-                <a class="prev" rel="prev" href="/2020/02/13/p1047/">p1047 校门外的树</a>
             
-            
-            <a class="next" rel="next" href="/2020/02/13/p1424/">p1424 小鱼的航程（改进版）</a>
+            <a class="next" rel="next" href="/2020/02/13/p1047/">p1047 校门外的树</a>
             
         </section>
 
