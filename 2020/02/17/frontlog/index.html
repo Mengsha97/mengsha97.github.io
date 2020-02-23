@@ -12,7 +12,7 @@
 
 
 
-<title>前端学习记录 | Mosan&#39;s blog</title>
+<title>JavaScript学习记录 | Mosan&#39;s blog</title>
 
 
 
@@ -210,7 +210,7 @@
     
     <article class="post-wrap">
         <header class="post-header">
-            <h1 class="post-title">前端学习记录</h1>
+            <h1 class="post-title">JavaScript学习记录</h1>
             
                 <div class="post-meta">
                     
@@ -226,9 +226,9 @@
                         <span class="post-category">
                     Category:
                             
-                                <a href="/categories/%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/">学习笔记</a>
+                                <a href="/categories/%E5%AD%A6%E4%B9%A0%E8%AE%B0%E5%BD%95/">学习记录</a>
                             
-                                <a href="/categories/%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/%E5%89%8D%E7%AB%AF/">前端</a>
+                                <a href="/categories/%E5%AD%A6%E4%B9%A0%E8%AE%B0%E5%BD%95/%E5%89%8D%E7%AB%AF/">前端</a>
                             
                         </span>
                     
@@ -269,6 +269,11 @@
 <td align="right">5 ** 5 (返回 3125，相当于 5 * 5 * 5 * 5 * 5 。)</td>
 </tr>
 </tbody></table>
+<h2 id="数组的join-函数"><a href="#数组的join-函数" class="headerlink" title="数组的join()函数"></a>数组的join()函数</h2><p>数组 join（）函数的参数是可选的，如果没有包含参数来指定加入/分隔符，默认情况下会使用逗号。例如，</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">var myArray &#x3D; [&#39;I&#39;, &#39;love&#39;, &#39;chocolate&#39;, &#39;frogs&#39;];</span><br><span class="line">var madeAString &#x3D; myArray.join(&#39; &#39;);</span><br><span class="line">&#x2F;&#x2F; returns &#39;I love chocolate frogs&#39;</span><br><span class="line">var madeAString &#x3D; myArray.join();</span><br><span class="line">&#x2F;&#x2F; returns &#39;I,love,chocolate,frogs&#39;</span><br></pre></td></tr></table></figure>
+
+<h2 id="函数调用运算符"><a href="#函数调用运算符" class="headerlink" title="函数调用运算符"></a>函数调用运算符</h2><p>在函数名后面的括号叫做“函数调用运算符”，只有在想直接调用函数的地方才写。例如，</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">btn.onclick &#x3D; displayMessage;&#x2F;&#x2F;没有括号，函数不会调用，只会在点击之后调用</span><br><span class="line">btn.onclick &#x3D; displayMessage();&#x2F;&#x2F;有括号，代码运行到这行会直接调用函数,并且之后点击也不会调用该函数</span><br></pre></td></tr></table></figure>
 
         </div>
 
