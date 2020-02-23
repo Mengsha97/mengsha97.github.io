@@ -175,8 +175,42 @@
         </header>
 
         <div class="post-content">
-            <p><strong>1. 将<code>&lt;script&gt;</code> 放在HTML文件的底部附近的原因</strong></p>
+            <p><strong>1. 将<code>&lt;script&gt;</code>放在HTML文件的底部附近的原因</strong></p>
 <p>浏览器会按照代码在文件中的顺序加载 HTML，如果先加载的 JavaScript 期望修改其下方的 HTML，那么它可能由于 HTML 尚未被加载而失效。因此，将 JavaScript 代码放在 HTML页面的底部附近通常是最好的策略。</p>
+<p><strong>2.JavaScript的命名规则</strong></p>
+<p>一个 JavaScript 标识符必须以字母、下划线（_）或者美元符号（$）开头；后续的字符也可以是数字（0-9）。因为 JavaScript 语言是区分大小写的，所以字母可以是从“A”到“Z”的大写字母和从“a”到“z”的小写字母。</p>
+<p><strong>3.数据类型</strong></p>
+<p>JavaScript 是一种弱类型或者说动态语言。这意味着不用提前声明变量的类型，在程序运行过程中，类型会被自动确定。这也意味着可以使用同一个变量保存不同类型的数据：</p>
+<ul>
+<li>7 种原始类型:<ul>
+<li>Boolean</li>
+<li>Null</li>
+<li>Undefined</li>
+<li>Number</li>
+<li>BigInt</li>
+<li>String</li>
+<li>Symbol </li>
+</ul>
+</li>
+<li>和 Object</li>
+</ul>
+<p><strong>4.数学运算符 幂次</strong></p>
+<table>
+<thead>
+<tr>
+<th>运算符</th>
+<th align="center">名称</th>
+<th align="right">作用</th>
+<th align="right">示例</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>**</td>
+<td align="center">幂次</td>
+<td align="right">取底数的指数次方，即指数所指定的底数相乘。它在EcmaScript 2016 中首次引入。</td>
+<td align="right">5 ** 5 (返回 3125，相当于 5 * 5 * 5 * 5 * 5 。)</td>
+</tr>
+</tbody></table>
 
         </div>
 
