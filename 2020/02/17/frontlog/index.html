@@ -275,6 +275,22 @@
 <h2 id="函数调用运算符"><a href="#函数调用运算符" class="headerlink" title="函数调用运算符"></a>函数调用运算符</h2><p>在函数名后面的括号叫做“函数调用运算符”，只有在想直接调用函数的地方才写。例如，</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">btn.onclick &#x3D; displayMessage;&#x2F;&#x2F;没有括号，函数不会调用，只会在点击之后调用</span><br><span class="line">btn.onclick &#x3D; displayMessage();&#x2F;&#x2F;有括号，代码运行到这行会直接调用函数,并且之后点击也不会调用该函数</span><br></pre></td></tr></table></figure>
 
+<h2 id="对象的括号表示法"><a href="#对象的括号表示法" class="headerlink" title="对象的括号表示法"></a>对象的括号表示法</h2><p>点表示法只能接受字面量的成员的名字，不接受变量作为名字，但是括号表示法可以接受变量作为名字，如下：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">var myDataName &#x3D; &#39;height&#39;</span><br><span class="line">var myDataValue &#x3D; &#39;1.75m&#39;</span><br><span class="line">person[myDataName] &#x3D; myDataValue &#x2F;&#x2F;person是一个对象</span><br></pre></td></tr></table></figure>
+<p>在控制台输入</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">person.height</span><br></pre></td></tr></table></figure>
+<p>会输出</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">1.75m</span><br></pre></td></tr></table></figure>
+<p>即把“height”当作了对象的成员名，“1.75m”当作了“height”的属性值。</p>
+<h2 id="JavaScript中的继承有关问题"><a href="#JavaScript中的继承有关问题" class="headerlink" title="JavaScript中的继承有关问题"></a>JavaScript中的继承有关问题</h2><p>每一个函数对象（Function）都有一个prototype属性，并且只有函数对象有prototype属性，因为prototype本身就是定义在Function对象下的属性。当我们输入类似var person1=new Person(…)来构造对象时，JavaScript实际上参考的是Person.prototype指向的对象来生成person1。另一方面，Person()函数是Person.prototype的构造函数，也就是说Person===Person.prototype.constructor（不信的话可以试试）。</p>
+<p>在定义新的构造函数Teacher时，我们通过function.call来调用父类的构造函数，但是这样无法自动指定Teacher.prototype的值，这样Teacher.prototype就只能包含在构造函数里构造的属性，而没有方法。因此我们利用Object.create()方法将Person.prototype作为Teacher.prototype的原型对象，并改变其构造器指向，使之与Teacher关联。</p>
+<p>任何您想要被继承的方法都应该定义在构造函数的prototype对象里，并且永远使用父类的prototype来创造子类的prototype，这样才不会打乱类继承结构。</p>
+<h2 id="对象成员总结"><a href="#对象成员总结" class="headerlink" title="对象成员总结"></a>对象成员总结</h2><ol>
+<li>那些定义在构造器函数中的、用于给予对象实例的。这些都很容易发现 - 在您自己的代码中，它们是构造函数中使用this.x = x类型的行；在内置的浏览器代码中，它们是可用于对象实例的成员（通常通过使用new关键字调用构造函数来创建，例如var myInstance = new myConstructor()）。</li>
+<li>那些直接在构造函数上定义、仅在构造函数上可用的。这些通常仅在内置的浏览器对象中可用，并通过被直接链接到构造函数而不是实例来识别。 例如Object.keys()。</li>
+<li>那些在构造函数原型上定义、由所有实例和对象类继承的。这些包括在构造函数的原型属性上定义的任何成员，如myConstructor.prototype.x()。</li>
+</ol>
+
         </div>
 
         
