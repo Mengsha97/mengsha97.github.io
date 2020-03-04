@@ -298,6 +298,21 @@
 <li>老派callbacks</li>
 <li>新派promise</li>
 </ul>
+<h2 id="递归setTimeout-和setInterval-的差异"><a href="#递归setTimeout-和setInterval-的差异" class="headerlink" title="递归setTimeout()和setInterval()的差异"></a>递归setTimeout()和setInterval()的差异</h2><pre><code>- 递归 setTimeout() 保证执行之间的延迟相同，例如延迟为100ms。代码将运行，然后在它再次运行之前等待100ms，因此无论代码运行多长时间，间隔都是相同的。
+- 使用 setInterval() 的示例有些不同。我们选择的间隔包括执行我们想要运行的代码所花费的时间。假设代码需要40毫秒才能运行 - 然后间隔最终只有60毫秒。
+- 当递归使用 setTimeout() 时，每次迭代都可以在运行下一次迭代之前计算不同的延迟。 换句话说，第二个参数的值可以指定在再次运行代码之前等待的不同时间（以毫秒为单位）。
+因此，当你的代码有可能比你分配的时间间隔，花费更长时间运行时，最好使用递归的 setTimeout() - 这将使执行之间的时间间隔保持不变，无论代码执行多长时间，你不会得到错误。</code></pre><p>—–&gt;摘自MDN<a href="https://developer.mozilla.org/zh-CN/docs/learn/JavaScript/%E5%BC%82%E6%AD%A5/%E8%B6%85%E6%97%B6%E5%92%8C%E9%97%B4%E9%9A%94" target="_blank" rel="noopener">https://developer.mozilla.org/zh-CN/docs/learn/JavaScript/%E5%BC%82%E6%AD%A5/%E8%B6%85%E6%97%B6%E5%92%8C%E9%97%B4%E9%9A%94</a><br>下同</p>
+<h2 id="requestAnimationFrame-与-setInterval-和-setTimeout-的差异"><a href="#requestAnimationFrame-与-setInterval-和-setTimeout-的差异" class="headerlink" title="requestAnimationFrame() 与 setInterval() 和 setTimeout()的差异"></a>requestAnimationFrame() 与 setInterval() 和 setTimeout()的差异</h2><p>这是requestAnimationFrame()</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">draw</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">   <span class="comment">// Drawing code goes here</span></span><br><span class="line">   requestAnimationFrame(draw);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">draw();</span><br></pre></td></tr></table></figure>
+
+<p>这是setInterval()</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">draw</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">   <span class="comment">// Drawing code goes here</span></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">setInterval(draw, <span class="number">17</span>);</span><br></pre></td></tr></table></figure>
+
+<ul>
+<li>没有为requestAnimationFrame();指定时间间隔；它只是在当前条件下尽可</li>
+<li>另一方面setInterval()需要指定间隔。我们通过公式1000毫秒/60Hz得出17的最终值，然后将其四舍五入。四舍五入是一个好主意，浏览器可能会尝试运行动画的速度超过60fps，它不会对动画的平滑度有任何影响。</li>
+<li>60Hz是标准刷新率。</li>
+</ul>
 
         </div>
 
