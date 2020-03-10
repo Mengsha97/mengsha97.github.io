@@ -12,7 +12,7 @@
 
 
 
-<title>test | Mosan&#39;s blog</title>
+<title>Failed to fetch | Mosan&#39;s blog</title>
 
 
 
@@ -148,7 +148,7 @@
     
     <article class="post-wrap">
         <header class="post-header">
-            <h1 class="post-title">test</h1>
+            <h1 class="post-title">Failed to fetch</h1>
             
                 <div class="post-meta">
                     
@@ -157,66 +157,28 @@
 
                     
                         <span class="post-time">
-                        Date: <a href="#">March 4, 2020&nbsp;&nbsp;18:54:18</a>
+                        Date: <a href="#">March 10, 2020&nbsp;&nbsp;20:27:50</a>
                         </span>
                     
+                    
+                        <span class="post-category">
+                    Category:
+                            
+                                <a href="/categories/%E5%AD%A6%E4%B9%A0%E8%AE%B0%E5%BD%95/">学习记录</a>
+                            
+                        </span>
                     
                 </div>
             
         </header>
 
         <div class="post-content">
-            <figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">add</span>(<span class="params">x, y</span>) </span>&#123;</span><br><span class="line">  <span class="keyword">return</span> x + y</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+            <p>在学习过程中遇到的一个例子，无法运行，例子的代码如下</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br></pre></td><td class="code"><pre><span class="line">&lt;!DOCTYPE html&gt;</span><br><span class="line">&lt;html lang=<span class="string">"en-US"</span>&gt;</span><br><span class="line">  &lt;head&gt;</span><br><span class="line">    &lt;meta charset=<span class="string">"utf-8"</span>&gt;</span><br><span class="line">    &lt;title&gt;My test page&lt;<span class="regexp">/title&gt;</span></span><br><span class="line"><span class="regexp">  &lt;/</span>head&gt;</span><br><span class="line">  &lt;body&gt;</span><br><span class="line">    &lt;p&gt;This is my page&lt;<span class="regexp">/p&gt;</span></span><br><span class="line"><span class="regexp">    &lt;script&gt;</span></span><br><span class="line"><span class="regexp">        /</span>*<span class="keyword">let</span> promise = fetch(<span class="string">'coffee.jpg'</span>);</span><br><span class="line">        <span class="keyword">let</span> promise2 = promise.then(<span class="function"><span class="params">response</span>=&gt;</span>response.blob());</span><br><span class="line">        <span class="keyword">let</span> promise3 = promise2.then(<span class="function"><span class="params">myBlob</span>=&gt;</span>&#123;</span><br><span class="line">            <span class="keyword">let</span> objectURL = URL.createObjectURL(myBlob);</span><br><span class="line">            <span class="keyword">let</span> image = <span class="built_in">document</span>.createElement(<span class="string">'img'</span>);</span><br><span class="line">            image.src = objectURL;</span><br><span class="line">            <span class="built_in">document</span>.body.appendChild(image);</span><br><span class="line">        &#125;);*<span class="regexp">/</span></span><br><span class="line"><span class="regexp">        fetch('coffee.jpg')</span></span><br><span class="line"><span class="regexp">        .then(response =&gt; response.blob())</span></span><br><span class="line"><span class="regexp">        .then(myBlob =&gt; &#123;</span></span><br><span class="line"><span class="regexp">            let objectURL = URL.createObjectURL(myBlob);</span></span><br><span class="line"><span class="regexp">            let image = document.createElement('img');</span></span><br><span class="line"><span class="regexp">            image.src = objectURL;</span></span><br><span class="line"><span class="regexp">            document.body.appendChild(image);</span></span><br><span class="line"><span class="regexp">        &#125;)</span></span><br><span class="line"><span class="regexp">        .catch(e =&gt; &#123;</span></span><br><span class="line"><span class="regexp">            console.log(e.message);</span></span><br><span class="line"><span class="regexp">        &#125;)</span></span><br><span class="line"><span class="regexp">    &lt;/</span>script&gt;</span><br><span class="line">  &lt;<span class="regexp">/body&gt;</span></span><br><span class="line"><span class="regexp">&lt;/</span>html&gt;</span><br></pre></td></tr></table></figure>
 
-<ul>
-<li><input checked="" disabled="" type="checkbox"> @mentions, #refs, <a href="">links</a>, <strong>formatting</strong>, and <del>tags</del> supported</li>
-<li><input checked="" disabled="" type="checkbox"> list syntax required (any unordered or ordered list supported)</li>
-<li><input checked="" disabled="" type="checkbox"> this is a complete item</li>
-<li><input disabled="" type="checkbox"> this is an incomplete item</li>
-</ul>
-<table>
-<thead>
-<tr>
-<th>First Header</th>
-<th>Second Header</th>
-</tr>
-</thead>
-<tbody><tr>
-<td>Content from cell 1</td>
-<td>Content from cell 2</td>
-</tr>
-<tr>
-<td>Content in the first column</td>
-<td>Content in the second column</td>
-</tr>
-</tbody></table>
-<table>
-<thead>
-<tr>
-<th>a</th>
-<th>b</th>
-</tr>
-</thead>
-<tbody><tr>
-<td>2</td>
-<td>1</td>
-</tr>
-<tr>
-<td>^</td>
-<td>4</td>
-</tr>
-</tbody></table>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">Andrew-&gt;China: Says Hello</span><br><span class="line">Note right of China: China thinks\nabout it</span><br><span class="line">China--&gt;Andrew: How are you?</span><br><span class="line">Andrew-&gt;&gt;China: I am good thanks!</span><br></pre></td></tr></table></figure>
+<p>遇到的问题如下</p>
+<p><img src="/image/myerror.png" alt="myerror"></p>
 
-
-<div id="flowchart-0" class="flow-chart"></div>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/raphael/2.2.7/raphael.min.js"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/flowchart/1.6.5/flowchart.min.js"></script><textarea id="flowchart-0-code" style="display: none">st=>start: 开始
-op=>operation: My Operation
-cond=>condition: Yes or No?
-e=>end
-st->op->cond
-cond(yes)->e
-cond(no)->op</textarea><textarea id="flowchart-0-options" style="display: none">{"scale":1,"line-width":2,"line-length":50,"text-margin":10,"font-size":12}</textarea><script>  var code = document.getElementById("flowchart-0-code").value;  var options = JSON.parse(decodeURIComponent(document.getElementById("flowchart-0-options").value));  var diagram = flowchart.parse(code);  diagram.drawSVG("flowchart-0", options);</script>
         </div>
 
         
@@ -230,7 +192,7 @@ cond(no)->op</textarea><textarea id="flowchart-0-options" style="display: none">
                 
                     <p class="copyright-item">
                         <span>Permalink:</span>
-                        <span><a href="https://mengsha97.github.io/2020/03/04/test/">https://mengsha97.github.io/2020/03/04/test/</a></span>
+                        <span><a href="https://mengsha97.github.io/2020/03/10/myerror/">https://mengsha97.github.io/2020/03/10/myerror/</a></span>
                     </p>
                 
                 
@@ -244,7 +206,9 @@ cond(no)->op</textarea><textarea id="flowchart-0-options" style="display: none">
                 <span class="tag">
                     
                     
-                        <a href="/tags/test/"># test</a>
+                        <a href="/tags/JavaScript/"># JavaScript</a>
+                    
+                        <a href="/tags/promise/"># promise</a>
                     
                         
                 </span>
@@ -257,10 +221,8 @@ cond(no)->op</textarea><textarea id="flowchart-0-options" style="display: none">
         </section>
         <section class="post-nav">
             
-                <a class="prev" rel="prev" href="/2020/03/10/myerror/">Failed to fetch</a>
             
-            
-            <a class="next" rel="next" href="/2020/03/02/imooc-promise/">IMOOC-Promise 入门教程</a>
+            <a class="next" rel="next" href="/2020/03/04/test/">test</a>
             
         </section>
 
