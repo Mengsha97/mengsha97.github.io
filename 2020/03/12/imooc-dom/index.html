@@ -1,0 +1,338 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+<meta name="viewport"
+      content="width=device-width, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+<meta http-equiv="X-UA-Compatible" content="ie=edge">
+
+    <meta name="author" content="Mosan">
+
+
+
+
+
+<title>IMOOC-DOM事件探秘 | Mosan&#39;s blog</title>
+
+
+
+    <link rel="icon" href="/favicon.ico">
+
+
+
+
+    <!-- stylesheets list from _config.yml -->
+    
+    <link rel="stylesheet" href="/css/style.css">
+    
+
+
+
+    <!-- scripts list from _config.yml -->
+    
+    <script src="/js/script.js"></script>
+    
+    <script src="/js/tocbot.min.js"></script>
+    
+
+
+
+    
+    
+        <!-- MathJax配置，可通过单美元符号书写行内公式等 -->
+<script type="text/x-mathjax-config">
+    MathJax.Hub.Config({
+    "HTML-CSS": {
+        preferredFont: "TeX",
+        availableFonts: ["STIX","TeX"],
+        linebreaks: { automatic:true },
+        EqnChunk: (MathJax.Hub.Browser.isMobile ? 10 : 50)
+    },
+    tex2jax: {
+        inlineMath: [ ["$", "$"], ["\\(","\\)"] ],
+        processEscapes: true,
+        ignoreClass: "tex2jax_ignore|dno",
+        skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
+    },
+    TeX: {
+        equationNumbers: { autoNumber: "AMS" },
+        noUndefined: { attributes: { mathcolor: "red", mathbackground: "#FFEEEE", mathsize: "90%" } },
+        Macros: { href: "{}" }
+    },
+    messageStyle: "none"
+    });
+</script>
+<!-- 给MathJax元素添加has-jax class -->
+<script type="text/x-mathjax-config">
+    MathJax.Hub.Queue(function() {
+        var all = MathJax.Hub.getAllJax(), i;
+        for(i=0; i < all.length; i += 1) {
+            all[i].SourceElement().parentNode.className += ' has-jax';
+        }
+    });
+</script>
+<!-- 通过连接CDN加载MathJax的js代码 -->
+<script type="text/javascript" async
+        src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/MathJax.js?config=TeX-MML-AM_CHTML">
+</script>
+
+
+    
+
+
+<meta name="generator" content="Hexo 4.2.0"></head>
+<body>
+    <div class="wrapper">
+        <header>
+    <nav class="navbar">
+        <div class="container">
+            <div class="navbar-header header-logo"><a href="/">Mosan&#39;s Blog</a></div>
+            <div class="menu navbar-right">
+                
+                    <a class="menu-item" href="/archives">Posts</a>
+                
+                    <a class="menu-item" href="/category">Categories</a>
+                
+                    <a class="menu-item" href="/tag">Tags</a>
+                
+                    <a class="menu-item" href="/about">About</a>
+                
+                <input id="switch_default" type="checkbox" class="switch_default">
+                <label for="switch_default" class="toggleBtn"></label>
+            </div>
+        </div>
+    </nav>
+
+    
+    <nav class="navbar-mobile" id="nav-mobile">
+        <div class="container">
+            <div class="navbar-header">
+                <div>
+                    <a href="/">Mosan&#39;s Blog</a><a id="mobile-toggle-theme">·&nbsp;Light</a>
+                </div>
+                <div class="menu-toggle" onclick="mobileBtn()">&#9776; Menu</div>
+            </div>
+            <div class="menu" id="mobile-menu">
+                
+                    <a class="menu-item" href="/archives">Posts</a>
+                
+                    <a class="menu-item" href="/category">Categories</a>
+                
+                    <a class="menu-item" href="/tag">Tags</a>
+                
+                    <a class="menu-item" href="/about">About</a>
+                
+            </div>
+        </div>
+    </nav>
+
+</header>
+<script>
+    var mobileBtn = function f() {
+        var toggleMenu = document.getElementsByClassName("menu-toggle")[0];
+        var mobileMenu = document.getElementById("mobile-menu");
+        if(toggleMenu.classList.contains("active")){
+           toggleMenu.classList.remove("active")
+            mobileMenu.classList.remove("active")
+        }else{
+            toggleMenu.classList.add("active")
+            mobileMenu.classList.add("active")
+        }
+    }
+</script>
+        <div class="main">
+            <div class="container">
+    
+    
+        <div class="post-toc">
+    <div class="tocbot-list">
+    </div>
+    <div class="tocbot-list-menu">
+        <a class="tocbot-toc-expand" onclick="expand_toc()">Expand all</a>
+        <a onclick="go_top()">Back to top</a>
+        <a onclick="go_bottom()">Go to bottom</a>
+    </div>
+</div>
+
+<script>
+    document.ready(
+        function () {
+            tocbot.init({
+                tocSelector: '.tocbot-list',
+                contentSelector: '.post-content',
+                headingSelector: 'h1, h2, h3, h4, h5',
+                collapseDepth: 1,
+                orderedList: false,
+                scrollSmooth: true,
+            })
+        }
+    )
+
+    function expand_toc() {
+        var b = document.querySelector(".tocbot-toc-expand");
+        tocbot.init({
+            tocSelector: '.tocbot-list',
+            contentSelector: '.post-content',
+            headingSelector: 'h1, h2, h3, h4, h5',
+            collapseDepth: 6,
+            orderedList: false,
+            scrollSmooth: true,
+        });
+        b.setAttribute("onclick", "collapse_toc()");
+        b.innerHTML = "Collapse all"
+    }
+
+    function collapse_toc() {
+        var b = document.querySelector(".tocbot-toc-expand");
+        tocbot.init({
+            tocSelector: '.tocbot-list',
+            contentSelector: '.post-content',
+            headingSelector: 'h1, h2, h3, h4, h5',
+            collapseDepth: 1,
+            orderedList: false,
+            scrollSmooth: true,
+        });
+        b.setAttribute("onclick", "expand_toc()");
+        b.innerHTML = "Expand all"
+    }
+
+    function go_top() {
+        window.scrollTo(0, 0);
+    }
+
+    function go_bottom() {
+        window.scrollTo(0, document.body.scrollHeight);
+    }
+
+</script>
+    
+
+    
+    <article class="post-wrap">
+        <header class="post-header">
+            <h1 class="post-title">IMOOC-DOM事件探秘</h1>
+            
+                <div class="post-meta">
+                    
+                        Author: <a itemprop="author" rel="author" href="/">Mosan</a>
+                    
+
+                    
+                        <span class="post-time">
+                        Date: <a href="#">March 12, 2020&nbsp;&nbsp;16:34:54</a>
+                        </span>
+                    
+                    
+                        <span class="post-category">
+                    Category:
+                            
+                                <a href="/categories/%E8%AF%BE%E7%A8%8B%E8%AE%B0%E5%BD%95/">课程记录</a>
+                            
+                        </span>
+                    
+                </div>
+            
+        </header>
+
+        <div class="post-content">
+            <p>讲师：Amy<br>课程：<a href="https://www.imooc.com/learn/138" target="_blank" rel="noopener">https://www.imooc.com/learn/138</a></p>
+<h1 id="第一章-事件流"><a href="#第一章-事件流" class="headerlink" title="第一章 事件流"></a>第一章 事件流</h1><h2 id="1-1-DOM-事件冒泡"><a href="#1-1-DOM-事件冒泡" class="headerlink" title="1-1 [DOM] 事件冒泡"></a>1-1 [DOM] 事件冒泡</h2><p>事件流：描述的是从页面中接受事件的顺序<br>IE-事件冒泡流：即事件最开始由最具体的元素（文档中嵌套层次最深的那个节点）接受，然后逐级向上传播至最不具体的节点（文档）。</p>
+<h2 id="1-2-DOM-事件捕获"><a href="#1-2-DOM-事件捕获" class="headerlink" title="1-2 [DOM] 事件捕获"></a>1-2 [DOM] 事件捕获</h2><p>Netscape-事件捕获流：不太具体的节点应该更早接收到事件，而最具体的节点最后接收到事件。</p>
+<h1 id="第二章-事件处理程序"><a href="#第二章-事件处理程序" class="headerlink" title="第二章 事件处理程序"></a>第二章 事件处理程序</h1><h2 id="2-1-HTML事件处理程序"><a href="#2-1-HTML事件处理程序" class="headerlink" title="2-1 HTML事件处理程序"></a>2-1 HTML事件处理程序</h2><p>例如：</p>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">input</span> <span class="attr">type</span>=<span class="string">"button"</span> <span class="attr">value</span>=<span class="string">"按钮"</span> <span class="attr">id</span>=<span class="string">"btn"</span> <span class="attr">onclick</span>=<span class="string">"showMes()"</span>&gt;</span></span><br></pre></td></tr></table></figure>
+
+<p>缺点：HTML和JS代码紧密的耦合在一起;更新函数名时，JS代码和HTML都要进行修改</p>
+<h2 id="2-2-DOM0级事件处理程序"><a href="#2-2-DOM0级事件处理程序" class="headerlink" title="2-2 DOM0级事件处理程序"></a>2-2 DOM0级事件处理程序</h2><p>较传统的方式：把一个函数赋值给一个事件的处理程序属性，用的比较多的方法，简单、跨浏览器的优势<br>例如：</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> btn = <span class="built_in">document</span>.getElementById(<span class="string">'btn'</span>);</span><br><span class="line">btn.onclick = <span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;</span><br><span class="line">    alert(<span class="string">'这是通过DOM0级添加的事件'</span>);</span><br><span class="line">&#125;</span><br><span class="line">btn.onclick = <span class="literal">null</span>;<span class="comment">//删除事件</span></span><br></pre></td></tr></table></figure>
+<p>没有HTML事件处理程序的缺点</p>
+<h2 id="2-3-DOM2级事件处理程序"><a href="#2-3-DOM2级事件处理程序" class="headerlink" title="2-3 DOM2级事件处理程序"></a>2-3 DOM2级事件处理程序</h2><p>没有DOM1级<br>DOM2级定义了两个方法：<br>用于处理指定和删除事件处理程序的操作<br>addEventListener()和removeEventListener()。<br>所有DOM节点包含这两个方法<br>接收三个参数：要处理的事件名、作为事件处理程序的函数和布尔值<br>例如：</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> btn = <span class="built_in">document</span>.getElementById(<span class="string">'btn'</span>);</span><br><span class="line">btn.addEventListener(<span class="string">'click'</span>,showMes,<span class="literal">false</span>);<span class="comment">//false可以兼容浏览器，冒泡阶段</span></span><br><span class="line">btn.addEventListener(<span class="string">'click'</span>,<span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;</span><br><span class="line">    alert(<span class="keyword">this</span>.value);</span><br><span class="line">&#125;,<span class="literal">false</span>);<span class="comment">//按钮被点击后，先执行上面的事件，再进行这个事件</span></span><br><span class="line">btn.removeEventlistener(<span class="string">'click'</span>,showMes,<span class="literal">false</span>);<span class="comment">//删除事件，参数必须与添加事件时传的参数相同,且通过addEventListener添加的事件，只能通过removeEventListner删除。</span></span><br></pre></td></tr></table></figure>
+<p>DOM0级和DOM2级可以给一个元素添加多个事件处理程序，按照它们的顺序进行执行。</p>
+<h2 id="2-4-IE事件处理程序及跨浏览器解决"><a href="#2-4-IE事件处理程序及跨浏览器解决" class="headerlink" title="2-4 IE事件处理程序及跨浏览器解决"></a>2-4 IE事件处理程序及跨浏览器解决</h2><p>attachEvent()添加事件<br>detachEvent()删除事件<br>接收相同的两个参数：事件处理程序的名称和事件处理程序的函数<br>不适用第三个参数的原因：IE8以及更早的浏览器版本支支持事件冒泡<br>例如：</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> btn = <span class="built_in">document</span>.getElementById(<span class="string">'btn'</span>);</span><br><span class="line">btn.attachEvent(<span class="string">'onclick'</span>,showMes);<span class="comment">//添加事件</span></span><br><span class="line">btn.detachEvent(<span class="string">'onclick'</span>,showMes);<span class="comment">//删除事件</span></span><br></pre></td></tr></table></figure>
+<p>支持IE事件处理程序的浏览器：IE和OPERA<br>跨浏览器解决，用能力检测<br>例如：</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> eventUtil = &#123;</span><br><span class="line">    <span class="comment">//添加句柄</span></span><br><span class="line">    addHandler:<span class="function"><span class="keyword">function</span>(<span class="params">element,type,handler</span>)</span>&#123;</span><br><span class="line">        <span class="keyword">if</span>(element.addEventListener)&#123;<span class="comment">//DOM2级别</span></span><br><span class="line">            element.addEventListener(type,handler,<span class="literal">false</span>);</span><br><span class="line">        &#125;<span class="keyword">else</span> <span class="keyword">if</span>(element.attachEvent)&#123;<span class="comment">//IE</span></span><br><span class="line">            element.attachEvent(<span class="string">'on'</span>+type,handler);</span><br><span class="line">        &#125;<span class="keyword">else</span>&#123;<span class="comment">//不支持DOM0级和DOM2级</span></span><br><span class="line">            element[<span class="string">'on'</span>+type] = handler;<span class="comment">//element.onclick===element['onclick']</span></span><br><span class="line">        &#125;</span><br><span class="line">    &#125;,</span><br><span class="line">    <span class="comment">//删除句柄</span></span><br><span class="line">    removeHandler:<span class="function"><span class="keyword">function</span>(<span class="params">element,type,handler</span>)</span>&#123;</span><br><span class="line">        <span class="keyword">if</span>(element.addEventListener)&#123;<span class="comment">//DOM2级别</span></span><br><span class="line">            element.removeEventListener(type,handler,<span class="literal">false</span>);</span><br><span class="line">        &#125;<span class="keyword">else</span> <span class="keyword">if</span>(element.attachEvent)&#123;<span class="comment">//IE</span></span><br><span class="line">            element.detachEvent(<span class="string">'on'</span>+type,handler);</span><br><span class="line">        &#125;<span class="keyword">else</span>&#123;<span class="comment">//不支持DOM0级和DOM2级</span></span><br><span class="line">            element[<span class="string">'on'</span>+type] = <span class="literal">null</span>;<span class="comment">//element.onclick===element['onclick']</span></span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">var</span> btn = <span class="built_in">document</span>.getElementById(<span class="string">'btn'</span>);</span><br><span class="line">eventUtil.addHandler(btn,<span class="string">'click'</span>,showMes);</span><br><span class="line">eventUtil.removeHandler(btn,<span class="string">'click'</span>,showMes);</span><br></pre></td></tr></table></figure>
+
+<h1 id="第三章-事件对象"><a href="#第三章-事件对象" class="headerlink" title="第三章 事件对象"></a>第三章 事件对象</h1><p>什么是事件对象？在触发DOM上的事件时都会产生一个对象<br>事件对象event</p>
+<h2 id="3-1-DOM中的事件对象"><a href="#3-1-DOM中的事件对象" class="headerlink" title="3-1 DOM中的事件对象"></a>3-1 DOM中的事件对象</h2><p>重要的属性</p>
+<ul>
+<li>type属性，用于获取事件类型</li>
+<li>target属性，用于获取事件目标(target.nodeName，节点名称)</li>
+</ul>
+<p>重要的方法</p>
+<ul>
+<li>stopPropagation()方法，用于阻止事件冒泡</li>
+<li>preventDefault()方法，阻止事件的默认行为<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">a</span> <span class="attr">href</span>=<span class="string">"#"</span>&gt;</span>超链接<span class="tag">&lt;/<span class="name">a</span>&gt;</span>//此处，跳转是默认行为</span><br></pre></td></tr></table></figure>
+
+</li>
+</ul>
+<h2 id="3-2-IE中的事件对象"><a href="#3-2-IE中的事件对象" class="headerlink" title="3-2 IE中的事件对象"></a>3-2 IE中的事件对象</h2><ul>
+<li>type属性，用于获取事件类型</li>
+<li>srcElement属性，用于获取事件目标<br>window.event 是用于兼容ie早期版本的，加上会更严谨<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//在showMes(event)函数中</span></span><br><span class="line">event = event||<span class="built_in">window</span>.event;</span><br><span class="line"><span class="keyword">let</span> ele = event.target||event.srcElement;</span><br></pre></td></tr></table></figure></li>
+<li>cancelBubble属性，用于阻止事件冒泡，设置为true表示阻止冒泡，设置为false表示不阻止冒泡</li>
+<li>returnValue属性，用于阻止事件的默认行为，设置为false表示阻止事件的默认行为</li>
+</ul>
+<h2 id="3-3-编程练习"><a href="#3-3-编程练习" class="headerlink" title="3-3 编程练习"></a>3-3 编程练习</h2><h1 id="第四章-事件类型"><a href="#第四章-事件类型" class="headerlink" title="第四章 事件类型"></a>第四章 事件类型</h1><h2 id="4-1-DOM事件-QQ面板拖拽效果（上）"><a href="#4-1-DOM事件-QQ面板拖拽效果（上）" class="headerlink" title="4-1 [DOM事件]QQ面板拖拽效果（上）"></a>4-1 [DOM事件]QQ面板拖拽效果（上）</h2><h2 id="4-2-DOM事件-QQ面板拖拽效果（下）"><a href="#4-2-DOM事件-QQ面板拖拽效果（下）" class="headerlink" title="4-2 [DOM事件]QQ面板拖拽效果（下）"></a>4-2 [DOM事件]QQ面板拖拽效果（下）</h2><h2 id="4-3-DOM事件-QQ面板状态切换效果"><a href="#4-3-DOM事件-QQ面板状态切换效果" class="headerlink" title="4-3 [DOM事件]QQ面板状态切换效果"></a>4-3 [DOM事件]QQ面板状态切换效果</h2><h2 id="4-4-DOM事件-抽奖系统（上）"><a href="#4-4-DOM事件-抽奖系统（上）" class="headerlink" title="4-4 [DOM事件]抽奖系统（上）"></a>4-4 [DOM事件]抽奖系统（上）</h2><h2 id="4-5-DOM事件-抽奖系统（下）"><a href="#4-5-DOM事件-抽奖系统（下）" class="headerlink" title="4-5 [DOM事件]抽奖系统（下）"></a>4-5 [DOM事件]抽奖系统（下）</h2>
+        </div>
+
+        
+            <section class="post-copyright">
+                
+                    <p class="copyright-item">
+                        <span>Author:</span>
+                        <span>Mosan</span>
+                    </p>
+                
+                
+                    <p class="copyright-item">
+                        <span>Permalink:</span>
+                        <span><a href="https://mengsha97.github.io/2020/03/12/imooc-dom/">https://mengsha97.github.io/2020/03/12/imooc-dom/</a></span>
+                    </p>
+                
+                
+                
+
+            </section>
+        
+        <section class="post-tags">
+            <div>
+                <span>Tag(s):</span>
+                <span class="tag">
+                    
+                    
+                        <a href="/tags/JavaScript/"># JavaScript</a>
+                    
+                        <a href="/tags/dom/"># dom</a>
+                    
+                        <a href="/tags/%E5%89%8D%E7%AB%AF/"># 前端</a>
+                    
+                        
+                </span>
+            </div>
+            <div>
+                <a href="javascript:window.history.back();">back</a>
+                <span>· </span>
+                <a href="/">home</a>
+            </div>
+        </section>
+        <section class="post-nav">
+            
+            
+            <a class="next" rel="next" href="/2020/03/10/myerror/">Failed to fetch</a>
+            
+        </section>
+
+
+    </article>
+</div>
+
+        </div>
+        <footer id="footer" class="footer">
+    <div class="copyright">
+        <span>© Mosan | Powered by <a href="https://hexo.io" target="_blank">Hexo</a> & <a href="https://github.com/Siricee/hexo-theme-Chic" target="_blank">Chic</a></span>
+    </div>
+</footer>
+
+    </div>
+</body>
+</html>
