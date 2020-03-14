@@ -1,0 +1,341 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+<meta name="viewport"
+      content="width=device-width, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+<meta http-equiv="X-UA-Compatible" content="ie=edge">
+
+    <meta name="author" content="Mosan">
+
+
+
+
+
+<title>imooc-javascript | Mosan&#39;s blog</title>
+
+
+
+    <link rel="icon" href="/favicon.ico">
+
+
+
+
+    <!-- stylesheets list from _config.yml -->
+    
+    <link rel="stylesheet" href="/css/style.css">
+    
+
+
+
+    <!-- scripts list from _config.yml -->
+    
+    <script src="/js/script.js"></script>
+    
+    <script src="/js/tocbot.min.js"></script>
+    
+
+
+
+    
+    
+        <!-- MathJax配置，可通过单美元符号书写行内公式等 -->
+<script type="text/x-mathjax-config">
+    MathJax.Hub.Config({
+    "HTML-CSS": {
+        preferredFont: "TeX",
+        availableFonts: ["STIX","TeX"],
+        linebreaks: { automatic:true },
+        EqnChunk: (MathJax.Hub.Browser.isMobile ? 10 : 50)
+    },
+    tex2jax: {
+        inlineMath: [ ["$", "$"], ["\\(","\\)"] ],
+        processEscapes: true,
+        ignoreClass: "tex2jax_ignore|dno",
+        skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
+    },
+    TeX: {
+        equationNumbers: { autoNumber: "AMS" },
+        noUndefined: { attributes: { mathcolor: "red", mathbackground: "#FFEEEE", mathsize: "90%" } },
+        Macros: { href: "{}" }
+    },
+    messageStyle: "none"
+    });
+</script>
+<!-- 给MathJax元素添加has-jax class -->
+<script type="text/x-mathjax-config">
+    MathJax.Hub.Queue(function() {
+        var all = MathJax.Hub.getAllJax(), i;
+        for(i=0; i < all.length; i += 1) {
+            all[i].SourceElement().parentNode.className += ' has-jax';
+        }
+    });
+</script>
+<!-- 通过连接CDN加载MathJax的js代码 -->
+<script type="text/javascript" async
+        src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/MathJax.js?config=TeX-MML-AM_CHTML">
+</script>
+
+
+    
+
+
+<meta name="generator" content="Hexo 4.2.0"></head>
+<body>
+    <div class="wrapper">
+        <header>
+    <nav class="navbar">
+        <div class="container">
+            <div class="navbar-header header-logo"><a href="/">Mosan&#39;s Blog</a></div>
+            <div class="menu navbar-right">
+                
+                    <a class="menu-item" href="/archives">Posts</a>
+                
+                    <a class="menu-item" href="/category">Categories</a>
+                
+                    <a class="menu-item" href="/tag">Tags</a>
+                
+                    <a class="menu-item" href="/about">About</a>
+                
+                <input id="switch_default" type="checkbox" class="switch_default">
+                <label for="switch_default" class="toggleBtn"></label>
+            </div>
+        </div>
+    </nav>
+
+    
+    <nav class="navbar-mobile" id="nav-mobile">
+        <div class="container">
+            <div class="navbar-header">
+                <div>
+                    <a href="/">Mosan&#39;s Blog</a><a id="mobile-toggle-theme">·&nbsp;Light</a>
+                </div>
+                <div class="menu-toggle" onclick="mobileBtn()">&#9776; Menu</div>
+            </div>
+            <div class="menu" id="mobile-menu">
+                
+                    <a class="menu-item" href="/archives">Posts</a>
+                
+                    <a class="menu-item" href="/category">Categories</a>
+                
+                    <a class="menu-item" href="/tag">Tags</a>
+                
+                    <a class="menu-item" href="/about">About</a>
+                
+            </div>
+        </div>
+    </nav>
+
+</header>
+<script>
+    var mobileBtn = function f() {
+        var toggleMenu = document.getElementsByClassName("menu-toggle")[0];
+        var mobileMenu = document.getElementById("mobile-menu");
+        if(toggleMenu.classList.contains("active")){
+           toggleMenu.classList.remove("active")
+            mobileMenu.classList.remove("active")
+        }else{
+            toggleMenu.classList.add("active")
+            mobileMenu.classList.add("active")
+        }
+    }
+</script>
+        <div class="main">
+            <div class="container">
+    
+    
+        <div class="post-toc">
+    <div class="tocbot-list">
+    </div>
+    <div class="tocbot-list-menu">
+        <a class="tocbot-toc-expand" onclick="expand_toc()">Expand all</a>
+        <a onclick="go_top()">Back to top</a>
+        <a onclick="go_bottom()">Go to bottom</a>
+    </div>
+</div>
+
+<script>
+    document.ready(
+        function () {
+            tocbot.init({
+                tocSelector: '.tocbot-list',
+                contentSelector: '.post-content',
+                headingSelector: 'h1, h2, h3, h4, h5',
+                collapseDepth: 1,
+                orderedList: false,
+                scrollSmooth: true,
+            })
+        }
+    )
+
+    function expand_toc() {
+        var b = document.querySelector(".tocbot-toc-expand");
+        tocbot.init({
+            tocSelector: '.tocbot-list',
+            contentSelector: '.post-content',
+            headingSelector: 'h1, h2, h3, h4, h5',
+            collapseDepth: 6,
+            orderedList: false,
+            scrollSmooth: true,
+        });
+        b.setAttribute("onclick", "collapse_toc()");
+        b.innerHTML = "Collapse all"
+    }
+
+    function collapse_toc() {
+        var b = document.querySelector(".tocbot-toc-expand");
+        tocbot.init({
+            tocSelector: '.tocbot-list',
+            contentSelector: '.post-content',
+            headingSelector: 'h1, h2, h3, h4, h5',
+            collapseDepth: 1,
+            orderedList: false,
+            scrollSmooth: true,
+        });
+        b.setAttribute("onclick", "expand_toc()");
+        b.innerHTML = "Expand all"
+    }
+
+    function go_top() {
+        window.scrollTo(0, 0);
+    }
+
+    function go_bottom() {
+        window.scrollTo(0, document.body.scrollHeight);
+    }
+
+</script>
+    
+
+    
+    <article class="post-wrap">
+        <header class="post-header">
+            <h1 class="post-title">imooc-javascript</h1>
+            
+                <div class="post-meta">
+                    
+                        Author: <a itemprop="author" rel="author" href="/">Mosan</a>
+                    
+
+                    
+                        <span class="post-time">
+                        Date: <a href="#">March 14, 2020&nbsp;&nbsp;16:49:06</a>
+                        </span>
+                    
+                    
+                        <span class="post-category">
+                    Category:
+                            
+                                <a href="/categories/%E8%AF%BE%E7%A8%8B%E8%AE%B0%E5%BD%95/">课程记录</a>
+                            
+                        </span>
+                    
+                </div>
+            
+        </header>
+
+        <div class="post-content">
+            <p>讲师：Bosn<br>课程：<a href="https://www.imooc.com/learn/277" target="_blank" rel="noopener">https://www.imooc.com/learn/277</a></p>
+<h1 id="第一章-数据类型"><a href="#第一章-数据类型" class="headerlink" title="第一章 数据类型"></a>第一章 数据类型</h1><p>弱类型特性</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">32+32 &#x2F;&#x2F;64</span><br><span class="line">&quot;32&quot;+32 &#x2F;&#x2F;&quot;3232&quot;</span><br><span class="line">&quot;32&quot;-32 &#x2F;&#x2F;0</span><br></pre></td></tr></table></figure>
+<h2 id="数据类型"><a href="#数据类型" class="headerlink" title="数据类型"></a>数据类型</h2><h3 id="原始类型"><a href="#原始类型" class="headerlink" title="原始类型"></a>原始类型</h3><ul>
+<li>number</li>
+<li>string</li>
+<li>boolean</li>
+<li>null</li>
+<li>undefined</li>
+</ul>
+<h3 id="对象类型"><a href="#对象类型" class="headerlink" title="对象类型"></a>对象类型</h3><ul>
+<li>Function</li>
+<li>Array</li>
+<li>Date</li>
+<li>……</li>
+</ul>
+<h2 id="隐式转换"><a href="#隐式转换" class="headerlink" title="隐式转换"></a>隐式转换</h2><h3 id="和"><a href="#和" class="headerlink" title="+和-"></a>+和-</h3><p>巧用+/-规则转换类型</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">num-0 &#x2F;&#x2F;将字符转换成数字</span><br><span class="line">num+&#39;&#39; &#x2F;&#x2F;将数字转换成字符</span><br></pre></td></tr></table></figure>
+
+<h3 id="a-b"><a href="#a-b" class="headerlink" title="a==b"></a>a==b</h3><p>以下都为true</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">&quot;1.23&quot; &#x3D;&#x3D; 1.23</span><br><span class="line">0 &#x3D;&#x3D; false</span><br><span class="line">null &#x3D;&#x3D; undefined</span><br><span class="line">new Object() &#x3D;&#x3D; new Object()</span><br><span class="line">[1,2] &#x3D;&#x3D; [1,2]</span><br></pre></td></tr></table></figure>
+
+<h3 id="a-b-1"><a href="#a-b-1" class="headerlink" title="a === b"></a>a === b</h3><p>先比较类型</p>
+<ul>
+<li>类型不同，返回false</li>
+<li>类型相同：（以下为true)<ul>
+<li>null === null</li>
+<li>undefined === undefined</li>
+<li>NaN !== NaN<br>对象不等，例如：</li>
+<li>new Object() !== new Object()</li>
+<li>[1,2] != [1,2]</li>
+</ul>
+</li>
+</ul>
+<h3 id="类型转换和比较"><a href="#类型转换和比较" class="headerlink" title="类型转换和比较"></a>类型转换和比较</h3><ul>
+<li>null == undefined 相等</li>
+<li>number == string 转number 1 == “1.0” //true</li>
+<li>boolean == ? 转number 1 == true //true</li>
+<li>object == number|string 尝试对象转为基本类型，new String(“hi”) == “hi” //true<br>其他false</li>
+</ul>
+<h2 id="包装对象"><a href="#包装对象" class="headerlink" title="包装对象"></a>包装对象</h2><h1 id="第二章-表达式和运算符"><a href="#第二章-表达式和运算符" class="headerlink" title="第二章 表达式和运算符"></a>第二章 表达式和运算符</h1><h1 id="第三章-语句"><a href="#第三章-语句" class="headerlink" title="第三章 语句"></a>第三章 语句</h1><h1 id="第四章-对象"><a href="#第四章-对象" class="headerlink" title="第四章 对象"></a>第四章 对象</h1><h1 id="第五章-数组"><a href="#第五章-数组" class="headerlink" title="第五章 数组"></a>第五章 数组</h1><h1 id="第六章-函数和作用域（函数、this）"><a href="#第六章-函数和作用域（函数、this）" class="headerlink" title="第六章 函数和作用域（函数、this）"></a>第六章 函数和作用域（函数、this）</h1><h1 id="第七章-函数和作用域（闭包、作用域）"><a href="#第七章-函数和作用域（闭包、作用域）" class="headerlink" title="第七章 函数和作用域（闭包、作用域）"></a>第七章 函数和作用域（闭包、作用域）</h1><h1 id="第八章-OOP（上）"><a href="#第八章-OOP（上）" class="headerlink" title="第八章 OOP（上）"></a>第八章 OOP（上）</h1><h1 id="第九章-OOP（下）"><a href="#第九章-OOP（下）" class="headerlink" title="第九章 OOP（下）"></a>第九章 OOP（下）</h1>
+        </div>
+
+        
+            <section class="post-copyright">
+                
+                    <p class="copyright-item">
+                        <span>Author:</span>
+                        <span>Mosan</span>
+                    </p>
+                
+                
+                    <p class="copyright-item">
+                        <span>Permalink:</span>
+                        <span><a href="https://mengsha97.github.io/2020/03/14/imooc-javascript/">https://mengsha97.github.io/2020/03/14/imooc-javascript/</a></span>
+                    </p>
+                
+                
+                
+
+            </section>
+        
+        <section class="post-tags">
+            <div>
+                <span>Tag(s):</span>
+                <span class="tag">
+                    
+                    
+                        <a href="/tags/JavaScript/"># JavaScript</a>
+                    
+                        <a href="/tags/%E5%89%8D%E7%AB%AF/"># 前端</a>
+                    
+                        
+                </span>
+            </div>
+            <div>
+                <a href="javascript:window.history.back();">back</a>
+                <span>· </span>
+                <a href="/">home</a>
+            </div>
+        </section>
+        <section class="post-nav">
+            
+                <a class="prev" rel="prev" href="/2020/03/14/try-tomcat/">利用tomcat解决chrome异步加载本地文件报错</a>
+            
+            
+            <a class="next" rel="next" href="/2020/03/12/imooc-dom/">IMOOC-DOM事件探秘</a>
+            
+        </section>
+
+
+    </article>
+</div>
+
+        </div>
+        <footer id="footer" class="footer">
+    <div class="copyright">
+        <span>© Mosan | Powered by <a href="https://hexo.io" target="_blank">Hexo</a> & <a href="https://github.com/Siricee/hexo-theme-Chic" target="_blank">Chic</a></span>
+    </div>
+</footer>
+
+    </div>
+</body>
+</html>

@@ -313,6 +313,13 @@
 <li>另一方面setInterval()需要指定间隔。我们通过公式1000毫秒/60Hz得出17的最终值，然后将其四舍五入。四舍五入是一个好主意，浏览器可能会尝试运行动画的速度超过60fps，它不会对动画的平滑度有任何影响。</li>
 <li>60Hz是标准刷新率。</li>
 </ul>
+<h2 id="offsetParent，parentNode-parentElement-区别"><a href="#offsetParent，parentNode-parentElement-区别" class="headerlink" title="offsetParent，parentNode,parentElement 区别"></a>offsetParent，parentNode,parentElement 区别</h2><ul>
+<li>offsetParent 指与位置有关的上级元素</li>
+<li>parentNode 指与位置无关的上级元素</li>
+<li>parentElement和parentNode一样，但是parentNode是W3C标准的,parentElement只在IE中可用。</li>
+</ul>
+<h2 id="获取输入框input的值"><a href="#获取输入框input的值" class="headerlink" title="获取输入框input的值"></a>获取输入框input的值</h2><p>用.value而不是.textContent</p>
+<h2 id="从网络获取资源"><a href="#从网络获取资源" class="headerlink" title="从网络获取资源"></a>从网络获取资源</h2><p>从网络获取资源是一个 asynchronous “异步” 操作, 这意味着您必须等待该操作完成（例如，资源从网络返回），然后才能对该响应执行任何操作，否则会出错,将被抛出错误。</p>
 
         </div>
 
