@@ -161,6 +161,13 @@
                         </span>
                     
                     
+                        <span class="post-category">
+                    Category:
+                            
+                                <a href="/categories/%E5%AD%A6%E4%B9%A0%E8%AE%B0%E5%BD%95/">学习记录</a>
+                            
+                        </span>
+                    
                 </div>
             
         </header>
@@ -200,7 +207,7 @@
 
 14-Mar-2020 20:23:03.690 淇℃伅 [main] org.apache.catalina.startup.HostConfig.deployDirectory Deployment of web application directory [D:\Program Files\apache-tomcat-9.0.31\webapps\ROOT] has finished in [44] ms
 14-Mar-2020 20:23:03.696 淇℃伅 [main] org.apache.coyote.AbstractProtocol.start 寮€濮嬪崗璁鐞嗗彞鏌刐&quot;http-nio-8080&quot;]
-14-Mar-2020 20:23:03.717 淇℃伅 [main] org.apache.catalina.startup.Catalina.start Server startup in [1,273] milliseconds</code></pre><p>我查了一下并且在这个 <a href="https://blog.csdn.net/weixin_39513118/article/details/86352063" target="_blank" rel="noopener">https://blog.csdn.net/weixin_39513118/article/details/86352063</a> 回答下找到了答案，即修改tomcat的conf下的logging.properties中的参数，将UTF-8改为GBK</p>
+14-Mar-2020 20:23:03.717 淇℃伅 [main] org.apache.catalina.startup.Catalina.start Server startup in [1,273] milliseconds</code></pre><p>我查了一下并且在这个 <a href="https://blog.csdn.net/weixin_39513118/article/details/86352063" target="_blank" rel="noopener">https://blog.csdn.net/weixin_39513118/article/details/86352063</a> 回答下找到了答案，即修改tomcat的conf下的logging.properties中的参数，将UTF-8改为GBK即可。</p>
 <pre><code>java.util.logging.ConsoleHandler.encoding = GBK</code></pre><p>将跨域出现问题的代码放在tomcat下的webapps/ROOT下，例如我放在 D:\Program Files\apache-tomcat-9.0.31\webapps\ROOT\page\api ，然后启动tomcat，在浏览器上输入 <a href="http://localhost:8080/page/api/ajax-start.html" target="_blank" rel="noopener">http://localhost:8080/page/api/ajax-start.html</a> 就能访问到该页面。<br>如果想更加全面了解tomcat，接下来要花一段时间看看 <a href="https://how2j.cn/k/tomcat/tomcat-tutorial/541.html" target="_blank" rel="noopener">https://how2j.cn/k/tomcat/tomcat-tutorial/541.html</a></p>
 
         </div>
@@ -229,6 +236,16 @@
                 <span>Tag(s):</span>
                 <span class="tag">
                     
+                    
+                        <a href="/tags/tomcat/"># tomcat</a>
+                    
+                        <a href="/tags/java/"># java</a>
+                    
+                        <a href="/tags/ajax/"># ajax</a>
+                    
+                        <a href="/tags/%E6%B5%8F%E8%A7%88%E5%99%A8%E8%B7%A8%E5%9F%9F/"># 浏览器跨域</a>
+                    
+                        
                 </span>
             </div>
             <div>
