@@ -12,7 +12,7 @@
 
 
 
-<title>Tags | Mosan&#39;s blog</title>
+<title>初试Atom | Mosan&#39;s blog</title>
 
 
 
@@ -141,56 +141,155 @@
     }
 </script>
         <div class="main">
-            
-
-    <div class="container">
-        <div class="post-wrap tags">
-            <h2 class="post-title">-&nbsp;Tag Cloud&nbsp;-</h2>
-
-            <div class="tag-cloud-tags">
-                
-                    <a href="/tags/%E7%AE%97%E6%B3%95/">算法<small>(5)</small></a>
-                
-                    <a href="/tags/%E7%BA%A7%E6%95%B0/">级数<small>(1)</small></a>
-                
-                    <a href="/tags/%E5%BE%AA%E7%8E%AF/">循环<small>(3)</small></a>
-                
-                    <a href="/tags/%E6%95%B0%E7%BB%84/">数组<small>(2)</small></a>
-                
-                    <a href="/tags/JavaScript/">JavaScript<small>(5)</small></a>
-                
-                    <a href="/tags/%E9%9D%A2%E8%AF%95/">面试<small>(1)</small></a>
-                
-                    <a href="/tags/%E5%8D%9A%E5%AE%A2/">博客<small>(1)</small></a>
-                
-                    <a href="/tags/promise/">promise<small>(2)</small></a>
-                
-                    <a href="/tags/test/">test<small>(1)</small></a>
-                
-                    <a href="/tags/dom/">dom<small>(1)</small></a>
-                
-                    <a href="/tags/%E5%89%8D%E7%AB%AF/">前端<small>(3)</small></a>
-                
-                    <a href="/tags/tomcat/">tomcat<small>(1)</small></a>
-                
-                    <a href="/tags/java/">java<small>(1)</small></a>
-                
-                    <a href="/tags/ajax/">ajax<small>(2)</small></a>
-                
-                    <a href="/tags/%E6%B5%8F%E8%A7%88%E5%99%A8%E8%B7%A8%E5%9F%9F/">浏览器跨域<small>(2)</small></a>
-                
-                    <a href="/tags/python/">python<small>(1)</small></a>
-                
-                    <a href="/tags/%E6%9C%AC%E5%9C%B0%E6%9C%8D%E5%8A%A1%E5%99%A8/">本地服务器<small>(2)</small></a>
-                
-                    <a href="/tags/%E4%BB%A3%E7%A0%81%E7%BC%96%E8%BE%91%E5%99%A8/">代码编辑器<small>(1)</small></a>
-                
-                    <a href="/tags/%E4%BE%BF%E6%8D%B7%E7%BC%96%E7%A8%8B/">便捷编程<small>(1)</small></a>
-                
-            </div>
-        </div>
+            <div class="container">
+    
+    
+        <div class="post-toc">
+    <div class="tocbot-list">
     </div>
+    <div class="tocbot-list-menu">
+        <a class="tocbot-toc-expand" onclick="expand_toc()">Expand all</a>
+        <a onclick="go_top()">Back to top</a>
+        <a onclick="go_bottom()">Go to bottom</a>
+    </div>
+</div>
 
+<script>
+    document.ready(
+        function () {
+            tocbot.init({
+                tocSelector: '.tocbot-list',
+                contentSelector: '.post-content',
+                headingSelector: 'h1, h2, h3, h4, h5',
+                collapseDepth: 1,
+                orderedList: false,
+                scrollSmooth: true,
+            })
+        }
+    )
+
+    function expand_toc() {
+        var b = document.querySelector(".tocbot-toc-expand");
+        tocbot.init({
+            tocSelector: '.tocbot-list',
+            contentSelector: '.post-content',
+            headingSelector: 'h1, h2, h3, h4, h5',
+            collapseDepth: 6,
+            orderedList: false,
+            scrollSmooth: true,
+        });
+        b.setAttribute("onclick", "collapse_toc()");
+        b.innerHTML = "Collapse all"
+    }
+
+    function collapse_toc() {
+        var b = document.querySelector(".tocbot-toc-expand");
+        tocbot.init({
+            tocSelector: '.tocbot-list',
+            contentSelector: '.post-content',
+            headingSelector: 'h1, h2, h3, h4, h5',
+            collapseDepth: 1,
+            orderedList: false,
+            scrollSmooth: true,
+        });
+        b.setAttribute("onclick", "expand_toc()");
+        b.innerHTML = "Expand all"
+    }
+
+    function go_top() {
+        window.scrollTo(0, 0);
+    }
+
+    function go_bottom() {
+        window.scrollTo(0, document.body.scrollHeight);
+    }
+
+</script>
+    
+
+    
+    <article class="post-wrap">
+        <header class="post-header">
+            <h1 class="post-title">初试Atom</h1>
+            
+                <div class="post-meta">
+                    
+                        Author: <a itemprop="author" rel="author" href="/">Mosan</a>
+                    
+
+                    
+                        <span class="post-time">
+                        Date: <a href="#">March 17, 2020&nbsp;&nbsp;20:27:28</a>
+                        </span>
+                    
+                    
+                        <span class="post-category">
+                    Category:
+                            
+                                <a href="/categories/%E5%AD%A6%E4%B9%A0%E8%AE%B0%E5%BD%95/">学习记录</a>
+                            
+                        </span>
+                    
+                </div>
+            
+        </header>
+
+        <div class="post-content">
+            <h2 id="处理CSS前缀"><a href="#处理CSS前缀" class="headerlink" title="处理CSS前缀"></a>处理CSS前缀</h2><ul>
+<li>安装Autoprefixer插件</li>
+<li>在代码中，选择要添加前缀的CSS部分，打开命令面板（Cmd/Ctrl+Shift+P），然后输入Autoprefixer并选择Autoprefixer自动完成的结果。</li>
+</ul>
+
+        </div>
+
+        
+            <section class="post-copyright">
+                
+                    <p class="copyright-item">
+                        <span>Author:</span>
+                        <span>Mosan</span>
+                    </p>
+                
+                
+                    <p class="copyright-item">
+                        <span>Permalink:</span>
+                        <span><a href="https://mengsha97.github.io/2020/03/17/atomlog/">https://mengsha97.github.io/2020/03/17/atomlog/</a></span>
+                    </p>
+                
+                
+                
+
+            </section>
+        
+        <section class="post-tags">
+            <div>
+                <span>Tag(s):</span>
+                <span class="tag">
+                    
+                    
+                        <a href="/tags/%E4%BB%A3%E7%A0%81%E7%BC%96%E8%BE%91%E5%99%A8/"># 代码编辑器</a>
+                    
+                        <a href="/tags/%E4%BE%BF%E6%8D%B7%E7%BC%96%E7%A8%8B/"># 便捷编程</a>
+                    
+                        
+                </span>
+            </div>
+            <div>
+                <a href="javascript:window.history.back();">back</a>
+                <span>· </span>
+                <a href="/">home</a>
+            </div>
+        </section>
+        <section class="post-nav">
+            
+            
+            <a class="next" rel="next" href="/2020/03/14/try-python-cross/">利用python解决chrome异步加载本地文件报错</a>
+            
+        </section>
+
+
+    </article>
+</div>
 
         </div>
         <footer id="footer" class="footer">

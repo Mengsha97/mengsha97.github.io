@@ -318,6 +318,17 @@
 </ul>
 <h2 id="获取输入框input的值"><a href="#获取输入框input的值" class="headerlink" title="获取输入框input的值"></a>获取输入框input的值</h2><p>用.value而不是.textContent</p>
 <h2 id="从网络获取资源"><a href="#从网络获取资源" class="headerlink" title="从网络获取资源"></a>从网络获取资源</h2><p>从网络获取资源是一个 asynchronous “异步” 操作, 这意味着您必须等待该操作完成（例如，资源从网络返回），然后才能对该响应执行任何操作，否则会出错,将被抛出错误。</p>
+<h2 id="canvas"><a href="#canvas" class="headerlink" title="canvas"></a>canvas</h2><ul>
+<li>不明确指明宽高时，画布默认尺寸为300*150像素</li>
+</ul>
+<h2 id="ctx-drawImage"><a href="#ctx-drawImage" class="headerlink" title="ctx.drawImage()"></a>ctx.drawImage()</h2><p>ctx.drawImage(image, 20, 20, 185, 175, 50, 50, 185, 175);</p>
+<ul>
+<li>第一个参数为图片引用。</li>
+<li>参数 2、3  指定切片左上顶点在原图的位置坐标，参考原点为原图片本身左上角的坐标。原图片在该坐标左、上的部分均不会绘制出来。</li>
+<li>参数 4、5 表示裁切部分的长、宽。</li>
+<li>参数 6、7 表示裁切部分左上顶点在画布中的位置坐标，参考原点为画布左上顶点。</li>
+<li>参数 8、9 表示裁切部分在画布中绘制的长、宽。本例中绘制时与裁切时面积相同，你也可以定制绘制的尺寸。</li>
+</ul>
 
         </div>
 
