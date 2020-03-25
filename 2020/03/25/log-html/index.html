@@ -144,6 +144,68 @@
             <div class="container">
     
     
+        <div class="post-toc">
+    <div class="tocbot-list">
+    </div>
+    <div class="tocbot-list-menu">
+        <a class="tocbot-toc-expand" onclick="expand_toc()">Expand all</a>
+        <a onclick="go_top()">Back to top</a>
+        <a onclick="go_bottom()">Go to bottom</a>
+    </div>
+</div>
+
+<script>
+    document.ready(
+        function () {
+            tocbot.init({
+                tocSelector: '.tocbot-list',
+                contentSelector: '.post-content',
+                headingSelector: 'h1, h2, h3, h4, h5',
+                collapseDepth: 1,
+                orderedList: false,
+                scrollSmooth: true,
+            })
+        }
+    )
+
+    function expand_toc() {
+        var b = document.querySelector(".tocbot-toc-expand");
+        tocbot.init({
+            tocSelector: '.tocbot-list',
+            contentSelector: '.post-content',
+            headingSelector: 'h1, h2, h3, h4, h5',
+            collapseDepth: 6,
+            orderedList: false,
+            scrollSmooth: true,
+        });
+        b.setAttribute("onclick", "collapse_toc()");
+        b.innerHTML = "Collapse all"
+    }
+
+    function collapse_toc() {
+        var b = document.querySelector(".tocbot-toc-expand");
+        tocbot.init({
+            tocSelector: '.tocbot-list',
+            contentSelector: '.post-content',
+            headingSelector: 'h1, h2, h3, h4, h5',
+            collapseDepth: 1,
+            orderedList: false,
+            scrollSmooth: true,
+        });
+        b.setAttribute("onclick", "expand_toc()");
+        b.innerHTML = "Expand all"
+    }
+
+    function go_top() {
+        window.scrollTo(0, 0);
+    }
+
+    function go_bottom() {
+        window.scrollTo(0, document.body.scrollHeight);
+    }
+
+</script>
+    
 
     
     <article class="post-wrap">
@@ -173,7 +235,51 @@
         </header>
 
         <div class="post-content">
-            
+            <h2 id="实体引用"><a href="#实体引用" class="headerlink" title="实体引用"></a>实体引用</h2><table>
+<thead>
+<tr>
+<th>原义字符</th>
+<th>等价字符引用</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>&lt;</td>
+<td>&amp;lt;</td>
+</tr>
+<tr>
+<td>‘&gt;’</td>
+<td>&amp;gt;</td>
+</tr>
+<tr>
+<td>“</td>
+<td>&amp;quot;</td>
+</tr>
+<tr>
+<td>‘</td>
+<td>&amp;apos;</td>
+</tr>
+<tr>
+<td>&amp;</td>
+<td>&amp;amp;</td>
+</tr>
+</tbody></table>
+<h2 id="指定文档字符编码"><a href="#指定文档字符编码" class="headerlink" title="指定文档字符编码"></a>指定文档字符编码</h2><p>utf-8一个通用的字符集，它包含了任何人类语言中的大部分的字符。一些浏览器会自动修正错误的编码，但是应该要手动为页面设置编码为utf-8，如下：</p>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">meta</span> <span class="attr">charset</span>=<span class="string">"utf-8"</span>&gt;</span></span><br></pre></td></tr></table></figure>
+<p>来避免在其他浏览器中可能出现的潜在问题。</p>
+<h2 id="使用标题"><a href="#使用标题" class="headerlink" title="使用标题"></a>使用标题</h2><ul>
+<li>最好只对每个页面使用一次&lt;h1&gt;，这是顶级标题，所有其他标题位于层次结构中的下方。</li>
+<li>确保在层次结构中以正确的顺序使用标题。</li>
+<li>在可用的六个标题级别中，每页最好使用不超过三个。</li>
+</ul>
+<h2 id="屏幕阅读器"><a href="#屏幕阅读器" class="headerlink" title="屏幕阅读器"></a>屏幕阅读器</h2><p>screen reader，使页面结构化，也能让屏幕阅读器更好分辨内容。</p>
+<h2 id="超链接的download属性"><a href="#超链接的download属性" class="headerlink" title="超链接的download属性"></a>超链接的download属性</h2><p>当链接到要下载的资源而不是在浏览器中打开时，可以使用download属性来提供一个默认的保存文件名（此属性只适用于同源URL），如下是一个下载链接到Firefox的Windows最新版本的示例：</p>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">a</span> <span class="attr">href</span>=<span class="string">"https://download.mozilla.org/?product=firefox-latest-ssl&amp;os=win64&amp;lang=en-US"</span></span></span><br><span class="line"><span class="tag">   <span class="attr">download</span>=<span class="string">"firefox-latest-64bit-installer.exe"</span>&gt;</span></span><br><span class="line">  Download Latest Firefox for Windows (64-bit) (English, US)</span><br><span class="line"><span class="tag">&lt;/<span class="name">a</span>&gt;</span></span><br></pre></td></tr></table></figure>
+<p>效果如下：<br><a href="https://download.mozilla.org/?product=firefox-latest-ssl&os=win64&lang=en-US"
+   download="firefox-latest-64bit-installer.exe"><br>  Download Latest Firefox for Windows (64-bit) (English, US)<br></a></p>
+<h2 id="lt-time-gt-元素"><a href="#lt-time-gt-元素" class="headerlink" title="&lt;time&gt;元素"></a>&lt;time&gt;元素</h2><p>HTML 支持将时间和日期标记为可供机器识别的格式的 <time> 元素。例如：</p>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">&lt;!-- 标准简单日期 --&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">time</span> <span class="attr">datetime</span>=<span class="string">"2016-01-20"</span>&gt;</span>20 January 2016<span class="tag">&lt;/<span class="name">time</span>&gt;</span></span><br><span class="line"><span class="comment">&lt;!-- 只包含年份和月份--&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">time</span> <span class="attr">datetime</span>=<span class="string">"2016-01"</span>&gt;</span>January 2016<span class="tag">&lt;/<span class="name">time</span>&gt;</span></span><br><span class="line"><span class="comment">&lt;!-- 只包含月份和日期 --&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">time</span> <span class="attr">datetime</span>=<span class="string">"01-20"</span>&gt;</span>20 January<span class="tag">&lt;/<span class="name">time</span>&gt;</span></span><br><span class="line"><span class="comment">&lt;!-- 只包含时间，小时和分钟数 --&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">time</span> <span class="attr">datetime</span>=<span class="string">"19:30"</span>&gt;</span>19:30<span class="tag">&lt;/<span class="name">time</span>&gt;</span></span><br><span class="line"><span class="comment">&lt;!-- 还可包含秒和毫秒 --&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">time</span> <span class="attr">datetime</span>=<span class="string">"19:30:01.856"</span>&gt;</span>19:30:01.856<span class="tag">&lt;/<span class="name">time</span>&gt;</span></span><br><span class="line"><span class="comment">&lt;!-- 日期和时间 --&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">time</span> <span class="attr">datetime</span>=<span class="string">"2016-01-20T19:30"</span>&gt;</span>7.30pm, 20 January 2016<span class="tag">&lt;/<span class="name">time</span>&gt;</span></span><br><span class="line"><span class="comment">&lt;!-- 含有时区偏移值的日期时间 --&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">time</span> <span class="attr">datetime</span>=<span class="string">"2016-01-20T19:30+01:00"</span>&gt;</span>7.30pm, 20 January 2016 is 8.30pm in France<span class="tag">&lt;/<span class="name">time</span>&gt;</span></span><br><span class="line"><span class="comment">&lt;!-- 调用特定的周 --&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">time</span> <span class="attr">datetime</span>=<span class="string">"2016-W04"</span>&gt;</span>The fourth week of 2016<span class="tag">&lt;/<span class="name">time</span>&gt;</span></span><br></pre></td></tr></table></figure>
+
+
         </div>
 
         
