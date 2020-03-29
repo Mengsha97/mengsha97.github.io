@@ -279,6 +279,15 @@
 <h2 id="lt-time-gt-元素"><a href="#lt-time-gt-元素" class="headerlink" title="&lt;time&gt;元素"></a>&lt;time&gt;元素</h2><p>HTML 支持将时间和日期标记为可供机器识别的格式的 <time> 元素。例如：</p>
 <figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">&lt;!-- 标准简单日期 --&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">time</span> <span class="attr">datetime</span>=<span class="string">"2016-01-20"</span>&gt;</span>20 January 2016<span class="tag">&lt;/<span class="name">time</span>&gt;</span></span><br><span class="line"><span class="comment">&lt;!-- 只包含年份和月份--&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">time</span> <span class="attr">datetime</span>=<span class="string">"2016-01"</span>&gt;</span>January 2016<span class="tag">&lt;/<span class="name">time</span>&gt;</span></span><br><span class="line"><span class="comment">&lt;!-- 只包含月份和日期 --&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">time</span> <span class="attr">datetime</span>=<span class="string">"01-20"</span>&gt;</span>20 January<span class="tag">&lt;/<span class="name">time</span>&gt;</span></span><br><span class="line"><span class="comment">&lt;!-- 只包含时间，小时和分钟数 --&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">time</span> <span class="attr">datetime</span>=<span class="string">"19:30"</span>&gt;</span>19:30<span class="tag">&lt;/<span class="name">time</span>&gt;</span></span><br><span class="line"><span class="comment">&lt;!-- 还可包含秒和毫秒 --&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">time</span> <span class="attr">datetime</span>=<span class="string">"19:30:01.856"</span>&gt;</span>19:30:01.856<span class="tag">&lt;/<span class="name">time</span>&gt;</span></span><br><span class="line"><span class="comment">&lt;!-- 日期和时间 --&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">time</span> <span class="attr">datetime</span>=<span class="string">"2016-01-20T19:30"</span>&gt;</span>7.30pm, 20 January 2016<span class="tag">&lt;/<span class="name">time</span>&gt;</span></span><br><span class="line"><span class="comment">&lt;!-- 含有时区偏移值的日期时间 --&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">time</span> <span class="attr">datetime</span>=<span class="string">"2016-01-20T19:30+01:00"</span>&gt;</span>7.30pm, 20 January 2016 is 8.30pm in France<span class="tag">&lt;/<span class="name">time</span>&gt;</span></span><br><span class="line"><span class="comment">&lt;!-- 调用特定的周 --&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">time</span> <span class="attr">datetime</span>=<span class="string">"2016-W04"</span>&gt;</span>The fourth week of 2016<span class="tag">&lt;/<span class="name">time</span>&gt;</span></span><br></pre></td></tr></table></figure>
 
+<h2 id="图片版权"><a href="#图片版权" class="headerlink" title="图片版权"></a>图片版权</h2><p>在得到授权之前，永远不要把img的src属性指向其他人网站上的图片</p>
+<h2 id="视频-音频的容器格式"><a href="#视频-音频的容器格式" class="headerlink" title="视频/音频的容器格式"></a>视频/音频的容器格式</h2><p>视频和音频都有不同的格式，如下：</p>
+<ul>
+<li>WebM容器通常包括了Ogg Vorbis音频和VP8/VP9视频。主要在FIrefox和Chrome当中支持。</li>
+<li>MP4容器通常包括AAC以及MP3音频和H.264视频。主要在Internet Explorer和Safari当中支持。</li>
+<li>老式的Ogg容器往往支持Ogg Vorbis音频和Ogg Theora视频。主要在Firefox和Chrome当中支持，不过这个容器已经被更强大的WebM容器所取代。</li>
+</ul>
+<p>音频播放器将会直接播放音频文件，例如MP3和Ogg文件。这些不需要容器</p>
+<p>详见<a href="https://developer.mozilla.org/zh-CN/docs/Web/HTML/Supported_media_formats#%E6%B5%8F%E8%A7%88%E5%99%A8%E5%85%BC%E5%AE%B9%E6%83%85%E5%86%B5" target="_blank" rel="noopener">音视频编码兼容表</a></p>
 
         </div>
 
@@ -319,6 +328,8 @@
             </div>
         </section>
         <section class="post-nav">
+            
+                <a class="prev" rel="prev" href="/2020/03/29/log-iknow/">“文盲”时刻</a>
             
             
             <a class="next" rel="next" href="/2020/03/23/mdn-local-library/">【实战记录】MDN-Express Web Framework (Node.js/JavaScript)</a>
