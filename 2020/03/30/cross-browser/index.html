@@ -12,7 +12,7 @@
 
 
 
-<title>“文盲”时刻 | Mosan&#39;s blog</title>
+<title>一些跨浏览器的方法 | Mosan&#39;s blog</title>
 
 
 
@@ -144,11 +144,73 @@
             <div class="container">
     
     
+        <div class="post-toc">
+    <div class="tocbot-list">
+    </div>
+    <div class="tocbot-list-menu">
+        <a class="tocbot-toc-expand" onclick="expand_toc()">Expand all</a>
+        <a onclick="go_top()">Back to top</a>
+        <a onclick="go_bottom()">Go to bottom</a>
+    </div>
+</div>
+
+<script>
+    document.ready(
+        function () {
+            tocbot.init({
+                tocSelector: '.tocbot-list',
+                contentSelector: '.post-content',
+                headingSelector: 'h1, h2, h3, h4, h5',
+                collapseDepth: 1,
+                orderedList: false,
+                scrollSmooth: true,
+            })
+        }
+    )
+
+    function expand_toc() {
+        var b = document.querySelector(".tocbot-toc-expand");
+        tocbot.init({
+            tocSelector: '.tocbot-list',
+            contentSelector: '.post-content',
+            headingSelector: 'h1, h2, h3, h4, h5',
+            collapseDepth: 6,
+            orderedList: false,
+            scrollSmooth: true,
+        });
+        b.setAttribute("onclick", "collapse_toc()");
+        b.innerHTML = "Collapse all"
+    }
+
+    function collapse_toc() {
+        var b = document.querySelector(".tocbot-toc-expand");
+        tocbot.init({
+            tocSelector: '.tocbot-list',
+            contentSelector: '.post-content',
+            headingSelector: 'h1, h2, h3, h4, h5',
+            collapseDepth: 1,
+            orderedList: false,
+            scrollSmooth: true,
+        });
+        b.setAttribute("onclick", "expand_toc()");
+        b.innerHTML = "Expand all"
+    }
+
+    function go_top() {
+        window.scrollTo(0, 0);
+    }
+
+    function go_bottom() {
+        window.scrollTo(0, document.body.scrollHeight);
+    }
+
+</script>
+    
 
     
     <article class="post-wrap">
         <header class="post-header">
-            <h1 class="post-title">“文盲”时刻</h1>
+            <h1 class="post-title">一些跨浏览器的方法</h1>
             
                 <div class="post-meta">
                     
@@ -157,7 +219,7 @@
 
                     
                         <span class="post-time">
-                        Date: <a href="#">March 29, 2020&nbsp;&nbsp;23:05:32</a>
+                        Date: <a href="#">March 30, 2020&nbsp;&nbsp;0:49:20</a>
                         </span>
                     
                     
@@ -173,12 +235,12 @@
         </header>
 
         <div class="post-content">
-            <ul>
-<li><p>SEO：Search Engine Optimization，汉译为搜索引擎优化。是一种方式：利用搜索引擎的规则提高网站在有关搜索引擎内的自然排名。目的是让其在行业内占据领先地位，获得品牌收益。很大程度上是网站经营者的一种商业行为，将自己或自己公司的排名前移。——————来源：百度百科</p>
-</li>
-<li><p>光栅图：也叫做位图、点阵图、像素图，简单的说，就是最小单位由像素构成的图，只有点的信息，缩放时会失真。每个像素有自己的颜色，类似电脑里的图片都是像素图，你把它放很大就会看到点变成小色块了。</p>
-</li>
-</ul>
+            <h1 id="SVG跨浏览器支持"><a href="#SVG跨浏览器支持" class="headerlink" title="SVG跨浏览器支持"></a>SVG跨浏览器支持</h1><h2 id="方法一"><a href="#方法一" class="headerlink" title="方法一"></a>方法一</h2><p>在img元素内使用“src”属性引用PNG或JPG等低版本浏览器支持的类型，并且用“srcset”属性引用SVG类型，这种情况，支持的浏览器将加载SVG，较旧的浏览器将加载PNG等。例如，</p>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">img</span> <span class="attr">src</span>=<span class="string">"equilateral.png"</span> <span class="attr">alt</span>=<span class="string">"triangle with equal sides"</span> <span class="attr">srcset</span>=<span class="string">"equilateral.svg"</span>&gt;</span></span><br></pre></td></tr></table></figure>
+
+<h2 id="方法二"><a href="#方法二" class="headerlink" title="方法二"></a>方法二</h2><p>将SVG作为CSS背景图像，如下,旧浏览器会坚持PNG等，支持SVG的浏览器将加载SVG</p>
+<figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="selector-tag">background</span>: <span class="selector-tag">url</span>("<span class="selector-tag">fallback</span><span class="selector-class">.png</span>") <span class="selector-tag">no-repeat</span> <span class="selector-tag">center</span>;</span><br><span class="line"><span class="selector-tag">background-image</span>: <span class="selector-tag">url</span>("<span class="selector-tag">image</span><span class="selector-class">.svg</span>");</span><br><span class="line"><span class="selector-tag">background-size</span>: <span class="selector-tag">contain</span>;</span><br></pre></td></tr></table></figure>
+
 
         </div>
 
@@ -193,7 +255,7 @@
                 
                     <p class="copyright-item">
                         <span>Permalink:</span>
-                        <span><a href="https://mengsha97.github.io/2020/03/29/log-iknow/">https://mengsha97.github.io/2020/03/29/log-iknow/</a></span>
+                        <span><a href="https://mengsha97.github.io/2020/03/30/cross-browser/">https://mengsha97.github.io/2020/03/30/cross-browser/</a></span>
                     </p>
                 
                 
@@ -207,9 +269,9 @@
                 <span class="tag">
                     
                     
-                        <a href="/tags/%E7%BC%A9%E5%86%99/"># 缩写</a>
+                        <a href="/tags/%E5%89%8D%E7%AB%AF/"># 前端</a>
                     
-                        <a href="/tags/%E7%9F%A5%E8%AF%86%E7%82%B9/"># 知识点</a>
+                        <a href="/tags/%E8%B7%A8%E6%B5%8F%E8%A7%88%E5%99%A8/"># 跨浏览器</a>
                     
                         
                 </span>
@@ -222,10 +284,8 @@
         </section>
         <section class="post-nav">
             
-                <a class="prev" rel="prev" href="/2020/03/30/cross-browser/">一些跨浏览器的方法</a>
             
-            
-            <a class="next" rel="next" href="/2020/03/25/log-html/">【学习记录】HTML</a>
+            <a class="next" rel="next" href="/2020/03/29/log-iknow/">“文盲”时刻</a>
             
         </section>
 
