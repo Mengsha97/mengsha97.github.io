@@ -1,0 +1,361 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+<meta name="viewport"
+      content="width=device-width, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+<meta http-equiv="X-UA-Compatible" content="ie=edge">
+
+    <meta name="author" content="Mosan">
+
+
+
+
+
+<title>【慕课网】Vue+Webpack打造todo应用 | Mosan&#39;s blog</title>
+
+
+
+    <link rel="icon" href="/favicon.ico">
+
+
+
+
+    <!-- stylesheets list from _config.yml -->
+    
+    <link rel="stylesheet" href="/css/style.css">
+    
+
+
+
+    <!-- scripts list from _config.yml -->
+    
+    <script src="/js/script.js"></script>
+    
+    <script src="/js/tocbot.min.js"></script>
+    
+
+
+
+    
+    
+        <!-- MathJax配置，可通过单美元符号书写行内公式等 -->
+<script type="text/x-mathjax-config">
+    MathJax.Hub.Config({
+    "HTML-CSS": {
+        preferredFont: "TeX",
+        availableFonts: ["STIX","TeX"],
+        linebreaks: { automatic:true },
+        EqnChunk: (MathJax.Hub.Browser.isMobile ? 10 : 50)
+    },
+    tex2jax: {
+        inlineMath: [ ["$", "$"], ["\\(","\\)"] ],
+        processEscapes: true,
+        ignoreClass: "tex2jax_ignore|dno",
+        skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
+    },
+    TeX: {
+        equationNumbers: { autoNumber: "AMS" },
+        noUndefined: { attributes: { mathcolor: "red", mathbackground: "#FFEEEE", mathsize: "90%" } },
+        Macros: { href: "{}" }
+    },
+    messageStyle: "none"
+    });
+</script>
+<!-- 给MathJax元素添加has-jax class -->
+<script type="text/x-mathjax-config">
+    MathJax.Hub.Queue(function() {
+        var all = MathJax.Hub.getAllJax(), i;
+        for(i=0; i < all.length; i += 1) {
+            all[i].SourceElement().parentNode.className += ' has-jax';
+        }
+    });
+</script>
+<!-- 通过连接CDN加载MathJax的js代码 -->
+<script type="text/javascript" async
+        src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/MathJax.js?config=TeX-MML-AM_CHTML">
+</script>
+
+
+    
+
+
+<meta name="generator" content="Hexo 4.2.0"></head>
+<body>
+    <div class="wrapper">
+        <header>
+    <nav class="navbar">
+        <div class="container">
+            <div class="navbar-header header-logo"><a href="/">Mosan&#39;s Blog</a></div>
+            <div class="menu navbar-right">
+                
+                    <a class="menu-item" href="/archives">Posts</a>
+                
+                    <a class="menu-item" href="/category">Categories</a>
+                
+                    <a class="menu-item" href="/tag">Tags</a>
+                
+                    <a class="menu-item" href="/about">About</a>
+                
+                <input id="switch_default" type="checkbox" class="switch_default">
+                <label for="switch_default" class="toggleBtn"></label>
+            </div>
+        </div>
+    </nav>
+
+    
+    <nav class="navbar-mobile" id="nav-mobile">
+        <div class="container">
+            <div class="navbar-header">
+                <div>
+                    <a href="/">Mosan&#39;s Blog</a><a id="mobile-toggle-theme">·&nbsp;Light</a>
+                </div>
+                <div class="menu-toggle" onclick="mobileBtn()">&#9776; Menu</div>
+            </div>
+            <div class="menu" id="mobile-menu">
+                
+                    <a class="menu-item" href="/archives">Posts</a>
+                
+                    <a class="menu-item" href="/category">Categories</a>
+                
+                    <a class="menu-item" href="/tag">Tags</a>
+                
+                    <a class="menu-item" href="/about">About</a>
+                
+            </div>
+        </div>
+    </nav>
+
+</header>
+<script>
+    var mobileBtn = function f() {
+        var toggleMenu = document.getElementsByClassName("menu-toggle")[0];
+        var mobileMenu = document.getElementById("mobile-menu");
+        if(toggleMenu.classList.contains("active")){
+           toggleMenu.classList.remove("active")
+            mobileMenu.classList.remove("active")
+        }else{
+            toggleMenu.classList.add("active")
+            mobileMenu.classList.add("active")
+        }
+    }
+</script>
+        <div class="main">
+            <div class="container">
+    
+    
+        <div class="post-toc">
+    <div class="tocbot-list">
+    </div>
+    <div class="tocbot-list-menu">
+        <a class="tocbot-toc-expand" onclick="expand_toc()">Expand all</a>
+        <a onclick="go_top()">Back to top</a>
+        <a onclick="go_bottom()">Go to bottom</a>
+    </div>
+</div>
+
+<script>
+    document.ready(
+        function () {
+            tocbot.init({
+                tocSelector: '.tocbot-list',
+                contentSelector: '.post-content',
+                headingSelector: 'h1, h2, h3, h4, h5',
+                collapseDepth: 1,
+                orderedList: false,
+                scrollSmooth: true,
+            })
+        }
+    )
+
+    function expand_toc() {
+        var b = document.querySelector(".tocbot-toc-expand");
+        tocbot.init({
+            tocSelector: '.tocbot-list',
+            contentSelector: '.post-content',
+            headingSelector: 'h1, h2, h3, h4, h5',
+            collapseDepth: 6,
+            orderedList: false,
+            scrollSmooth: true,
+        });
+        b.setAttribute("onclick", "collapse_toc()");
+        b.innerHTML = "Collapse all"
+    }
+
+    function collapse_toc() {
+        var b = document.querySelector(".tocbot-toc-expand");
+        tocbot.init({
+            tocSelector: '.tocbot-list',
+            contentSelector: '.post-content',
+            headingSelector: 'h1, h2, h3, h4, h5',
+            collapseDepth: 1,
+            orderedList: false,
+            scrollSmooth: true,
+        });
+        b.setAttribute("onclick", "expand_toc()");
+        b.innerHTML = "Expand all"
+    }
+
+    function go_top() {
+        window.scrollTo(0, 0);
+    }
+
+    function go_bottom() {
+        window.scrollTo(0, document.body.scrollHeight);
+    }
+
+</script>
+    
+
+    
+    <article class="post-wrap">
+        <header class="post-header">
+            <h1 class="post-title">【慕课网】Vue+Webpack打造todo应用</h1>
+            
+                <div class="post-meta">
+                    
+                        Author: <a itemprop="author" rel="author" href="/">Mosan</a>
+                    
+
+                    
+                        <span class="post-time">
+                        Date: <a href="#">March 31, 2020&nbsp;&nbsp;21:16:59</a>
+                        </span>
+                    
+                    
+                        <span class="post-category">
+                    Category:
+                            
+                                <a href="/categories/%E8%AF%BE%E7%A8%8B%E8%AE%B0%E5%BD%95/">课程记录</a>
+                            
+                        </span>
+                    
+                </div>
+            
+        </header>
+
+        <div class="post-content">
+            <p>讲师：Jokcy<br>课程：<a href="https://www.imooc.com/learn/935" target="_blank" rel="noopener">https://www.imooc.com/learn/935</a></p>
+<h2 id="课程介绍"><a href="#课程介绍" class="headerlink" title="课程介绍"></a>课程介绍</h2><h3 id="课程目标"><a href="#课程目标" class="headerlink" title="课程目标"></a>课程目标</h3><ul>
+<li>配置开发时前端工程</li>
+<li>实现一个简单的TODO应用</li>
+<li>优化配置达到上线标准</li>
+</ul>
+<h2 id="步骤"><a href="#步骤" class="headerlink" title="步骤"></a>步骤</h2><h3 id="1-创建一个新项目"><a href="#1-创建一个新项目" class="headerlink" title="1. 创建一个新项目"></a>1. 创建一个新项目</h3><h3 id="2-在命令行输入："><a href="#2-在命令行输入：" class="headerlink" title="2. 在命令行输入："></a>2. 在命令行输入：</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">npm init</span><br></pre></td></tr></table></figure>
+<p>生成package.json文件，</p>
+<h3 id="3-然后安装webpack-vue-vue-loader，在命令行输入："><a href="#3-然后安装webpack-vue-vue-loader，在命令行输入：" class="headerlink" title="3. 然后安装webpack,vue,vue-loader，在命令行输入："></a>3. 然后安装webpack,vue,vue-loader，在命令行输入：</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">npm i webpack vue vue-loader</span><br></pre></td></tr></table></figure>
+<h4 id="产生WARN"><a href="#产生WARN" class="headerlink" title="产生WARN"></a>产生WARN</h4><h5 id="警告一"><a href="#警告一" class="headerlink" title="警告一"></a>警告一</h5><figure class="highlight powershell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">Legacy versions of mkdirp are no longer supported. Please update to mkdirp <span class="number">1</span>.x. (Note that the API surface has changed to use Promises <span class="keyword">in</span> <span class="number">1</span>.x.)</span><br></pre></td></tr></table></figure>
+<p>mkdirp旧版本已经移除，要更新到新版本，在命令行输入命令更新：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">npm install -g mkdirp</span><br></pre></td></tr></table></figure>
+
+<h5 id="警告二"><a href="#警告二" class="headerlink" title="警告二"></a>警告二</h5><figure class="highlight powershell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">npm WARN vue<span class="literal">-loader</span>@<span class="number">15.9</span>.<span class="number">1</span> requires a peer of css<span class="literal">-loader</span><span class="selector-tag">@</span>* but none is installed. You must install peer dependencies yourself.</span><br></pre></td></tr></table></figure>
+<p>vue-loader需要css-loader作为它的peer，故执行下条命令，安装css-loader</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">npm install css-loader</span><br></pre></td></tr></table></figure>
+
+<h5 id="警告三"><a href="#警告三" class="headerlink" title="警告三"></a>警告三</h5><figure class="highlight powershell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">npm WARN webpack<span class="literal">-vue</span>@<span class="number">1.0</span>.<span class="number">0</span> No description</span><br><span class="line">npm WARN webpack<span class="literal">-vue</span>@<span class="number">1.0</span>.<span class="number">0</span> No repository field.</span><br></pre></td></tr></table></figure>
+<p>npm中缺少相关信息，不要紧的</p>
+<h5 id="警告四"><a href="#警告四" class="headerlink" title="警告四"></a>警告四</h5><figure class="highlight powershell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">npm WARN optional SKIPPING OPTIONAL DEPENDENCY: fsevents@<span class="number">1.2</span>.<span class="number">12</span> (node_modules\fsevents):</span><br><span class="line">npm WARN notsup SKIPPING OPTIONAL DEPENDENCY: Unsupported platform <span class="keyword">for</span> fsevents@<span class="number">1.2</span>.<span class="number">12</span>: wanted &#123;<span class="string">"os"</span>:<span class="string">"darwin"</span>,<span class="string">"arch"</span>:<span class="string">"any"</span>&#125; (current: &#123;<span class="string">"os"</span>:<span class="string">"win32"</span>,<span class="string">"arch"</span>:<span class="string">"x64"</span>&#125;)</span><br></pre></td></tr></table></figure>
+<h3 id="4-新建src-app-Vue文件"><a href="#4-新建src-app-Vue文件" class="headerlink" title="4. 新建src/app.Vue文件"></a>4. 新建src/app.Vue文件</h3><p>app.vue</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line">&lt;template&gt;</span><br><span class="line">    &lt;div id&#x3D;&quot;text&quot;&gt;&#123;&#123;text&#125;&#125;&lt;&#x2F;div&gt;</span><br><span class="line">&lt;&#x2F;template&gt;</span><br><span class="line">&lt;script&gt;</span><br><span class="line">export default &#123;</span><br><span class="line">    data()&#123;</span><br><span class="line">        return&#123;</span><br><span class="line">            text:&#39;abc&#39;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line">&lt;&#x2F;script&gt;</span><br><span class="line"></span><br><span class="line">&lt;style&gt;</span><br><span class="line">#text&#123;</span><br><span class="line">    color: red;</span><br><span class="line">&#125;</span><br><span class="line">&lt;&#x2F;style&gt;</span><br></pre></td></tr></table></figure>
+
+<h3 id="5-在根目录新建webpack-config-js文件"><a href="#5-在根目录新建webpack-config-js文件" class="headerlink" title="5. 在根目录新建webpack.config.js文件"></a>5. 在根目录新建webpack.config.js文件</h3><p>web.config.js</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> path = <span class="built_in">require</span>(<span class="string">'path'</span>)</span><br><span class="line"></span><br><span class="line"><span class="built_in">module</span>.exports = &#123;</span><br><span class="line">    entry:path.join(__dirname,<span class="string">'src/index.js'</span>),</span><br><span class="line">    output:&#123;</span><br><span class="line">        filename:<span class="string">'bundle.js'</span>,</span><br><span class="line">        path:path.join(__dirname,<span class="string">'dist'</span>)</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>这里的_dirname表示的是根目录</p>
+<h3 id="6-在src目录下创建index-js文件作为入口文件"><a href="#6-在src目录下创建index-js文件作为入口文件" class="headerlink" title="6. 在src目录下创建index.js文件作为入口文件"></a>6. 在src目录下创建index.js文件作为入口文件</h3><p>index.js</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> Vue <span class="keyword">from</span> <span class="string">'vue'</span>;</span><br><span class="line"><span class="keyword">import</span> App <span class="keyword">from</span><span class="string">'./app.vue'</span>;</span><br><span class="line"></span><br><span class="line"><span class="keyword">const</span> root = <span class="built_in">document</span>.createElement(<span class="string">'div'</span>);</span><br><span class="line"><span class="built_in">document</span>.body.appendChild(root);</span><br><span class="line"></span><br><span class="line"><span class="keyword">new</span> Vue(&#123;</span><br><span class="line">    render:<span class="function">(<span class="params">h</span>)=&gt;</span>h(App)</span><br><span class="line">&#125;).$mount(root);</span><br></pre></td></tr></table></figure>
+
+<h3 id="7-在package-json文件的scripts属性下新增一个条目："><a href="#7-在package-json文件的scripts属性下新增一个条目：" class="headerlink" title="7. 在package.json文件的scripts属性下新增一个条目："></a>7. 在package.json文件的scripts属性下新增一个条目：</h3><figure class="highlight"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">"build": "webpack --config webpack.config.js"</span><br></pre></td></tr></table></figure>
+
+<p>使得在命令行打开webpack时打开的是webpack.config.js文件而不是全局webpack</p>
+<h3 id="8-在命令行输入跑一下项目"><a href="#8-在命令行输入跑一下项目" class="headerlink" title="8. 在命令行输入跑一下项目"></a>8. 在命令行输入跑一下项目</h3><figure class="highlight powershell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">npm run build</span><br></pre></td></tr></table></figure>
+
+<h4 id="遇到错误："><a href="#遇到错误：" class="headerlink" title="遇到错误："></a>遇到错误：</h4><figure class="highlight powershell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">You may need an appropriate loader to handle this file type, currently no </span><br><span class="line">loaders are configured to <span class="keyword">process</span> this file. See https://webpack.js.org/concepts<span class="comment">#loaders</span></span><br></pre></td></tr></table></figure>
+<p>需要配置loader，在webpack.config.js的modul.exports中添加</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">module</span>:&#123;</span><br><span class="line">    rules:[</span><br><span class="line">        &#123;</span><br><span class="line">            test:<span class="regexp">/.vue$/</span>,</span><br><span class="line">            loader:<span class="string">'vue-loader'</span></span><br><span class="line">        &#125;</span><br><span class="line">    ]</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h4 id="重新运行上一条命令以启动项目，结果出现报错："><a href="#重新运行上一条命令以启动项目，结果出现报错：" class="headerlink" title="重新运行上一条命令以启动项目，结果出现报错："></a>重新运行上一条命令以启动项目，结果出现报错：</h4><figure class="highlight powershell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line">WARNING <span class="keyword">in</span> configuration</span><br><span class="line">The <span class="string">'mode'</span> option has not been set, webpack will fallback to <span class="string">'production'</span> <span class="keyword">for</span> this value. Set <span class="string">'mode'</span> option to <span class="string">'development'</span> or <span class="string">'production'</span> to enable defaults <span class="keyword">for</span> each environment.</span><br><span class="line">You can also set it to <span class="string">'none'</span> to disable any default behavior. Learn more: https://webpack.js.org/configuration/mode/</span><br><span class="line"></span><br><span class="line">ERROR <span class="keyword">in</span> ./src/app.vue</span><br><span class="line">Module Error (from ./node_modules/vue<span class="literal">-loader</span>/lib/index.js):</span><br><span class="line">[<span class="type">vue</span>-<span class="type">loader</span>] vue<span class="literal">-template</span><span class="literal">-compiler</span> must be installed as a peer dependency, or a compatible compiler implementation must be passed via options.</span><br><span class="line"> <span class="selector-tag">@</span> ./src/index.js <span class="number">2</span>:<span class="number">0</span><span class="literal">-27</span> <span class="number">8</span>:<span class="number">18</span><span class="literal">-21</span></span><br><span class="line"></span><br><span class="line">ERROR <span class="keyword">in</span> ./src/app.vue</span><br><span class="line">Module Error (from ./node_modules/vue<span class="literal">-loader</span>/lib/index.js):</span><br><span class="line">vue<span class="literal">-loader</span> was used without the corresponding plugin. Make sure to include VueLoaderPlugin <span class="keyword">in</span> your webpack config.</span><br><span class="line"> <span class="selector-tag">@</span> ./src/index.js <span class="number">2</span>:<span class="number">0</span><span class="literal">-27</span> <span class="number">8</span>:<span class="number">18</span><span class="literal">-21</span></span><br><span class="line"></span><br><span class="line">ERROR <span class="keyword">in</span> ./src/app.vue</span><br><span class="line">Module build failed (from ./node_modules/vue<span class="literal">-loader</span>/lib/index.js):</span><br><span class="line">TypeError: Cannot read property <span class="string">'parseComponent'</span> of undefined</span><br><span class="line">    at parse (D:\MyCode\IMOOC\webpack<span class="literal">-vue</span>\node_modules\@vue\component<span class="literal">-compiler</span><span class="literal">-utils</span>\dist\parse.js:<span class="number">14</span>:<span class="number">23</span>)</span><br><span class="line">    at Object.module.exports (D:\MyCode\IMOOC\webpack<span class="literal">-vue</span>\node_modules\vue<span class="literal">-loader</span>\lib\index.js:<span class="number">67</span>:<span class="number">22</span>)</span><br><span class="line"> <span class="selector-tag">@</span> ./src/index.js <span class="number">2</span>:<span class="number">0</span><span class="literal">-27</span> <span class="number">8</span>:<span class="number">18</span><span class="literal">-21</span></span><br></pre></td></tr></table></figure>
+
+<p>解决方法：</p>
+<ol>
+<li>安装vue-template-compiler</li>
+</ol>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">npm install vue-template-compiler</span><br></pre></td></tr></table></figure>
+<ol start="2">
+<li>引入VueLoaderPlugin<br>在webpack.config.js开头引入</li>
+</ol>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> &#123;VueLoaderPlugin&#125; = <span class="built_in">require</span>(<span class="string">"vue-loader"</span>);</span><br></pre></td></tr></table></figure>
+
+<p>module.exports中增加</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">plugins:[<span class="keyword">new</span> VueLoaderPlugin()],</span><br></pre></td></tr></table></figure>
+
+<ol start="3">
+<li>引入css-loader</li>
+</ol>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&#123;<span class="attr">test</span>:<span class="regexp">/\.css$/</span>,<span class="attr">use</span>:<span class="string">'css-loader'</span>&#125;</span><br></pre></td></tr></table></figure>
+
+<p>最终的webpack.config.js代码如下：</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> path = <span class="built_in">require</span>(<span class="string">'path'</span>);</span><br><span class="line"><span class="keyword">const</span> &#123;VueLoaderPlugin&#125; = <span class="built_in">require</span>(<span class="string">"vue-loader"</span>);</span><br><span class="line"></span><br><span class="line"><span class="built_in">module</span>.exports = &#123;</span><br><span class="line">    entry:path.join(__dirname,<span class="string">'src/index.js'</span>),</span><br><span class="line">    output:&#123;</span><br><span class="line">        filename:<span class="string">'bundle.js'</span>,</span><br><span class="line">        path:path.join(__dirname,<span class="string">'dist'</span>)</span><br><span class="line">    &#125;,</span><br><span class="line">    <span class="built_in">module</span>:&#123;</span><br><span class="line">        rules:[</span><br><span class="line">            &#123;</span><br><span class="line">                test:<span class="regexp">/.vue$/</span>,</span><br><span class="line">                loader:<span class="string">'vue-loader'</span></span><br><span class="line">            &#125;,</span><br><span class="line">            &#123;</span><br><span class="line">                test:<span class="regexp">/\.css$/</span>,</span><br><span class="line">                use:<span class="string">'css-loader'</span></span><br><span class="line">            &#125;</span><br><span class="line">        ]</span><br><span class="line">    &#125;,</span><br><span class="line">    plugins:[</span><br><span class="line">        <span class="keyword">new</span> VueLoaderPlugin()</span><br><span class="line">    ],</span><br><span class="line">    <span class="comment">//开发环境</span></span><br><span class="line">    mode:<span class="string">'development'</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+        </div>
+
+        
+            <section class="post-copyright">
+                
+                    <p class="copyright-item">
+                        <span>Author:</span>
+                        <span>Mosan</span>
+                    </p>
+                
+                
+                    <p class="copyright-item">
+                        <span>Permalink:</span>
+                        <span><a href="https://mengsha97.github.io/2020/03/31/imooc-webpack-vue/">https://mengsha97.github.io/2020/03/31/imooc-webpack-vue/</a></span>
+                    </p>
+                
+                
+                
+
+            </section>
+        
+        <section class="post-tags">
+            <div>
+                <span>Tag(s):</span>
+                <span class="tag">
+                    
+                    
+                        <a href="/tags/webpack/"># webpack</a>
+                    
+                        <a href="/tags/vue/"># vue</a>
+                    
+                        <a href="/tags/todo/"># todo</a>
+                    
+                        
+                </span>
+            </div>
+            <div>
+                <a href="javascript:window.history.back();">back</a>
+                <span>· </span>
+                <a href="/">home</a>
+            </div>
+        </section>
+        <section class="post-nav">
+            
+            
+            <a class="next" rel="next" href="/2020/03/31/log-css/">【学习记录】CSS</a>
+            
+        </section>
+
+
+    </article>
+</div>
+
+        </div>
+        <footer id="footer" class="footer">
+    <div class="copyright">
+        <span>© Mosan | Powered by <a href="https://hexo.io" target="_blank">Hexo</a> & <a href="https://github.com/Siricee/hexo-theme-Chic" target="_blank">Chic</a></span>
+    </div>
+</footer>
+
+    </div>
+</body>
+</html>
