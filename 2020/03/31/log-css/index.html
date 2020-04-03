@@ -236,6 +236,15 @@
 
         <div class="post-content">
             <h2 id="px与em的转换"><a href="#px与em的转换" class="headerlink" title="px与em的转换"></a>px与em的转换</h2><p>在大多数浏览器下的默认换算是1em==16px.可以参考 <a href="http://riddle.pl/emcalc/" target="_blank" rel="noopener">http://riddle.pl/emcalc/</a></p>
+<h2 id="选择器优先级计算"><a href="#选择器优先级计算" class="headerlink" title="选择器优先级计算"></a>选择器优先级计算</h2><p>一个选择器的优先级可以说是由四个部分相加(分量)，可以认为是个十百千——四位数的四个位数：</p>
+<ul>
+<li>千位：如果声明在style的属性（内联样式）则该位得一分。这样的生命没有选择器，所以得分总是1000。</li>
+<li>百位：选择器中包含ID选择器则该位得一分。</li>
+<li>十位：选择器中包含类选择器、属性选择器或者伪类则该位得一分。</li>
+<li>个位：选择器中包含元素、伪元素选择器则该位得一分。</li>
+</ul>
+<p>例如：<br>选择器|千位|百位|十位|个位|优先级<br>–|–|–|–|–|–<br>h1|0|0|0|1|0001<br>h1 + p::first-letter|0|0|0|3|0003<br>li &gt; a[href*=”en-US”] &gt; .inline-warning|0|0|2|2|0022<br>|#identifier|0|1|0|0|0100<br>内联样式|1|0|0|0|1000</p>
+<p>但是“!important”可以覆盖掉所有优先级的计算</p>
 
         </div>
 
