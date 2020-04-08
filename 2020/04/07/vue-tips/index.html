@@ -12,7 +12,7 @@
 
 
 
-<title>Tags | Mosan&#39;s blog</title>
+<title>【学习记录】vue小常识 | Mosan&#39;s blog</title>
 
 
 
@@ -141,94 +141,152 @@
     }
 </script>
         <div class="main">
-            
-
-    <div class="container">
-        <div class="post-wrap tags">
-            <h2 class="post-title">-&nbsp;Tag Cloud&nbsp;-</h2>
-
-            <div class="tag-cloud-tags">
-                
-                    <a href="/tags/%E4%BB%A3%E7%A0%81%E7%BC%96%E8%BE%91%E5%99%A8/">代码编辑器<small>(1)</small></a>
-                
-                    <a href="/tags/%E4%BE%BF%E6%8D%B7%E7%BC%96%E7%A8%8B/">便捷编程<small>(1)</small></a>
-                
-                    <a href="/tags/%E5%8D%9A%E5%AE%A2/">博客<small>(1)</small></a>
-                
-                    <a href="/tags/%E7%AE%97%E6%B3%95/">算法<small>(5)</small></a>
-                
-                    <a href="/tags/%E7%BA%A7%E6%95%B0/">级数<small>(1)</small></a>
-                
-                    <a href="/tags/%E5%BE%AA%E7%8E%AF/">循环<small>(3)</small></a>
-                
-                    <a href="/tags/%E8%B7%A8%E6%B5%8F%E8%A7%88%E5%99%A8/">跨浏览器<small>(1)</small></a>
-                
-                    <a href="/tags/%E5%89%8D%E7%AB%AF/">前端<small>(4)</small></a>
-                
-                    <a href="/tags/JavaScript/">JavaScript<small>(6)</small></a>
-                
-                    <a href="/tags/vue2-0/">vue2.0<small>(1)</small></a>
-                
-                    <a href="/tags/Node-js/">Node.js<small>(2)</small></a>
-                
-                    <a href="/tags/MongoDB/">MongoDB<small>(1)</small></a>
-                
-                    <a href="/tags/Express/">Express<small>(2)</small></a>
-                
-                    <a href="/tags/dom/">dom<small>(1)</small></a>
-                
-                    <a href="/tags/webpack/">webpack<small>(2)</small></a>
-                
-                    <a href="/tags/webpack4-0/">webpack4.0<small>(1)</small></a>
-                
-                    <a href="/tags/vue/">vue<small>(5)</small></a>
-                
-                    <a href="/tags/todo/">todo<small>(1)</small></a>
-                
-                    <a href="/tags/CSS/">CSS<small>(1)</small></a>
-                
-                    <a href="/tags/HTML/">HTML<small>(1)</small></a>
-                
-                    <a href="/tags/promise/">promise<small>(2)</small></a>
-                
-                    <a href="/tags/%E6%95%B0%E7%BB%84/">数组<small>(2)</small></a>
-                
-                    <a href="/tags/test/">test<small>(1)</small></a>
-                
-                    <a href="/tags/eslint/">eslint<small>(1)</small></a>
-                
-                    <a href="/tags/nodemon/">nodemon<small>(1)</small></a>
-                
-                    <a href="/tags/pug/">pug<small>(1)</small></a>
-                
-                    <a href="/tags/Mongoose/">Mongoose<small>(1)</small></a>
-                
-                    <a href="/tags/%E7%BC%A9%E5%86%99/">缩写<small>(1)</small></a>
-                
-                    <a href="/tags/%E7%9F%A5%E8%AF%86%E7%82%B9/">知识点<small>(1)</small></a>
-                
-                    <a href="/tags/%E6%95%B0%E6%8D%AE%E7%BB%91%E5%AE%9A/">数据绑定<small>(1)</small></a>
-                
-                    <a href="/tags/tomcat/">tomcat<small>(1)</small></a>
-                
-                    <a href="/tags/java/">java<small>(1)</small></a>
-                
-                    <a href="/tags/ajax/">ajax<small>(2)</small></a>
-                
-                    <a href="/tags/%E6%B5%8F%E8%A7%88%E5%99%A8%E8%B7%A8%E5%9F%9F/">浏览器跨域<small>(2)</small></a>
-                
-                    <a href="/tags/%E6%9C%AC%E5%9C%B0%E6%9C%8D%E5%8A%A1%E5%99%A8/">本地服务器<small>(2)</small></a>
-                
-                    <a href="/tags/%E7%BB%84%E4%BB%B6/">组件<small>(1)</small></a>
-                
-                    <a href="/tags/vue-cli/">vue-cli<small>(1)</small></a>
-                
-                    <a href="/tags/python/">python<small>(1)</small></a>
-                
-            </div>
-        </div>
+            <div class="container">
+    
+    
+        <div class="post-toc">
+    <div class="tocbot-list">
     </div>
+    <div class="tocbot-list-menu">
+        <a class="tocbot-toc-expand" onclick="expand_toc()">Expand all</a>
+        <a onclick="go_top()">Back to top</a>
+        <a onclick="go_bottom()">Go to bottom</a>
+    </div>
+</div>
 
+<script>
+    document.ready(
+        function () {
+            tocbot.init({
+                tocSelector: '.tocbot-list',
+                contentSelector: '.post-content',
+                headingSelector: 'h1, h2, h3, h4, h5',
+                collapseDepth: 1,
+                orderedList: false,
+                scrollSmooth: true,
+            })
+        }
+    )
+
+    function expand_toc() {
+        var b = document.querySelector(".tocbot-toc-expand");
+        tocbot.init({
+            tocSelector: '.tocbot-list',
+            contentSelector: '.post-content',
+            headingSelector: 'h1, h2, h3, h4, h5',
+            collapseDepth: 6,
+            orderedList: false,
+            scrollSmooth: true,
+        });
+        b.setAttribute("onclick", "collapse_toc()");
+        b.innerHTML = "Collapse all"
+    }
+
+    function collapse_toc() {
+        var b = document.querySelector(".tocbot-toc-expand");
+        tocbot.init({
+            tocSelector: '.tocbot-list',
+            contentSelector: '.post-content',
+            headingSelector: 'h1, h2, h3, h4, h5',
+            collapseDepth: 1,
+            orderedList: false,
+            scrollSmooth: true,
+        });
+        b.setAttribute("onclick", "expand_toc()");
+        b.innerHTML = "Expand all"
+    }
+
+    function go_top() {
+        window.scrollTo(0, 0);
+    }
+
+    function go_bottom() {
+        window.scrollTo(0, document.body.scrollHeight);
+    }
+
+</script>
+    
+
+    
+    <article class="post-wrap">
+        <header class="post-header">
+            <h1 class="post-title">【学习记录】vue小常识</h1>
+            
+                <div class="post-meta">
+                    
+                        Author: <a itemprop="author" rel="author" href="/">Mosan</a>
+                    
+
+                    
+                        <span class="post-time">
+                        Date: <a href="#">April 7, 2020&nbsp;&nbsp;21:33:46</a>
+                        </span>
+                    
+                    
+                        <span class="post-category">
+                    Category:
+                            
+                                <a href="/categories/%E5%AD%A6%E4%B9%A0%E8%AE%B0%E5%BD%95/">学习记录</a>
+                            
+                        </span>
+                    
+                </div>
+            
+        </header>
+
+        <div class="post-content">
+            <h2 id="vue-router"><a href="#vue-router" class="headerlink" title="vue-router"></a>vue-router</h2><p>vue-router其实是对浏览器BOM对象history的封装</p>
+
+        </div>
+
+        
+            <section class="post-copyright">
+                
+                    <p class="copyright-item">
+                        <span>Author:</span>
+                        <span>Mosan</span>
+                    </p>
+                
+                
+                    <p class="copyright-item">
+                        <span>Permalink:</span>
+                        <span><a href="https://mengsha97.github.io/2020/04/07/vue-tips/">https://mengsha97.github.io/2020/04/07/vue-tips/</a></span>
+                    </p>
+                
+                
+                
+
+            </section>
+        
+        <section class="post-tags">
+            <div>
+                <span>Tag(s):</span>
+                <span class="tag">
+                    
+                    
+                        <a href="/tags/vue/"># vue</a>
+                    
+                        
+                </span>
+            </div>
+            <div>
+                <a href="javascript:window.history.back();">back</a>
+                <span>· </span>
+                <a href="/">home</a>
+            </div>
+        </section>
+        <section class="post-nav">
+            
+                <a class="prev" rel="prev" href="/2020/04/08/imooc-mongodb-vue-express-demo/">【慕课网】Vue2.0+Node.js+MongoDB全栈打造商城系统</a>
+            
+            
+            <a class="next" rel="next" href="/2020/04/07/vue-error1/">【错误记录】子组件解决父组件传来的值需要进行改变的情况</a>
+            
+        </section>
+
+
+    </article>
+</div>
 
         </div>
         <footer id="footer" class="footer">
