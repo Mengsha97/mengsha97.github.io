@@ -12,7 +12,7 @@
 
 
 
-<title>【技术胖】vue基础 | Mosan&#39;s blog</title>
+<title>JavaScript中数组的sort函数 | Mosan&#39;s blog</title>
 
 
 
@@ -144,73 +144,11 @@
             <div class="container">
     
     
-        <div class="post-toc">
-    <div class="tocbot-list">
-    </div>
-    <div class="tocbot-list-menu">
-        <a class="tocbot-toc-expand" onclick="expand_toc()">Expand all</a>
-        <a onclick="go_top()">Back to top</a>
-        <a onclick="go_bottom()">Go to bottom</a>
-    </div>
-</div>
-
-<script>
-    document.ready(
-        function () {
-            tocbot.init({
-                tocSelector: '.tocbot-list',
-                contentSelector: '.post-content',
-                headingSelector: 'h1, h2, h3, h4, h5',
-                collapseDepth: 1,
-                orderedList: false,
-                scrollSmooth: true,
-            })
-        }
-    )
-
-    function expand_toc() {
-        var b = document.querySelector(".tocbot-toc-expand");
-        tocbot.init({
-            tocSelector: '.tocbot-list',
-            contentSelector: '.post-content',
-            headingSelector: 'h1, h2, h3, h4, h5',
-            collapseDepth: 6,
-            orderedList: false,
-            scrollSmooth: true,
-        });
-        b.setAttribute("onclick", "collapse_toc()");
-        b.innerHTML = "Collapse all"
-    }
-
-    function collapse_toc() {
-        var b = document.querySelector(".tocbot-toc-expand");
-        tocbot.init({
-            tocSelector: '.tocbot-list',
-            contentSelector: '.post-content',
-            headingSelector: 'h1, h2, h3, h4, h5',
-            collapseDepth: 1,
-            orderedList: false,
-            scrollSmooth: true,
-        });
-        b.setAttribute("onclick", "expand_toc()");
-        b.innerHTML = "Expand all"
-    }
-
-    function go_top() {
-        window.scrollTo(0, 0);
-    }
-
-    function go_bottom() {
-        window.scrollTo(0, document.body.scrollHeight);
-    }
-
-</script>
-    
 
     
     <article class="post-wrap">
         <header class="post-header">
-            <h1 class="post-title">【技术胖】vue基础</h1>
+            <h1 class="post-title">JavaScript中数组的sort函数</h1>
             
                 <div class="post-meta">
                     
@@ -219,14 +157,14 @@
 
                     
                         <span class="post-time">
-                        Date: <a href="#">April 14, 2020&nbsp;&nbsp;9:59:54</a>
+                        Date: <a href="#">April 14, 2020&nbsp;&nbsp;15:22:45</a>
                         </span>
                     
                     
                         <span class="post-category">
                     Category:
                             
-                                <a href="/categories/%E8%AF%BE%E7%A8%8B%E8%AE%B0%E5%BD%95/">课程记录</a>
+                                <a href="/categories/%E5%AD%A6%E4%B9%A0%E8%AE%B0%E5%BD%95/">学习记录</a>
                             
                         </span>
                     
@@ -235,13 +173,20 @@
         </header>
 
         <div class="post-content">
-            <p>希望学完这些课，对vue的理解能更加深入，开发也能更得心应手<br>这篇博客，记录一些vue的知识点和课上用到过的插件</p>
-<h2 id="插件"><a href="#插件" class="headerlink" title="插件"></a>插件</h2><h3 id="live-server"><a href="#live-server" class="headerlink" title="live-server"></a>live-server</h3><p>这是一个快速服务器搭建的插件</p>
-<h4 id="安装"><a href="#安装" class="headerlink" title="安装"></a>安装</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">npm install live-server -g</span><br></pre></td></tr></table></figure>
+            <p>JavaScript中的数组的sort函数使用示例<br>假如数组一开始是这样的</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">items:[23,23,11,2,41,67,23,23231]</span><br></pre></td></tr></table></figure>
+<p>使用完sort后</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">sortitems:function()&#123;</span><br><span class="line">    return this.items.sort()</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>结果</p>
+<p><img src="/image/jssort1.png" alt="jssort1"></p>
+<p>显然可以看出它的排序结果是一个一个位的数字来排的，从第一位（左边第一位）开始排，为了让它能够实现我们想要的效果，可以添加一个这样的函数：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">function sortNumber(a,b)&#123;</span><br><span class="line">    return a-b;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 
-<h4 id="启动"><a href="#启动" class="headerlink" title="启动"></a>启动</h4><p>直接在要启动的项目路径下输入</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">live-server</span><br></pre></td></tr></table></figure>
-<p>端口在8080</p>
+<p>然后在使用sort时，把函数名放在sort函数的调用里，即</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">sortitems:function()&#123;</span><br><span class="line">    return this.items.sort()</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>就可以得到想要的结果了</p>
+<p><img src="/image/jssort2.png" alt="jssort2"></p>
 
         </div>
 
@@ -256,7 +201,7 @@
                 
                     <p class="copyright-item">
                         <span>Permalink:</span>
-                        <span><a href="https://mengsha97.github.io/2020/04/14/jspang-basic-vue/">https://mengsha97.github.io/2020/04/14/jspang-basic-vue/</a></span>
+                        <span><a href="https://mengsha97.github.io/2020/04/14/js-sort/">https://mengsha97.github.io/2020/04/14/js-sort/</a></span>
                     </p>
                 
                 
@@ -270,7 +215,11 @@
                 <span class="tag">
                     
                     
-                        <a href="/tags/vue/"># vue</a>
+                        <a href="/tags/JavaScript/"># JavaScript</a>
+                    
+                        <a href="/tags/Array/"># Array</a>
+                    
+                        <a href="/tags/sort/"># sort</a>
                     
                         
                 </span>
@@ -283,10 +232,8 @@
         </section>
         <section class="post-nav">
             
-                <a class="prev" rel="prev" href="/2020/04/14/js-sort/">JavaScript中数组的sort函数</a>
             
-            
-            <a class="next" rel="next" href="/2020/04/12/jspang-redux/">jspang-redux</a>
+            <a class="next" rel="next" href="/2020/04/14/jspang-basic-vue/">【技术胖】vue基础</a>
             
         </section>
 
