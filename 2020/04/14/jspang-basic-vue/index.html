@@ -242,6 +242,32 @@
 <h4 id="启动"><a href="#启动" class="headerlink" title="启动"></a>启动</h4><p>直接在要启动的项目路径下输入</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">live-server</span><br></pre></td></tr></table></figure>
 <p>端口在8080</p>
+<h2 id="方法"><a href="#方法" class="headerlink" title="方法"></a>方法</h2><h3 id="对象形式的数组怎么进行排序"><a href="#对象形式的数组怎么进行排序" class="headerlink" title="对象形式的数组怎么进行排序"></a>对象形式的数组怎么进行排序</h3><p>例如对象数组是这样的</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">students:[</span><br><span class="line">  &#123;name:&#39;jspang&#39;,age:32&#125;,</span><br><span class="line">  &#123;name:&#39;Panda&#39;,age:30&#125;,</span><br><span class="line">  &#123;name:&#39;PanPaN&#39;,age:21&#125;,</span><br><span class="line">  &#123;name:&#39;King&#39;,age:45&#125;</span><br><span class="line">]</span><br></pre></td></tr></table></figure>
+<p>数组对象方法排序:</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">function sortByKey(array,key)&#123;</span><br><span class="line">    return array.sort(function(a,b)&#123;</span><br><span class="line">      var x&#x3D;a[key];</span><br><span class="line">      var y&#x3D;b[key];</span><br><span class="line">      return ((x&lt;y)?-1:((x&gt;y)?1:0));</span><br><span class="line">   &#125;);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h3 id="用大括号赋值的弊端"><a href="#用大括号赋值的弊端" class="headerlink" title="用大括号赋值的弊端"></a>用大括号赋值的弊端</h3><p>用赋值的弊端是，如果JavaScript没有正确引用出vue.js文件，那么网页上就会直接显示“”，或者网速慢的时候也会这样，<br>可以用v-text来消除这个弊端，如果message里有html标签需要转译，就用v-html</p>
+<h3 id="v-text和v-html"><a href="#v-text和v-html" class="headerlink" title="v-text和v-html"></a>v-text和v-html</h3><p>果message里有html标签需要转译，就用v-html，但是尽量少用，因为会引起xss攻击</p>
+<h3 id="多选框绑定数组"><a href="#多选框绑定数组" class="headerlink" title="多选框绑定数组"></a>多选框绑定数组</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">&lt;input type&#x3D;&quot;checkbox&quot; id&#x3D;&quot;jspang&quot; value&#x3D;&quot;jspang&quot; v-model&#x3D;&quot;web_names&quot;&gt;</span><br><span class="line">&lt;label for&#x3D;&quot;jspang&quot;&gt;jspang&lt;&#x2F;label&gt;</span><br><span class="line">&lt;input type&#x3D;&quot;checkbox&quot; id&#x3D;&quot;panda&quot; value&#x3D;&quot;panda&quot; v-model&#x3D;&quot;web_names&quot;&gt;</span><br><span class="line">&lt;label for&#x3D;&quot;panda&quot;&gt;panda&lt;&#x2F;label&gt;</span><br><span class="line">&lt;input type&#x3D;&quot;checkbox&quot; id&#x3D;&quot;panpan&quot; value&#x3D;&quot;panpan&quot; v-model&#x3D;&quot;web_names&quot;&gt;</span><br><span class="line">&lt;label for&#x3D;&quot;panpan&quot;&gt;panpan&lt;&#x2F;label&gt;</span><br><span class="line">&lt;!-- &lt;p v-for&#x3D;&quot;(name,index) in web_names&quot; :key&#x3D;&quot;index&quot;&gt;&#123;&#123;name&#125;&#125;&lt;&#x2F;p&gt; --&gt;</span><br><span class="line">&lt;p&gt;&#123;&#123;web_names&#125;&#125;&lt;&#x2F;p&gt;</span><br></pre></td></tr></table></figure>
+
+<h3 id="vue-不支持“-”"><a href="#vue-不支持“-”" class="headerlink" title="vue 不支持“-”"></a>vue 不支持“-”</h3><p>例如，要在vue的html页面上使用font-size时，我们用“fontSize”代替，因为vue不支持使用“-”</p>
+<h3 id="为什么非要用Vue-set"><a href="#为什么非要用Vue-set" class="headerlink" title="为什么非要用Vue.set"></a>为什么非要用Vue.set</h3><p>因为如果在其他方法改变外部（构造器外面）引入的data中，在虚拟DOM的值里只用下标改变数组的值，则vue无法监听到，这是JavaScript的一种限制，所以要用Vue.set</p>
+<p>例如：<br>外部引入的data</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">var outData&#x3D;&#123;</span><br><span class="line">    count:1,</span><br><span class="line">    &#x2F;&#x2F; goods:&#39;car&#39;</span><br><span class="line">    arr:[&quot;aaa&quot;,&quot;bbb&quot;,&quot;ccc&quot;]</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>直接改变时</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">function add()&#123;</span><br><span class="line">    app.arr[1] &#x3D; &#39;ddd&#39;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>不能得到想要的结果</p>
+<h3 id="原生与mixins谁先执行"><a href="#原生与mixins谁先执行" class="headerlink" title="原生与mixins谁先执行"></a>原生与mixins谁先执行</h3><p>同一个生命周期方法，一般是构造器里的混入（即mixins）先执行，再执行原生的，全局的混入比构造器里的混入更先执行</p>
+<h3 id="选项mixins与extends"><a href="#选项mixins与extends" class="headerlink" title="选项mixins与extends"></a>选项mixins与extends</h3><h4 id="相同点"><a href="#相同点" class="headerlink" title="相同点"></a>相同点</h4><p>extends与mixins一样，对于同一个生命周期方法，都比原生的更先执行，对于同一个名字的方法，不会执行extends和mixins的方法，而会只执行原生的</p>
+<h4 id="不同点"><a href="#不同点" class="headerlink" title="不同点"></a>不同点</h4><p>在构造器中的选项extends只能放一个对象（意思是只能有一个扩展），而mixins可以放一个数组</p>
+<h3 id="选项delimiters"><a href="#选项delimiters" class="headerlink" title="选项delimiters"></a>选项delimiters</h3><p>可以用delimiters修改插值形式，例如</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">delimiters:[&#39;$&#123;&#39;,&#39;&#125;&#39;]</span><br></pre></td></tr></table></figure>
+
+<p>这样更改过后，插值就这样插了：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$&#123;num&#125;</span><br></pre></td></tr></table></figure>
 
         </div>
 
@@ -286,7 +312,7 @@
                 <a class="prev" rel="prev" href="/2020/04/14/js-sort/">JavaScript中数组的sort函数</a>
             
             
-            <a class="next" rel="next" href="/2020/04/12/jspang-redux/">jspang-redux</a>
+            <a class="next" rel="next" href="/2020/04/12/jspang-redux/">【技术胖】jspang-redux</a>
             
         </section>
 
