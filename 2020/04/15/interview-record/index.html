@@ -317,7 +317,7 @@
 
 
 <h2 id="Linux"><a href="#Linux" class="headerlink" title="Linux"></a>Linux</h2><h2 id="其他"><a href="#其他" class="headerlink" title="其他"></a>其他</h2><h3 id="遇到过印象深刻的bug，是怎么解决的"><a href="#遇到过印象深刻的bug，是怎么解决的" class="headerlink" title="遇到过印象深刻的bug，是怎么解决的"></a>遇到过印象深刻的bug，是怎么解决的</h3><script src="https://cdnjs.cloudflare.com/ajax/libs/raphael/2.2.7/raphael.min.js"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/flowchart/1.6.5/flowchart.min.js"></script><textarea id="flowchart-0-code" style="display: none">st=>start: 开始
-cond1=>condition: 是否在文件模块缓存区中?
+cond1=>condition: 不在文件模块缓存区中?
 cond2=>condition: 是否原生模块?
 cond3=>condition: 是否在原生模块缓存区中
 e=>end: 返回exports
@@ -327,8 +327,8 @@ op2=>operation: 加载原生模块
 op3=>operation: 缓存原生模块
 op4=>operation: 根据扩展名载入文件模块
 op5=>operation: 缓存文件模块
-cond1(yes)->e
-cond1(no)->cond2
+cond1(no)->e
+cond1(yes)->cond2
 cond2(yes)->cond3
 cond2(no)->op1
 cond3(yes)->e
