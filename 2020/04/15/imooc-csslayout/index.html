@@ -1,0 +1,409 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+<meta name="viewport"
+      content="width=device-width, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+<meta http-equiv="X-UA-Compatible" content="ie=edge">
+
+    <meta name="author" content="Mosan">
+
+
+
+
+
+<title>【慕课网】一课全面掌握主流CSS布局 | Mosan&#39;s blog</title>
+
+
+
+    <link rel="icon" href="/favicon.ico">
+
+
+
+
+    <!-- stylesheets list from _config.yml -->
+    
+    <link rel="stylesheet" href="/css/style.css">
+    
+
+
+
+    <!-- scripts list from _config.yml -->
+    
+    <script src="/js/script.js"></script>
+    
+    <script src="/js/tocbot.min.js"></script>
+    
+
+
+
+    
+    
+        <!-- MathJax配置，可通过单美元符号书写行内公式等 -->
+<script type="text/x-mathjax-config">
+    MathJax.Hub.Config({
+    "HTML-CSS": {
+        preferredFont: "TeX",
+        availableFonts: ["STIX","TeX"],
+        linebreaks: { automatic:true },
+        EqnChunk: (MathJax.Hub.Browser.isMobile ? 10 : 50)
+    },
+    tex2jax: {
+        inlineMath: [ ["$", "$"], ["\\(","\\)"] ],
+        processEscapes: true,
+        ignoreClass: "tex2jax_ignore|dno",
+        skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
+    },
+    TeX: {
+        equationNumbers: { autoNumber: "AMS" },
+        noUndefined: { attributes: { mathcolor: "red", mathbackground: "#FFEEEE", mathsize: "90%" } },
+        Macros: { href: "{}" }
+    },
+    messageStyle: "none"
+    });
+</script>
+<!-- 给MathJax元素添加has-jax class -->
+<script type="text/x-mathjax-config">
+    MathJax.Hub.Queue(function() {
+        var all = MathJax.Hub.getAllJax(), i;
+        for(i=0; i < all.length; i += 1) {
+            all[i].SourceElement().parentNode.className += ' has-jax';
+        }
+    });
+</script>
+<!-- 通过连接CDN加载MathJax的js代码 -->
+<script type="text/javascript" async
+        src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/MathJax.js?config=TeX-MML-AM_CHTML">
+</script>
+
+
+    
+
+
+<meta name="generator" content="Hexo 4.2.0"></head>
+<body>
+    <div class="wrapper">
+        <header>
+    <nav class="navbar">
+        <div class="container">
+            <div class="navbar-header header-logo"><a href="/">Mosan&#39;s Blog</a></div>
+            <div class="menu navbar-right">
+                
+                    <a class="menu-item" href="/archives">Posts</a>
+                
+                    <a class="menu-item" href="/category">Categories</a>
+                
+                    <a class="menu-item" href="/tag">Tags</a>
+                
+                    <a class="menu-item" href="/about">About</a>
+                
+                <input id="switch_default" type="checkbox" class="switch_default">
+                <label for="switch_default" class="toggleBtn"></label>
+            </div>
+        </div>
+    </nav>
+
+    
+    <nav class="navbar-mobile" id="nav-mobile">
+        <div class="container">
+            <div class="navbar-header">
+                <div>
+                    <a href="/">Mosan&#39;s Blog</a><a id="mobile-toggle-theme">·&nbsp;Light</a>
+                </div>
+                <div class="menu-toggle" onclick="mobileBtn()">&#9776; Menu</div>
+            </div>
+            <div class="menu" id="mobile-menu">
+                
+                    <a class="menu-item" href="/archives">Posts</a>
+                
+                    <a class="menu-item" href="/category">Categories</a>
+                
+                    <a class="menu-item" href="/tag">Tags</a>
+                
+                    <a class="menu-item" href="/about">About</a>
+                
+            </div>
+        </div>
+    </nav>
+
+</header>
+<script>
+    var mobileBtn = function f() {
+        var toggleMenu = document.getElementsByClassName("menu-toggle")[0];
+        var mobileMenu = document.getElementById("mobile-menu");
+        if(toggleMenu.classList.contains("active")){
+           toggleMenu.classList.remove("active")
+            mobileMenu.classList.remove("active")
+        }else{
+            toggleMenu.classList.add("active")
+            mobileMenu.classList.add("active")
+        }
+    }
+</script>
+        <div class="main">
+            <div class="container">
+    
+    
+        <div class="post-toc">
+    <div class="tocbot-list">
+    </div>
+    <div class="tocbot-list-menu">
+        <a class="tocbot-toc-expand" onclick="expand_toc()">Expand all</a>
+        <a onclick="go_top()">Back to top</a>
+        <a onclick="go_bottom()">Go to bottom</a>
+    </div>
+</div>
+
+<script>
+    document.ready(
+        function () {
+            tocbot.init({
+                tocSelector: '.tocbot-list',
+                contentSelector: '.post-content',
+                headingSelector: 'h1, h2, h3, h4, h5',
+                collapseDepth: 1,
+                orderedList: false,
+                scrollSmooth: true,
+            })
+        }
+    )
+
+    function expand_toc() {
+        var b = document.querySelector(".tocbot-toc-expand");
+        tocbot.init({
+            tocSelector: '.tocbot-list',
+            contentSelector: '.post-content',
+            headingSelector: 'h1, h2, h3, h4, h5',
+            collapseDepth: 6,
+            orderedList: false,
+            scrollSmooth: true,
+        });
+        b.setAttribute("onclick", "collapse_toc()");
+        b.innerHTML = "Collapse all"
+    }
+
+    function collapse_toc() {
+        var b = document.querySelector(".tocbot-toc-expand");
+        tocbot.init({
+            tocSelector: '.tocbot-list',
+            contentSelector: '.post-content',
+            headingSelector: 'h1, h2, h3, h4, h5',
+            collapseDepth: 1,
+            orderedList: false,
+            scrollSmooth: true,
+        });
+        b.setAttribute("onclick", "expand_toc()");
+        b.innerHTML = "Expand all"
+    }
+
+    function go_top() {
+        window.scrollTo(0, 0);
+    }
+
+    function go_bottom() {
+        window.scrollTo(0, document.body.scrollHeight);
+    }
+
+</script>
+    
+
+    
+    <article class="post-wrap">
+        <header class="post-header">
+            <h1 class="post-title">【慕课网】一课全面掌握主流CSS布局</h1>
+            
+                <div class="post-meta">
+                    
+                        Author: <a itemprop="author" rel="author" href="/">Mosan</a>
+                    
+
+                    
+                        <span class="post-time">
+                        Date: <a href="#">April 15, 2020&nbsp;&nbsp;21:11:41</a>
+                        </span>
+                    
+                    
+                        <span class="post-category">
+                    Category:
+                            
+                                <a href="/categories/%E8%AF%BE%E7%A8%8B%E8%AE%B0%E5%BD%95/">课程记录</a>
+                            
+                        </span>
+                    
+                </div>
+            
+        </header>
+
+        <div class="post-content">
+            <p>讲师：KingJ<br>课程：<a href="https://www.imooc.com/learn/1189" target="_blank" rel="noopener">https://www.imooc.com/learn/1189</a></p>
+<h2 id="居中布局"><a href="#居中布局" class="headerlink" title="居中布局"></a>居中布局</h2><h3 id="水平居中布局"><a href="#水平居中布局" class="headerlink" title="水平居中布局"></a>水平居中布局</h3><p>指当前元素在父级元素容器中，水平方向是居中显示的</p>
+<h4 id="inline-block-text-align属性配合使用"><a href="#inline-block-text-align属性配合使用" class="headerlink" title="inline-block+text-align属性配合使用"></a>inline-block+text-align属性配合使用</h4><h5 id="关键代码"><a href="#关键代码" class="headerlink" title="关键代码"></a>关键代码</h5><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">&lt;div id&#x3D;&quot;parent&quot;&gt;</span><br><span class="line">    &lt;div id&#x3D;&quot;child&quot;&gt;子级元素&lt;&#x2F;div&gt;</span><br><span class="line">&lt;&#x2F;div&gt;</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">#parent&#123;</span><br><span class="line">    text-align:center;</span><br><span class="line">&#125;</span><br><span class="line">#child&#123;</span><br><span class="line">    display:inline-block;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h5 id="属性的说明"><a href="#属性的说明" class="headerlink" title="属性的说明"></a>属性的说明</h5><ul>
+<li>text-align属性：是为<strong>文本内容</strong>设置对齐方式<ul>
+<li>left：左对齐</li>
+<li>center：居中对齐</li>
+<li>right：右对齐</li>
+</ul>
+</li>
+<li>display属性：<ul>
+<li>block：块级元素</li>
+<li>inline：内联元素（text-align属性有效）<br>当display设置为inline时，css中的width和height属性是无效的</li>
+<li>inline-block：行内块级元素（块级+内联）<br>width和height属性值是有效的</li>
+</ul>
+</li>
+</ul>
+<h5 id="优缺点"><a href="#优缺点" class="headerlink" title="优缺点"></a>优缺点</h5><ul>
+<li>优点：浏览器兼容性比较好</li>
+<li>缺点：text-align属性具有继承性，导致子级元素的文本也是居中显示的<ul>
+<li>解决方式：可以在子级元素中设置text-align为想要的效果，这样会覆盖父级元素设置的效果</li>
+</ul>
+</li>
+</ul>
+<h4 id="table-margin属性配合使用"><a href="#table-margin属性配合使用" class="headerlink" title="table+margin属性配合使用"></a>table+margin属性配合使用</h4><h5 id="关键代码-1"><a href="#关键代码-1" class="headerlink" title="关键代码"></a>关键代码</h5><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">&lt;div class&#x3D;&quot;parent&quot;&gt;</span><br><span class="line">    &lt;div class&#x3D;&quot;child&quot;&gt;子级元素&lt;&#x2F;div&gt;</span><br><span class="line">&lt;&#x2F;div&gt;</span><br></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">.child&#123;</span><br><span class="line">    display:table;</span><br><span class="line">    margin:0 auto;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h5 id="属性说明"><a href="#属性说明" class="headerlink" title="属性说明"></a>属性说明</h5><ul>
+<li>margin属性：外边距<ul>
+<li>一个值——上右下左四个方向</li>
+<li>两个值——第一个表示上下，第二个表示左右</li>
+<li>三个值——第一个值表示上，第二个值表示左右，第三个值表示下<ul>
+<li>auto：表示浏览器自动分配，浏览器会等分左右外边距</li>
+</ul>
+</li>
+<li>四个值——分别代表上右下左</li>
+</ul>
+</li>
+<li>display<ul>
+<li>设置为block和table都可水平居中</li>
+<li>设置为inline并且在块中添加文字，不会水平居中，</li>
+<li>设置为inline-block也不会水平居中</li>
+</ul>
+</li>
+</ul>
+<h5 id="优缺点-1"><a href="#优缺点-1" class="headerlink" title="优缺点"></a>优缺点</h5><ul>
+<li>优点：只需要对子级元素进行设置就可以实现水平方向居中效果</li>
+<li>缺点：如果子级元素脱离文档流，导致margin属性的值无效<br>css中脱离文档流的方式<ul>
+<li>设置float</li>
+<li>设置position为absolute</li>
+<li>设置position为fixed</li>
+</ul>
+</li>
+</ul>
+<h4 id="absolute-transform属性配合使用"><a href="#absolute-transform属性配合使用" class="headerlink" title="absolute+transform属性配合使用"></a>absolute+transform属性配合使用</h4><h5 id="关键代码-2"><a href="#关键代码-2" class="headerlink" title="关键代码"></a>关键代码</h5><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">&lt;div class&#x3D;&quot;parent&quot;&gt;</span><br><span class="line">    &lt;div class&#x3D;&quot;child&quot;&gt;居中&lt;&#x2F;div&gt;</span><br><span class="line">&lt;&#x2F;div&gt;</span><br></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">.parent&#123;</span><br><span class="line">    position:relative;</span><br><span class="line">&#125;</span><br><span class="line">.child&#123;</span><br><span class="line">    position:absolute;</span><br><span class="line">    left:50%;</span><br><span class="line">    transform:translateX(-50%);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h5 id="属性说明-1"><a href="#属性说明-1" class="headerlink" title="属性说明"></a>属性说明</h5><ul>
+<li>当把当前元素设置为绝对定位之后：<ul>
+<li>如果父级元素没有开启定位的话，当前元素是相对于页面定位的</li>
+<li>如果父级元素开启了定位的话，当前元素是相对于父级元素定位的</li>
+<li>除了position的默认值static，其它值都是开启定位</li>
+</ul>
+</li>
+<li>left:50%——子级元素的<strong>左边</strong>相对于父级元素左边的距离是50%</li>
+<li>transform:translateX(-50%)——子级元素向左平移自己宽度的50%单位，这样正好就居中了，这个50%也可以写成子级元素宽度的一半，但是写50%更好一些</li>
+</ul>
+<h5 id="优缺点-2"><a href="#优缺点-2" class="headerlink" title="优缺点"></a>优缺点</h5><ul>
+<li>优点：父级元素是否脱离文档流，不影响子级元素水平居中效果</li>
+<li>缺点：transform属性是css3中新增属性，浏览器支持情况不好</li>
+</ul>
+<p>不仅仅只有这三种解决方案，但是这三种是比较常见的</p>
+<h3 id="垂直居中布局"><a href="#垂直居中布局" class="headerlink" title="垂直居中布局"></a>垂直居中布局</h3><p>垂直居中布局就是指当前元素在父级元素容器中，垂直方向是居中显示的</p>
+<h4 id="table-cell-vertical-algin属性配合使用"><a href="#table-cell-vertical-algin属性配合使用" class="headerlink" title="table-cell+vertical-algin属性配合使用"></a>table-cell+vertical-algin属性配合使用</h4><h5 id="关键代码-3"><a href="#关键代码-3" class="headerlink" title="关键代码"></a>关键代码</h5><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">&lt;div class&#x3D;&quot;parent&quot;&gt;</span><br><span class="line">    &lt;div class&#x3D;&quot;child&quot;&gt;居中&lt;&#x2F;div&gt;</span><br><span class="line">&lt;&#x2F;div&gt;</span><br></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">.parent&#123;</span><br><span class="line">    display:table-cell;</span><br><span class="line">    vertical-align:middle;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h5 id="属性说明-2"><a href="#属性说明-2" class="headerlink" title="属性说明"></a>属性说明</h5><ul>
+<li>vertical-align属性：用于设置<strong>文本</strong>内容的垂直方向对齐方式<ul>
+<li>top：顶部对齐</li>
+<li>middle：居中对齐</li>
+<li>bottom：底部对齐</li>
+</ul>
+</li>
+<li>display属性：<ul>
+<li>table：设置当前元素为&lt;table&gt;元素效果</li>
+<li>table-cell：设置当前元素为&lt;td&gt;元素（单元格）效果<ul>
+<li>这样就使得vertical-align设置居中对齐有效了</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<h5 id="优缺点-3"><a href="#优缺点-3" class="headerlink" title="优缺点"></a>优缺点</h5><ul>
+<li>优点：浏览器兼容性比较好</li>
+<li>缺点：vertical-align属性具有继承性，导致父级元素的文本也是居中显示的</li>
+</ul>
+<h4 id="absolute-transform属性配合使用-1"><a href="#absolute-transform属性配合使用-1" class="headerlink" title="absolute+transform属性配合使用"></a>absolute+transform属性配合使用</h4><h5 id="关键代码-4"><a href="#关键代码-4" class="headerlink" title="关键代码"></a>关键代码</h5><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">&lt;div class&#x3D;&quot;parent&gt;</span><br><span class="line">    &lt;div class&#x3D;&quot;child&quot;&gt;居中&lt;&#x2F;div&gt;</span><br><span class="line">&lt;&#x2F;div&gt;</span><br></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">.parent&#123;</span><br><span class="line">    position:relative;</span><br><span class="line">&#125;</span><br><span class="line">.child&#123;</span><br><span class="line">    position:absolute;</span><br><span class="line">    top:50%;</span><br><span class="line">    transform:translateY(-50%);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h5 id="属性说明-3"><a href="#属性说明-3" class="headerlink" title="属性说明"></a>属性说明</h5><p>参照水平居中的第三种解决方案</p>
+<h5 id="优缺点-4"><a href="#优缺点-4" class="headerlink" title="优缺点"></a>优缺点</h5><ul>
+<li>优点：无论父级元素是否脱离文档流，不影响子级元素垂直居中效果</li>
+<li>缺点：transform属性是CSS3中新增属性，浏览器支持情况不好</li>
+</ul>
+<h3 id="居中布局（水平-垂直）"><a href="#居中布局（水平-垂直）" class="headerlink" title="居中布局（水平+垂直）"></a>居中布局（水平+垂直）</h3><p>居中布局实际上就是既要水平方向居中，也要垂直方向居中</p>
+<h4 id="table-margin实现水平方向居中-table-cell-vertical-align实现垂直方向居中"><a href="#table-margin实现水平方向居中-table-cell-vertical-align实现垂直方向居中" class="headerlink" title="table+margin实现水平方向居中,table-cell+vertical-align实现垂直方向居中"></a>table+margin实现水平方向居中,table-cell+vertical-align实现垂直方向居中</h4><p>去上文找，子级元素的display最好设置为block（即默认值）</p>
+<h4 id="absolute-transform实现水平方向和垂直方向居中"><a href="#absolute-transform实现水平方向和垂直方向居中" class="headerlink" title="absolute+transform实现水平方向和垂直方向居中"></a>absolute+transform实现水平方向和垂直方向居中</h4><p>如果不考虑浏览器兼容性，是优于上一种方法的</p>
+<h2 id="多列布局"><a href="#多列布局" class="headerlink" title="多列布局"></a>多列布局</h2><h3 id="两列布局"><a href="#两列布局" class="headerlink" title="两列布局"></a>两列布局</h3><h3 id="三列布局"><a href="#三列布局" class="headerlink" title="三列布局"></a>三列布局</h3><h3 id="圣杯布局"><a href="#圣杯布局" class="headerlink" title="圣杯布局"></a>圣杯布局</h3><h3 id="双飞翼布局"><a href="#双飞翼布局" class="headerlink" title="双飞翼布局"></a>双飞翼布局</h3><h2 id="全屏布局"><a href="#全屏布局" class="headerlink" title="全屏布局"></a>全屏布局</h2><h3 id="等分布局"><a href="#等分布局" class="headerlink" title="等分布局"></a>等分布局</h3><h3 id="等高布局"><a href="#等高布局" class="headerlink" title="等高布局"></a>等高布局</h3><h3 id="全屏布局-1"><a href="#全屏布局-1" class="headerlink" title="全屏布局"></a>全屏布局</h3>
+        </div>
+
+        
+            <section class="post-copyright">
+                
+                    <p class="copyright-item">
+                        <span>Author:</span>
+                        <span>Mosan</span>
+                    </p>
+                
+                
+                    <p class="copyright-item">
+                        <span>Permalink:</span>
+                        <span><a href="https://mengsha97.github.io/2020/04/15/imooc-csslayout/">https://mengsha97.github.io/2020/04/15/imooc-csslayout/</a></span>
+                    </p>
+                
+                
+                
+
+            </section>
+        
+        <section class="post-tags">
+            <div>
+                <span>Tag(s):</span>
+                <span class="tag">
+                    
+                    
+                        <a href="/tags/css/"># css</a>
+                    
+                        <a href="/tags/layout/"># layout</a>
+                    
+                        
+                </span>
+            </div>
+            <div>
+                <a href="javascript:window.history.back();">back</a>
+                <span>· </span>
+                <a href="/">home</a>
+            </div>
+        </section>
+        <section class="post-nav">
+            
+            
+            <a class="next" rel="next" href="/2020/04/15/interview-record/">面试记录</a>
+            
+        </section>
+
+
+    </article>
+</div>
+
+        </div>
+        <footer id="footer" class="footer">
+    <div class="copyright">
+        <span>© Mosan | Powered by <a href="https://hexo.io" target="_blank">Hexo</a> & <a href="https://github.com/Siricee/hexo-theme-Chic" target="_blank">Chic</a></span>
+    </div>
+</footer>
+
+    </div>
+</body>
+</html>
