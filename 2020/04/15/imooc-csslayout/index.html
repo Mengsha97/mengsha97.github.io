@@ -345,7 +345,78 @@
 <h3 id="居中布局（水平-垂直）"><a href="#居中布局（水平-垂直）" class="headerlink" title="居中布局（水平+垂直）"></a>居中布局（水平+垂直）</h3><p>居中布局实际上就是既要水平方向居中，也要垂直方向居中</p>
 <h4 id="table-margin实现水平方向居中-table-cell-vertical-align实现垂直方向居中"><a href="#table-margin实现水平方向居中-table-cell-vertical-align实现垂直方向居中" class="headerlink" title="table+margin实现水平方向居中,table-cell+vertical-align实现垂直方向居中"></a>table+margin实现水平方向居中,table-cell+vertical-align实现垂直方向居中</h4><p>去上文找，子级元素的display最好设置为block（即默认值）</p>
 <h4 id="absolute-transform实现水平方向和垂直方向居中"><a href="#absolute-transform实现水平方向和垂直方向居中" class="headerlink" title="absolute+transform实现水平方向和垂直方向居中"></a>absolute+transform实现水平方向和垂直方向居中</h4><p>如果不考虑浏览器兼容性，是优于上一种方法的</p>
-<h2 id="多列布局"><a href="#多列布局" class="headerlink" title="多列布局"></a>多列布局</h2><h3 id="两列布局"><a href="#两列布局" class="headerlink" title="两列布局"></a>两列布局</h3><h3 id="三列布局"><a href="#三列布局" class="headerlink" title="三列布局"></a>三列布局</h3><h3 id="圣杯布局"><a href="#圣杯布局" class="headerlink" title="圣杯布局"></a>圣杯布局</h3><h3 id="双飞翼布局"><a href="#双飞翼布局" class="headerlink" title="双飞翼布局"></a>双飞翼布局</h3><h2 id="全屏布局"><a href="#全屏布局" class="headerlink" title="全屏布局"></a>全屏布局</h2><h3 id="等分布局"><a href="#等分布局" class="headerlink" title="等分布局"></a>等分布局</h3><h3 id="等高布局"><a href="#等高布局" class="headerlink" title="等高布局"></a>等高布局</h3><h3 id="全屏布局-1"><a href="#全屏布局-1" class="headerlink" title="全屏布局"></a>全屏布局</h3>
+<h2 id="多列布局"><a href="#多列布局" class="headerlink" title="多列布局"></a>多列布局</h2><p>简单来说，多列布局就是几个元素呈现水平方式排列的效果</p>
+<h3 id="两列布局"><a href="#两列布局" class="headerlink" title="两列布局"></a>两列布局</h3><p>两列布局一般情况下是指定宽+自适应布局，两列中左列是确定的宽度，右列是自动填满剩余所有空间的一种布局效果</p>
+<h4 id="float-margin属性配合使用"><a href="#float-margin属性配合使用" class="headerlink" title="float+margin属性配合使用"></a>float+margin属性配合使用</h4><h5 id="关键代码-5"><a href="#关键代码-5" class="headerlink" title="关键代码"></a>关键代码</h5><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">&lt;div class&#x3D;&quot;parent&quot;&gt;</span><br><span class="line">    &lt;div class&#x3D;&quot;left&quot;&gt;左：定宽&lt;&#x2F;div&gt;</span><br><span class="line">    &lt;div class&#x3D;&quot;right&quot;&gt;右：自适应&lt;&#x2F;div&gt;</span><br><span class="line">&lt;&#x2F;div&gt;</span><br></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">.left&#123;</span><br><span class="line">    width:100px;</span><br><span class="line">    float:left;</span><br><span class="line">&#125;</span><br><span class="line">.right&#123;</span><br><span class="line">    margin-left:100px;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h5 id="属性说明-4"><a href="#属性说明-4" class="headerlink" title="属性说明"></a>属性说明</h5><ul>
+<li>如果只给左列设置float:left，视觉上是实现了两列布局，但是实际上是左列把右列的一部分给覆盖了，所以要给右列设置margin-left:（左列的宽度）</li>
+</ul>
+<h5 id="优缺点-5"><a href="#优缺点-5" class="headerlink" title="优缺点"></a>优缺点</h5><ul>
+<li>优点：实现方式简单</li>
+<li>缺点：<ul>
+<li>自适应元素的margin属性值需要与定宽元素的属性值保持一致</li>
+<li>定宽元素浮动与自适应元素不浮动导致浏览器兼容性不好（老版本浏览器中会有空白）</li>
+<li>若在自适应这列中存在子级元素或后代元素，并且使用了清除浮动(clear)，显示是有问题的</li>
+</ul>
+</li>
+</ul>
+<h4 id="float-margin属性配合使用（优化版本）"><a href="#float-margin属性配合使用（优化版本）" class="headerlink" title="float+margin属性配合使用（优化版本）"></a>float+margin属性配合使用（优化版本）</h4><h5 id="关键代码-6"><a href="#关键代码-6" class="headerlink" title="关键代码"></a>关键代码</h5><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">&lt;div class&#x3D;&quot;parent&quot;&gt;</span><br><span class="line">    &lt;div class&#x3D;&quot;left&quot;&gt;左：定宽&lt;&#x2F;div&gt;</span><br><span class="line">    &lt;div class&#x3D;&quot;right-fix&quot;&gt;</span><br><span class="line">        &lt;div class&#x3D;&quot;right&quot;&gt;右：自适应&lt;&#x2F;div&gt;</span><br><span class="line">    &lt;&#x2F;div&gt;</span><br><span class="line">&lt;&#x2F;div&gt;</span><br></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">.left&#123;</span><br><span class="line">    position:relative;</span><br><span class="line">&#125;</span><br><span class="line">.right-fix&#123;</span><br><span class="line">    float:right;</span><br><span class="line">    width:100%;</span><br><span class="line">    margin-left:-100px;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h4 id="float-overflow属性配合使用"><a href="#float-overflow属性配合使用" class="headerlink" title="float+overflow属性配合使用"></a>float+overflow属性配合使用</h4><h5 id="关键代码-7"><a href="#关键代码-7" class="headerlink" title="关键代码"></a>关键代码</h5><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">&lt;div class&#x3D;&quot;parent&quot;&gt;</span><br><span class="line">    &lt;div class&#x3D;&quot;left&quot;&gt;左：定宽&lt;&#x2F;div&gt;</span><br><span class="line">    &lt;div class&#x3D;&quot;right&quot;&gt;右：自适应&lt;&#x2F;div&gt;</span><br><span class="line">&lt;&#x2F;div&gt;</span><br></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">.left&#123;</span><br><span class="line">    width:100px;</span><br><span class="line">    float:left;</span><br><span class="line">&#125;</span><br><span class="line">.right&#123;</span><br><span class="line">    overflow:hidden;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h5 id="属性说明-5"><a href="#属性说明-5" class="headerlink" title="属性说明"></a>属性说明</h5><ul>
+<li>overflow:hidden在此处的作用是开启BFC模式<ul>
+<li>当前元素的内部环境与外界完全隔离</li>
+</ul>
+</li>
+</ul>
+<h5 id="优缺点-6"><a href="#优缺点-6" class="headerlink" title="优缺点"></a>优缺点</h5><ul>
+<li>优点：<ul>
+<li>上述解决方案中的问题在此处解决方案中都没有</li>
+<li>因为开启了BFC模式，所以不存在老版本中出现空白的情况</li>
+</ul>
+</li>
+<li>缺点：<ul>
+<li>overflow属性不不仅解决了两列布局问题，同时设置了内容溢出的情况，比如这时一旦右列出现内容，就会被隐藏</li>
+</ul>
+</li>
+</ul>
+<h4 id="display属性的table相关值使用"><a href="#display属性的table相关值使用" class="headerlink" title="display属性的table相关值使用"></a>display属性的table相关值使用</h4><h5 id="关键代码-8"><a href="#关键代码-8" class="headerlink" title="关键代码"></a>关键代码</h5><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">&lt;div class&#x3D;&quot;parent&quot;&gt;</span><br><span class="line">    &lt;div class&#x3D;&quot;left&quot;&gt;左：定宽&lt;&#x2F;div&gt;</span><br><span class="line">    &lt;div class&#x3D;&quot;right&quot;&gt;右：自适应&lt;&#x2F;div&gt;</span><br><span class="line">&lt;&#x2F;div&gt;</span><br></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">.parent&#123;</span><br><span class="line">    display:table;</span><br><span class="line">    table-layout:fixed;</span><br><span class="line">&#125;</span><br><span class="line">.left,.right&#123;</span><br><span class="line">    display:table-cell;</span><br><span class="line">&#125;</span><br><span class="line">.left&#123;</span><br><span class="line">    width:100px;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h5 id="属性说明-6"><a href="#属性说明-6" class="headerlink" title="属性说明"></a>属性说明</h5><ul>
+<li>parent的属性设置为display:table;会使表格的单元格自动分配，默认是等分，如果一列设置为定宽，那么另一列会自适应</li>
+<li>表格会出现双边框，所以table-layout:fixed可以解决该问题</li>
+</ul>
+<h5 id="优缺点-7"><a href="#优缺点-7" class="headerlink" title="优缺点"></a>优缺点</h5><ul>
+<li>优点：浏览器兼容性比较好</li>
+<li>缺点：将所有元素的display属性设置为table相关值，受到相应制约</li>
+</ul>
+<h3 id="三列布局"><a href="#三列布局" class="headerlink" title="三列布局"></a>三列布局</h3><p>三列布局一般情况下是指三列中左边两列是确定的宽度，右边一列是自动填满剩余所有空间的一种布局效果。</p>
+<ul>
+<li>定宽+定宽+自适应</li>
+<li>定宽+自适应+定宽</li>
+</ul>
+<h4 id="float-margin属性配合使用-1"><a href="#float-margin属性配合使用-1" class="headerlink" title="float+margin属性配合使用"></a>float+margin属性配合使用</h4><h4 id="float-overflow属性配合使用-1"><a href="#float-overflow属性配合使用-1" class="headerlink" title="float+overflow属性配合使用"></a>float+overflow属性配合使用</h4><h4 id="display属性的table相关值使用-1"><a href="#display属性的table相关值使用-1" class="headerlink" title="display属性的table相关值使用"></a>display属性的table相关值使用</h4><p>同两列布局没有差异</p>
+<h3 id="圣杯布局"><a href="#圣杯布局" class="headerlink" title="圣杯布局"></a>圣杯布局</h3><p>又称三行三列布局，是一个完整页面的布局。圣杯布局注意实现中间主题部分中的左右定宽+中间自适应的布局效果。</p>
+<h4 id="解决方案一"><a href="#解决方案一" class="headerlink" title="解决方案一"></a>解决方案一</h4><h5 id="关键代码-9"><a href="#关键代码-9" class="headerlink" title="关键代码"></a>关键代码</h5><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">#left&#123;</span><br><span class="line">    float:left;</span><br><span class="line">&#125;</span><br><span class="line">#center&#123;</span><br><span class="line">    margin-left:400px;</span><br><span class="line">    margin-right:400px;</span><br><span class="line">&#125;</span><br><span class="line">#right&#123;</span><br><span class="line">    float:right;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h5 id="属性说明-7"><a href="#属性说明-7" class="headerlink" title="属性说明"></a>属性说明</h5><ul>
+<li>如果center只设置margin-left和margin-right，那么会出现问题如下：</li>
+</ul>
+<p><img src="/image/csslayout1.png" alt="csslayout1"></p>
+<ul>
+<li>问题出现的原因是：当兄弟元素中，前面的没有浮动，而后面的浮动了，那么浮动的元素是不允许超过前面的元素的，所以这两个还得是垂直方向排列</li>
+<li>解决方法，将浮动的元素与不浮动的元素调换位置，但是实际显示的还是浮动的元素在后面</li>
+</ul>
+<h5 id="优缺点-8"><a href="#优缺点-8" class="headerlink" title="优缺点"></a>优缺点</h5><ul>
+<li>center作为页面的核心，数据（主要内容）被放在最后面，不利于搜索引擎抓取</li>
+</ul>
+<h3 id="双飞翼布局"><a href="#双飞翼布局" class="headerlink" title="双飞翼布局"></a>双飞翼布局</h3><h2 id="全屏布局"><a href="#全屏布局" class="headerlink" title="全屏布局"></a>全屏布局</h2><h3 id="等分布局"><a href="#等分布局" class="headerlink" title="等分布局"></a>等分布局</h3><h3 id="等高布局"><a href="#等高布局" class="headerlink" title="等高布局"></a>等高布局</h3><h3 id="全屏布局-1"><a href="#全屏布局-1" class="headerlink" title="全屏布局"></a>全屏布局</h3>
         </div>
 
         
@@ -387,6 +458,8 @@
             </div>
         </section>
         <section class="post-nav">
+            
+                <a class="prev" rel="prev" href="/2020/04/19/css-heigthdown/">CSS中高度坍塌的解决方案</a>
             
             
             <a class="next" rel="next" href="/2020/04/15/interview-record/">面试记录</a>
