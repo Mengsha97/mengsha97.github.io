@@ -183,7 +183,7 @@
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">function sortNumber(a,b)&#123;</span><br><span class="line">    return a-b;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 
 <p>然后在使用sort时，把函数名放在sort函数的调用里，即</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">sortitems:function()&#123;</span><br><span class="line">    return this.items.sort()</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">sortitems:function()&#123;</span><br><span class="line">    return this.items.sort(sortNumber)</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 
 <p>就可以得到想要的结果了</p>
 <p><img src="/image/jssort2.png" alt="jssort2"></p>
