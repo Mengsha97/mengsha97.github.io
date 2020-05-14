@@ -12,7 +12,7 @@
 
 
 
-<title>【慕课网】JavaScript深入浅出 | Mosan&#39;s blog</title>
+<title>Chrome不支持css字体小于12px的解决办法 | Mosan&#39;s blog</title>
 
 
 
@@ -210,7 +210,7 @@
     
     <article class="post-wrap">
         <header class="post-header">
-            <h1 class="post-title">【慕课网】JavaScript深入浅出</h1>
+            <h1 class="post-title">Chrome不支持css字体小于12px的解决办法</h1>
             
                 <div class="post-meta">
                     
@@ -219,14 +219,14 @@
 
                     
                         <span class="post-time">
-                        Date: <a href="#">March 14, 2020&nbsp;&nbsp;16:49:06</a>
+                        Date: <a href="#">May 14, 2020&nbsp;&nbsp;20:28:31</a>
                         </span>
                     
                     
                         <span class="post-category">
                     Category:
                             
-                                <a href="/categories/%E8%AF%BE%E7%A8%8B%E8%AE%B0%E5%BD%95/">课程记录</a>
+                                <a href="/categories/bug%E8%A7%A3%E5%86%B3%E8%AE%B0%E5%BD%95/">bug解决记录</a>
                             
                         </span>
                     
@@ -235,47 +235,14 @@
         </header>
 
         <div class="post-content">
-            <p>讲师：Bosn<br>课程：<a href="https://www.imooc.com/learn/277" target="_blank" rel="noopener">https://www.imooc.com/learn/277</a></p>
-<h1 id="第一章-数据类型"><a href="#第一章-数据类型" class="headerlink" title="第一章 数据类型"></a>第一章 数据类型</h1><p>弱类型特性</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">32+32 &#x2F;&#x2F;64</span><br><span class="line">&quot;32&quot;+32 &#x2F;&#x2F;&quot;3232&quot;</span><br><span class="line">&quot;32&quot;-32 &#x2F;&#x2F;0</span><br></pre></td></tr></table></figure>
-<h2 id="数据类型"><a href="#数据类型" class="headerlink" title="数据类型"></a>数据类型</h2><h3 id="原始类型"><a href="#原始类型" class="headerlink" title="原始类型"></a>原始类型</h3><ul>
-<li>number</li>
-<li>string</li>
-<li>boolean</li>
-<li>null</li>
-<li>undefined</li>
-</ul>
-<h3 id="对象类型"><a href="#对象类型" class="headerlink" title="对象类型"></a>对象类型</h3><ul>
-<li>Function</li>
-<li>Array</li>
-<li>Date</li>
-<li>……</li>
-</ul>
-<h2 id="隐式转换"><a href="#隐式转换" class="headerlink" title="隐式转换"></a>隐式转换</h2><h3 id="和"><a href="#和" class="headerlink" title="+和-"></a>+和-</h3><p>巧用+/-规则转换类型</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">num-0 &#x2F;&#x2F;将字符转换成数字</span><br><span class="line">num+&#39;&#39; &#x2F;&#x2F;将数字转换成字符</span><br></pre></td></tr></table></figure>
+            <p>工作过程中，需要做一个效果使字体小于12px，但是chrome浏览器的字体小于12px通通显示为12px，我尝试了两种解决方法</p>
+<h2 id="解决方案一"><a href="#解决方案一" class="headerlink" title="解决方案一"></a>解决方案一</h2><p>用PS做一个小于12px的字体，并导出为png图片，但是效果是，字特别糊，以看就知道是图片</p>
+<p>所以这个方案失败</p>
+<h2 id="解决方案二"><a href="#解决方案二" class="headerlink" title="解决方案二"></a>解决方案二</h2><p>大家普遍用的是</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">-webkit-transform:scale(0.5);</span><br></pre></td></tr></table></figure>
 
-<h3 id="a-b"><a href="#a-b" class="headerlink" title="a==b"></a>a==b</h3><p>以下都为true</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">&quot;1.23&quot; &#x3D;&#x3D; 1.23</span><br><span class="line">0 &#x3D;&#x3D; false</span><br><span class="line">null &#x3D;&#x3D; undefined</span><br><span class="line">new Object() &#x3D;&#x3D; new Object()</span><br><span class="line">[1,2] &#x3D;&#x3D; [1,2]</span><br></pre></td></tr></table></figure>
-
-<h3 id="a-b-1"><a href="#a-b-1" class="headerlink" title="a === b"></a>a === b</h3><p>先比较类型</p>
-<ul>
-<li>类型不同，返回false</li>
-<li>类型相同：（以下为true)<ul>
-<li>null === null</li>
-<li>undefined === undefined</li>
-<li>NaN !== NaN<br>对象不等，例如：</li>
-<li>new Object() !== new Object()</li>
-<li>[1,2] != [1,2]</li>
-</ul>
-</li>
-</ul>
-<h3 id="类型转换和比较"><a href="#类型转换和比较" class="headerlink" title="类型转换和比较"></a>类型转换和比较</h3><ul>
-<li>null == undefined 相等</li>
-<li>number == string 转number 1 == “1.0” //true</li>
-<li>boolean == ? 转number 1 == true //true</li>
-<li>object == number|string 尝试对象转为基本类型，new String(“hi”) == “hi” //true<br>其他false</li>
-</ul>
-<h2 id="包装对象"><a href="#包装对象" class="headerlink" title="包装对象"></a>包装对象</h2><h1 id="第二章-表达式和运算符"><a href="#第二章-表达式和运算符" class="headerlink" title="第二章 表达式和运算符"></a>第二章 表达式和运算符</h1><h1 id="第三章-语句"><a href="#第三章-语句" class="headerlink" title="第三章 语句"></a>第三章 语句</h1><h1 id="第四章-对象"><a href="#第四章-对象" class="headerlink" title="第四章 对象"></a>第四章 对象</h1><h1 id="第五章-数组"><a href="#第五章-数组" class="headerlink" title="第五章 数组"></a>第五章 数组</h1><h1 id="第六章-函数和作用域（函数、this）"><a href="#第六章-函数和作用域（函数、this）" class="headerlink" title="第六章 函数和作用域（函数、this）"></a>第六章 函数和作用域（函数、this）</h1><h1 id="第七章-函数和作用域（闭包、作用域）"><a href="#第七章-函数和作用域（闭包、作用域）" class="headerlink" title="第七章 函数和作用域（闭包、作用域）"></a>第七章 函数和作用域（闭包、作用域）</h1><h1 id="第八章-OOP（上）"><a href="#第八章-OOP（上）" class="headerlink" title="第八章 OOP（上）"></a>第八章 OOP（上）</h1><h1 id="第九章-OOP（下）"><a href="#第九章-OOP（下）" class="headerlink" title="第九章 OOP（下）"></a>第九章 OOP（下）</h1>
+<p>于是我也采用了这个方法，但是其中一个尝试多次无效果，看了这个文章 <a href="http://www.mamicode.com/info-detail-2222169.html" target="_blank" rel="noopener">http://www.mamicode.com/info-detail-2222169.html</a> ，才发现问题，原来是要先把字体所在元素定义为行内元素。这是因为</p>
+<pre><code>transform:scale()这个属性只可以缩放可以定义宽高的元素，而行内元素是没有宽高的，我们可以加上一个display:inline-block;就好了</code></pre>
         </div>
 
         
@@ -289,7 +256,7 @@
                 
                     <p class="copyright-item">
                         <span>Permalink:</span>
-                        <span><a href="https://mengsha97.github.io/2020/03/14/imooc-javascript/">https://mengsha97.github.io/2020/03/14/imooc-javascript/</a></span>
+                        <span><a href="https://mengsha97.github.io/2020/05/14/css-12px/">https://mengsha97.github.io/2020/05/14/css-12px/</a></span>
                     </p>
                 
                 
@@ -303,9 +270,9 @@
                 <span class="tag">
                     
                     
-                        <a href="/tags/JavaScript/"># JavaScript</a>
+                        <a href="/tags/CSS%E5%AD%97%E4%BD%93/"># CSS字体</a>
                     
-                        <a href="/tags/%E5%89%8D%E7%AB%AF/"># 前端</a>
+                        <a href="/tags/Chrome%E6%B5%8F%E8%A7%88%E5%99%A8/"># Chrome浏览器</a>
                     
                         
                 </span>
@@ -318,10 +285,8 @@
         </section>
         <section class="post-nav">
             
-                <a class="prev" rel="prev" href="/2020/03/14/try-tomcat/">【学习记录】利用tomcat解决chrome异步加载本地文件报错</a>
             
-            
-            <a class="next" rel="next" href="/2020/03/12/imooc-dom/">【慕课网】DOM事件探秘</a>
+            <a class="next" rel="next" href="/2020/05/12/css-variable/">关于uniapp中的CSS变量</a>
             
         </section>
 
