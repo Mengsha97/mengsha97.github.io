@@ -12,7 +12,7 @@
 
 
 
-<title>关于博客 | Mosan&#39;s blog</title>
+<title>微信小程序开发技巧 | Mosan&#39;s blog</title>
 
 
 
@@ -144,11 +144,73 @@
             <div class="container">
     
     
+        <div class="post-toc">
+    <div class="tocbot-list">
+    </div>
+    <div class="tocbot-list-menu">
+        <a class="tocbot-toc-expand" onclick="expand_toc()">Expand all</a>
+        <a onclick="go_top()">Back to top</a>
+        <a onclick="go_bottom()">Go to bottom</a>
+    </div>
+</div>
+
+<script>
+    document.ready(
+        function () {
+            tocbot.init({
+                tocSelector: '.tocbot-list',
+                contentSelector: '.post-content',
+                headingSelector: 'h1, h2, h3, h4, h5',
+                collapseDepth: 1,
+                orderedList: false,
+                scrollSmooth: true,
+            })
+        }
+    )
+
+    function expand_toc() {
+        var b = document.querySelector(".tocbot-toc-expand");
+        tocbot.init({
+            tocSelector: '.tocbot-list',
+            contentSelector: '.post-content',
+            headingSelector: 'h1, h2, h3, h4, h5',
+            collapseDepth: 6,
+            orderedList: false,
+            scrollSmooth: true,
+        });
+        b.setAttribute("onclick", "collapse_toc()");
+        b.innerHTML = "Collapse all"
+    }
+
+    function collapse_toc() {
+        var b = document.querySelector(".tocbot-toc-expand");
+        tocbot.init({
+            tocSelector: '.tocbot-list',
+            contentSelector: '.post-content',
+            headingSelector: 'h1, h2, h3, h4, h5',
+            collapseDepth: 1,
+            orderedList: false,
+            scrollSmooth: true,
+        });
+        b.setAttribute("onclick", "expand_toc()");
+        b.innerHTML = "Expand all"
+    }
+
+    function go_top() {
+        window.scrollTo(0, 0);
+    }
+
+    function go_bottom() {
+        window.scrollTo(0, document.body.scrollHeight);
+    }
+
+</script>
+    
 
     
     <article class="post-wrap">
         <header class="post-header">
-            <h1 class="post-title">关于博客</h1>
+            <h1 class="post-title">微信小程序开发技巧</h1>
             
                 <div class="post-meta">
                     
@@ -157,14 +219,14 @@
 
                     
                         <span class="post-time">
-                        Date: <a href="#">February 17, 2020&nbsp;&nbsp;1:41:43</a>
+                        Date: <a href="#">August 27, 2020&nbsp;&nbsp;0:21:05</a>
                         </span>
                     
                     
                         <span class="post-category">
                     Category:
                             
-                                <a href="/categories/%E6%9D%82%E8%AE%B0/">杂记</a>
+                                <a href="/categories/%E5%BE%AE%E4%BF%A1%E5%B0%8F%E7%A8%8B%E5%BA%8F/">微信小程序</a>
                             
                         </span>
                     
@@ -173,24 +235,13 @@
         </header>
 
         <div class="post-content">
-            <ul>
-<li>博客文章的文件名不要用大写字母</li>
-</ul>
-<ul>
-<li><p>编写博客文章时按住ctrl+shift+v，可以预览md文件，这是Markdown Preview Enhanced插件的功劳，这里的预览与vscode自带的预览效果不同。</p>
+            <p>用来记录一下在微信小程序上开发出现的问题（大部分是通过uniapp）</p>
+<h2 id="2020年8月27日"><a href="#2020年8月27日" class="headerlink" title="2020年8月27日"></a>2020年8月27日</h2><ul>
+<li><p>在微信小程序中用来展示变量时，用函数进行处理，是无效的，而且会不显示（应该是微信小程序开发生态的问题）</p>
 </li>
-<li><p>创建博客新文章：npx hexo new “&lt;文章所属文件名&gt;</p>
-</li>
-<li><p>根据已更改，生成更改信息：npx hexo g</p>
-</li>
-<li><p>部署网站，将更改提交：npx hexo d</p>
-</li>
-<li><p>在本地预览网站：npx hexo s</p>
-</li>
-<li><p>清除缓存：npx hexo clean</p>
+<li><p>微信每次用canvas画图（如果有要用到的远程图片）之前都要先把图片下载下来，一个比较方便的办法是将图片保存到本地（即保存图片的本地地址，通过uni.request等方法），省得每次要用的时候都要重新下载</p>
 </li>
 </ul>
-<p>由于我的某个操作 使得前面不需要再加hexo啦~</p>
 
         </div>
 
@@ -205,7 +256,7 @@
                 
                     <p class="copyright-item">
                         <span>Permalink:</span>
-                        <span><a href="https://mengsha97.github.io/2020/02/17/blog-log/">https://mengsha97.github.io/2020/02/17/blog-log/</a></span>
+                        <span><a href="https://mengsha97.github.io/2020/08/27/applet-of-wechat-dev/">https://mengsha97.github.io/2020/08/27/applet-of-wechat-dev/</a></span>
                     </p>
                 
                 
@@ -219,7 +270,9 @@
                 <span class="tag">
                     
                     
-                        <a href="/tags/%E5%8D%9A%E5%AE%A2/"># 博客</a>
+                        <a href="/tags/wechat/"># wechat</a>
+                    
+                        <a href="/tags/applet/"># applet</a>
                     
                         
                 </span>
@@ -232,10 +285,10 @@
         </section>
         <section class="post-nav">
             
-                <a class="prev" rel="prev" href="/2020/02/17/frontlog/">【学习记录】JavaScript</a>
+                <a class="prev" rel="prev" href="/2020/08/27/js-error/">苹果手机关于Date的某些操作兼容性问题</a>
             
             
-            <a class="next" rel="next" href="/2020/02/13/p1047/">p1047 校门外的树</a>
+            <a class="next" rel="next" href="/2020/08/27/uni-develop/">uniapp开发技巧</a>
             
         </section>
 

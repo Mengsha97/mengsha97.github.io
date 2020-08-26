@@ -12,7 +12,7 @@
 
 
 
-<title>关于博客 | Mosan&#39;s blog</title>
+<title>uniapp开发技巧 | Mosan&#39;s blog</title>
 
 
 
@@ -144,11 +144,73 @@
             <div class="container">
     
     
+        <div class="post-toc">
+    <div class="tocbot-list">
+    </div>
+    <div class="tocbot-list-menu">
+        <a class="tocbot-toc-expand" onclick="expand_toc()">Expand all</a>
+        <a onclick="go_top()">Back to top</a>
+        <a onclick="go_bottom()">Go to bottom</a>
+    </div>
+</div>
+
+<script>
+    document.ready(
+        function () {
+            tocbot.init({
+                tocSelector: '.tocbot-list',
+                contentSelector: '.post-content',
+                headingSelector: 'h1, h2, h3, h4, h5',
+                collapseDepth: 1,
+                orderedList: false,
+                scrollSmooth: true,
+            })
+        }
+    )
+
+    function expand_toc() {
+        var b = document.querySelector(".tocbot-toc-expand");
+        tocbot.init({
+            tocSelector: '.tocbot-list',
+            contentSelector: '.post-content',
+            headingSelector: 'h1, h2, h3, h4, h5',
+            collapseDepth: 6,
+            orderedList: false,
+            scrollSmooth: true,
+        });
+        b.setAttribute("onclick", "collapse_toc()");
+        b.innerHTML = "Collapse all"
+    }
+
+    function collapse_toc() {
+        var b = document.querySelector(".tocbot-toc-expand");
+        tocbot.init({
+            tocSelector: '.tocbot-list',
+            contentSelector: '.post-content',
+            headingSelector: 'h1, h2, h3, h4, h5',
+            collapseDepth: 1,
+            orderedList: false,
+            scrollSmooth: true,
+        });
+        b.setAttribute("onclick", "expand_toc()");
+        b.innerHTML = "Expand all"
+    }
+
+    function go_top() {
+        window.scrollTo(0, 0);
+    }
+
+    function go_bottom() {
+        window.scrollTo(0, document.body.scrollHeight);
+    }
+
+</script>
+    
 
     
     <article class="post-wrap">
         <header class="post-header">
-            <h1 class="post-title">关于博客</h1>
+            <h1 class="post-title">uniapp开发技巧</h1>
             
                 <div class="post-meta">
                     
@@ -157,14 +219,14 @@
 
                     
                         <span class="post-time">
-                        Date: <a href="#">February 17, 2020&nbsp;&nbsp;1:41:43</a>
+                        Date: <a href="#">August 27, 2020&nbsp;&nbsp;0:14:45</a>
                         </span>
                     
                     
                         <span class="post-category">
                     Category:
                             
-                                <a href="/categories/%E6%9D%82%E8%AE%B0/">杂记</a>
+                                <a href="/categories/uniapp/">uniapp</a>
                             
                         </span>
                     
@@ -173,24 +235,18 @@
         </header>
 
         <div class="post-content">
-            <ul>
-<li>博客文章的文件名不要用大写字母</li>
-</ul>
-<ul>
-<li><p>编写博客文章时按住ctrl+shift+v，可以预览md文件，这是Markdown Preview Enhanced插件的功劳，这里的预览与vscode自带的预览效果不同。</p>
+            <p>公司主要用的是uniapp来开发前端，所以开这篇博客来记录一下我在开发中遇到的一些问题及解决方法、uniapp的缺点不足及避免的方法等</p>
+<h2 id="2020年8月27日"><a href="#2020年8月27日" class="headerlink" title="2020年8月27日"></a>2020年8月27日</h2><ul>
+<li><p>cover-view不能用flex，不能设置backgroundImage，不能用v-if(之后是否能解决用我们拭目以待)</p>
 </li>
-<li><p>创建博客新文章：npx hexo new “&lt;文章所属文件名&gt;</p>
+<li><p>在<router-link>标签上定义样式，在h5中有效，但是在微信小程序中无效</p>
 </li>
-<li><p>根据已更改，生成更改信息：npx hexo g</p>
-</li>
-<li><p>部署网站，将更改提交：npx hexo d</p>
-</li>
-<li><p>在本地预览网站：npx hexo s</p>
-</li>
-<li><p>清除缓存：npx hexo clean</p>
+<li><p>用scroll-view组件并且要动态改变scrollTop时，要用下面的方法改变</p>
+  <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">this.scrollTop &#x3D; this.nowScrollTop</span><br><span class="line">this.$nextTick(() &#x3D;&gt; &#123;</span><br><span class="line">    this.scrollTop &#x3D; this.navTop + this.goodsHeght</span><br><span class="line">&#125;)</span><br></pre></td></tr></table></figure>
+
+<p>  即要先把现在的高度赋给scrollTop再重新把要赋的值赋给它，这是因为，在页面进行滚动时，scrollTop的值不会发生变化，如果要赋的值跟scrollTop本身的值相同，则scroll-view不进行滚动</p>
 </li>
 </ul>
-<p>由于我的某个操作 使得前面不需要再加hexo啦~</p>
 
         </div>
 
@@ -205,7 +261,7 @@
                 
                     <p class="copyright-item">
                         <span>Permalink:</span>
-                        <span><a href="https://mengsha97.github.io/2020/02/17/blog-log/">https://mengsha97.github.io/2020/02/17/blog-log/</a></span>
+                        <span><a href="https://mengsha97.github.io/2020/08/27/uni-develop/">https://mengsha97.github.io/2020/08/27/uni-develop/</a></span>
                     </p>
                 
                 
@@ -219,7 +275,9 @@
                 <span class="tag">
                     
                     
-                        <a href="/tags/%E5%8D%9A%E5%AE%A2/"># 博客</a>
+                        <a href="/tags/uniapp/"># uniapp</a>
+                    
+                        <a href="/tags/develop/"># develop</a>
                     
                         
                 </span>
@@ -232,10 +290,10 @@
         </section>
         <section class="post-nav">
             
-                <a class="prev" rel="prev" href="/2020/02/17/frontlog/">【学习记录】JavaScript</a>
+                <a class="prev" rel="prev" href="/2020/08/27/applet-of-wechat-dev/">微信小程序开发技巧</a>
             
             
-            <a class="next" rel="next" href="/2020/02/13/p1047/">p1047 校门外的树</a>
+            <a class="next" rel="next" href="/2020/07/19/hideElement/">用CSS隐藏一个元素的方法</a>
             
         </section>
 
