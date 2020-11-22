@@ -12,7 +12,7 @@
 
 
 
-<title>苹果手机关于Date的某些操作兼容性问题 | Mosan&#39;s blog</title>
+<title>Tag: mediaquery | Mosan&#39;s blog</title>
 
 
 
@@ -141,99 +141,29 @@
     }
 </script>
         <div class="main">
-            <div class="container">
-    
-    
-
-    
-    <article class="post-wrap">
-        <header class="post-header">
-            <h1 class="post-title">苹果手机关于Date的某些操作兼容性问题</h1>
             
-                <div class="post-meta">
-                    
-                        Author: <a itemprop="author" rel="author" href="/">Mosan</a>
-                    
 
-                    
-                        <span class="post-time">
-                        Date: <a href="#">August 27, 2020&nbsp;&nbsp;0:31:41</a>
-                        </span>
-                    
-                    
-                        <span class="post-category">
-                    Category:
-                            
-                                <a href="/categories/%E9%94%99%E8%AF%AF%E8%AE%B0%E5%BD%95/">错误记录</a>
-                            
-                        </span>
-                    
-                </div>
-            
-        </header>
-
-        <div class="post-content">
-            <p>这是将yyyy-mm-dd转换成yyyy/mm/dd并通过getTime()获得时间戳的例子，上面这段用正则转换是可以的，但是下面那个就不行，要好好学习下正则表达式了</p>
-<p>（苹果手机可以显示）</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">let strTime &#x3D; y + &#39;-&#39; + m + &#39;-&#39; + d</span><br><span class="line">this.endTime &#x3D; new Date(Date.parse(strTime.replace(&#x2F;-&#x2F;g,  &quot;&#x2F;&quot;))).getTime() - new Date().getTime()</span><br></pre></td></tr></table></figure>
-<p>（苹果手机不能显示）</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">let strTime &#x3D; y + &#39;-&#39; + m + &#39;-&#39; + d</span><br><span class="line">this.endTime &#x3D; new Date(y + &#39;&#x2F;&#39; + m + &#39;&#x2F;&#39; + d).getTime() - new Date().getTime()</span><br></pre></td></tr></table></figure>
-
-        </div>
+    
+<div class="container">
+    <div class="post-wrap tags">
+        <h2 class="post-title">-&nbsp;Tag&nbsp;·&nbsp;mediaquery-</h2>
+    </div>
+    <div class="post-wrap archive">
+    
+    
+        
 
         
-            <section class="post-copyright">
-                
-                    <p class="copyright-item">
-                        <span>Author:</span>
-                        <span>Mosan</span>
-                    </p>
-                
-                
-                    <p class="copyright-item">
-                        <span>Permalink:</span>
-                        <span><a href="https://mengsha97.github.io/2020/08/27/js-error/">https://mengsha97.github.io/2020/08/27/js-error/</a></span>
-                    </p>
-                
-                
-                
-
-            </section>
+            <h3>2020</h3>
         
-        <section class="post-tags">
-            <div>
-                <span>Tag(s):</span>
-                <span class="tag">
-                    
-                    
-                        <a href="/tags/javascript/"># javascript</a>
-                    
-                        <a href="/tags/%E5%85%BC%E5%AE%B9%E6%80%A7/"># 兼容性</a>
-                    
-                        <a href="/tags/%E8%8B%B9%E6%9E%9C/"># 苹果</a>
-                    
-                        <a href="/tags/%E5%AE%89%E5%8D%93/"># 安卓</a>
-                    
-                        
-                </span>
-            </div>
-            <div>
-                <a href="javascript:window.history.back();">back</a>
-                <span>· </span>
-                <a href="/">home</a>
-            </div>
-        </section>
-        <section class="post-nav">
-            
-                <a class="prev" rel="prev" href="/2020/11/22/imooc-self-adaption/">【慕课网】六个案例学会响应式布局</a>
-            
-            
-            <a class="next" rel="next" href="/2020/08/27/applet-of-wechat-dev/">微信小程序开发技巧</a>
-            
-        </section>
 
-
-    </article>
+        <article class="archive-item">
+            <a class="archive-item-link" href="/2020/11/22/imooc-self-adaption/">【慕课网】六个案例学会响应式布局</a>
+            <span class="archive-item-date">November 22, 2020</span>
+        </article>
+    
+    
+</div>
 </div>
 
         </div>
