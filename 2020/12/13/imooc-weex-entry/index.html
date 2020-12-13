@@ -1,0 +1,488 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+<meta name="viewport"
+      content="width=device-width, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+<meta http-equiv="X-UA-Compatible" content="ie=edge">
+
+    <meta name="author" content="Mosan">
+
+
+
+
+
+<title>【慕课网】Weex入门 | Mosan&#39;s blog</title>
+
+
+
+    <link rel="icon" href="/favicon.ico">
+
+
+
+
+    <!-- stylesheets list from _config.yml -->
+    
+    <link rel="stylesheet" href="/css/style.css">
+    
+
+
+
+    <!-- scripts list from _config.yml -->
+    
+    <script src="/js/script.js"></script>
+    
+    <script src="/js/tocbot.min.js"></script>
+    
+
+
+
+    
+    
+        <!-- MathJax配置，可通过单美元符号书写行内公式等 -->
+<script type="text/x-mathjax-config">
+    MathJax.Hub.Config({
+    "HTML-CSS": {
+        preferredFont: "TeX",
+        availableFonts: ["STIX","TeX"],
+        linebreaks: { automatic:true },
+        EqnChunk: (MathJax.Hub.Browser.isMobile ? 10 : 50)
+    },
+    tex2jax: {
+        inlineMath: [ ["$", "$"], ["\\(","\\)"] ],
+        processEscapes: true,
+        ignoreClass: "tex2jax_ignore|dno",
+        skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
+    },
+    TeX: {
+        equationNumbers: { autoNumber: "AMS" },
+        noUndefined: { attributes: { mathcolor: "red", mathbackground: "#FFEEEE", mathsize: "90%" } },
+        Macros: { href: "{}" }
+    },
+    messageStyle: "none"
+    });
+</script>
+<!-- 给MathJax元素添加has-jax class -->
+<script type="text/x-mathjax-config">
+    MathJax.Hub.Queue(function() {
+        var all = MathJax.Hub.getAllJax(), i;
+        for(i=0; i < all.length; i += 1) {
+            all[i].SourceElement().parentNode.className += ' has-jax';
+        }
+    });
+</script>
+<!-- 通过连接CDN加载MathJax的js代码 -->
+<script type="text/javascript" async
+        src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/MathJax.js?config=TeX-MML-AM_CHTML">
+</script>
+
+
+    
+
+
+<meta name="generator" content="Hexo 4.2.0"></head>
+<body>
+    <div class="wrapper">
+        <header>
+    <nav class="navbar">
+        <div class="container">
+            <div class="navbar-header header-logo"><a href="/">Mosan&#39;s Blog</a></div>
+            <div class="menu navbar-right">
+                
+                    <a class="menu-item" href="/archives">Posts</a>
+                
+                    <a class="menu-item" href="/category">Categories</a>
+                
+                    <a class="menu-item" href="/tag">Tags</a>
+                
+                    <a class="menu-item" href="/about">About</a>
+                
+                <input id="switch_default" type="checkbox" class="switch_default">
+                <label for="switch_default" class="toggleBtn"></label>
+            </div>
+        </div>
+    </nav>
+
+    
+    <nav class="navbar-mobile" id="nav-mobile">
+        <div class="container">
+            <div class="navbar-header">
+                <div>
+                    <a href="/">Mosan&#39;s Blog</a><a id="mobile-toggle-theme">·&nbsp;Light</a>
+                </div>
+                <div class="menu-toggle" onclick="mobileBtn()">&#9776; Menu</div>
+            </div>
+            <div class="menu" id="mobile-menu">
+                
+                    <a class="menu-item" href="/archives">Posts</a>
+                
+                    <a class="menu-item" href="/category">Categories</a>
+                
+                    <a class="menu-item" href="/tag">Tags</a>
+                
+                    <a class="menu-item" href="/about">About</a>
+                
+            </div>
+        </div>
+    </nav>
+
+</header>
+<script>
+    var mobileBtn = function f() {
+        var toggleMenu = document.getElementsByClassName("menu-toggle")[0];
+        var mobileMenu = document.getElementById("mobile-menu");
+        if(toggleMenu.classList.contains("active")){
+           toggleMenu.classList.remove("active")
+            mobileMenu.classList.remove("active")
+        }else{
+            toggleMenu.classList.add("active")
+            mobileMenu.classList.add("active")
+        }
+    }
+</script>
+        <div class="main">
+            <div class="container">
+    
+    
+        <div class="post-toc">
+    <div class="tocbot-list">
+    </div>
+    <div class="tocbot-list-menu">
+        <a class="tocbot-toc-expand" onclick="expand_toc()">Expand all</a>
+        <a onclick="go_top()">Back to top</a>
+        <a onclick="go_bottom()">Go to bottom</a>
+    </div>
+</div>
+
+<script>
+    document.ready(
+        function () {
+            tocbot.init({
+                tocSelector: '.tocbot-list',
+                contentSelector: '.post-content',
+                headingSelector: 'h1, h2, h3, h4, h5',
+                collapseDepth: 1,
+                orderedList: false,
+                scrollSmooth: true,
+            })
+        }
+    )
+
+    function expand_toc() {
+        var b = document.querySelector(".tocbot-toc-expand");
+        tocbot.init({
+            tocSelector: '.tocbot-list',
+            contentSelector: '.post-content',
+            headingSelector: 'h1, h2, h3, h4, h5',
+            collapseDepth: 6,
+            orderedList: false,
+            scrollSmooth: true,
+        });
+        b.setAttribute("onclick", "collapse_toc()");
+        b.innerHTML = "Collapse all"
+    }
+
+    function collapse_toc() {
+        var b = document.querySelector(".tocbot-toc-expand");
+        tocbot.init({
+            tocSelector: '.tocbot-list',
+            contentSelector: '.post-content',
+            headingSelector: 'h1, h2, h3, h4, h5',
+            collapseDepth: 1,
+            orderedList: false,
+            scrollSmooth: true,
+        });
+        b.setAttribute("onclick", "expand_toc()");
+        b.innerHTML = "Expand all"
+    }
+
+    function go_top() {
+        window.scrollTo(0, 0);
+    }
+
+    function go_bottom() {
+        window.scrollTo(0, document.body.scrollHeight);
+    }
+
+</script>
+    
+
+    
+    <article class="post-wrap">
+        <header class="post-header">
+            <h1 class="post-title">【慕课网】Weex入门</h1>
+            
+                <div class="post-meta">
+                    
+                        Author: <a itemprop="author" rel="author" href="/">Mosan</a>
+                    
+
+                    
+                        <span class="post-time">
+                        Date: <a href="#">December 13, 2020&nbsp;&nbsp;10:51:37</a>
+                        </span>
+                    
+                    
+                        <span class="post-category">
+                    Category:
+                            
+                                <a href="/categories/weex/">weex</a>
+                            
+                        </span>
+                    
+                </div>
+            
+        </header>
+
+        <div class="post-content">
+            <p>讲师：你好_方老师<br>课程：<a href="https://www.imooc.com/learn/948" target="_blank" rel="noopener">https://www.imooc.com/learn/948</a></p>
+<h2 id="第一章-weex介绍"><a href="#第一章-weex介绍" class="headerlink" title="第一章 weex介绍"></a>第一章 weex介绍</h2><h3 id="1-1-weex介绍"><a href="#1-1-weex介绍" class="headerlink" title="1-1 weex介绍"></a>1-1 weex介绍</h3><ul>
+<li><p>weex介绍</p>
+<ul>
+<li><p>2016年4月阿里巴巴在Qcon大会上宣布开源的一套跨平台移动开发工具</p>
+</li>
+<li><p>主要解决了频繁发版和多端研发的两大痛点，同时解决了前端语言性能差和显示效果受限的问题</p>
+</li>
+<li><p>只需要在自己app中嵌入weex的sdk，就可以通过撰写html/css/javascript来开发native级别的weex界面，weex界面的生成码其实就是一段很小的js，可以像发布网页一样轻松部署在服务端，然后在app中请求执行</p>
+</li>
+</ul>
+</li>
+<li><p>weex优势</p>
+<ul>
+<li><p>支持ES6规范</p>
+</li>
+<li><p>性能优异，开发简洁标准，体积小巧</p>
+</li>
+<li><p>跨平台</p>
+</li>
+</ul>
+</li>
+<li><p>weex调试工具</p>
+<ul>
+<li>weexplayground</li>
+</ul>
+</li>
+</ul>
+<h3 id="1-2weex开发环境的搭建"><a href="#1-2weex开发环境的搭建" class="headerlink" title="1-2weex开发环境的搭建"></a>1-2weex开发环境的搭建</h3><ul>
+<li><p>安装node.js</p>
+</li>
+<li><p>npm install -g weex-toolkit</p>
+</li>
+<li><p>weex init (project.name)</p>
+<ul>
+<li><p>cd (project.name)</p>
+</li>
+<li><p>npm install</p>
+</li>
+</ul>
+</li>
+<li><p>npm run serve //开启服务</p>
+</li>
+<li><p>npm run dev //开启APP</p>
+</li>
+<li><p>npm run debug //开启调试</p>
+</li>
+</ul>
+<h2 id="第二章-weex通用样式"><a href="#第二章-weex通用样式" class="headerlink" title="第二章 weex通用样式"></a>第二章 weex通用样式</h2><h3 id="2-1-weex通用样式介绍"><a href="#2-1-weex通用样式介绍" class="headerlink" title="2-1 weex通用样式介绍"></a>2-1 weex通用样式介绍</h3><ul>
+<li><p>适配和缩略</p>
+<ul>
+<li><p>weex对于长度值目前只支持像素值，不支持相对单位(em,rem);适配以750px标准</p>
+<ul>
+<li>屏幕适配系数，使用scale</li>
+</ul>
+</li>
+<li><p>设定边框，border不支持简写，如border:1px solid #ffffff;</p>
+</li>
+<li><p>设定背景色不支持background:#000000;这个写法，需要写成background-color:#000000;</p>
+</li>
+</ul>
+</li>
+</ul>
+<h3 id="2-2-weex通用组件的介绍"><a href="#2-2-weex通用组件的介绍" class="headerlink" title="2-2 weex通用组件的介绍"></a>2-2 weex通用组件的介绍</h3><ul>
+<li><p>定位</p>
+<ul>
+<li><p>weex支持position定位，relative|absolute|fixed|sticky，默认值为relative</p>
+</li>
+<li><p>weex目前不支持z-index设置元素层级关系，但靠后的元素层级更高，因此，对于层级高的元素，可将其排列在后面</p>
+</li>
+<li><p>如果定位元素超过容器边界，在Android下，超出部分将不可见，原因在于Android端元素overflow默认值为hidden</p>
+</li>
+</ul>
+</li>
+<li><p>其余需要注意的地方</p>
+<ul>
+<li><p>weex支持线性渐变linner-gradient不支持radial-gradient径向渐变</p>
+</li>
+<li><p>weex中box-shadow仅仅支持IOS</p>
+</li>
+<li><p>目前&lt;image&gt;组件无法定义一个或几个角的border-radius，只对IOS有效，对Android无效</p>
+</li>
+<li><p>weex中，flexbox是默认并且唯一的布局模型，每个元素都默认拥有了display:flex属性</p>
+</li>
+</ul>
+</li>
+</ul>
+<h2 id="第三章-weex内建组件"><a href="#第三章-weex内建组件" class="headerlink" title="第三章 weex内建组件"></a>第三章 weex内建组件</h2><h3 id="3-1-lt-a-gt-组件"><a href="#3-1-lt-a-gt-组件" class="headerlink" title="3-1 &lt;a&gt;组件"></a>3-1 &lt;a&gt;组件</h3><ul>
+<li><p>weex中a组件定义了指向weex页面打包后的一个js地址</p>
+<ul>
+<li>a组件无法跳转html页面（后面会介绍怎么跳转html页面）</li>
+</ul>
+</li>
+<li><p>组件中无法添加文本，需要在其中加上text组件才能添加文本</p>
+</li>
+<li><p>此组件支持除自己外的所有weex组件作为子组件</p>
+</li>
+<li><p>支持所有通用样式</p>
+</li>
+<li><p>请不要为&lt;a&gt;组件添加click事件</p>
+</li>
+</ul>
+<h3 id="3-2-lt-web-gt-组件"><a href="#3-2-lt-web-gt-组件" class="headerlink" title="3-2 &lt;web&gt;组件"></a>3-2 &lt;web&gt;组件</h3><ul>
+<li><p>&lt;web&gt;组件用于在页面中嵌入一张网页；src用以指定资源地址</p>
+</li>
+<li><p>不支持任何子组件</p>
+</li>
+<li><p>pagestart，&lt;web&gt;组件开始加载时执行</p>
+</li>
+<li><p>pagefinish，&lt;web&gt;组件完成加载时执行</p>
+</li>
+<li><p>error，&lt;web&gt;组件加载错误时执行</p>
+</li>
+</ul>
+<h3 id="3-3-lt-webview-gt-组件"><a href="#3-3-lt-webview-gt-组件" class="headerlink" title="3-3 &lt;webview&gt;组件"></a>3-3 &lt;webview&gt;组件</h3><ul>
+<li><p>weex内建模块</p>
+<ul>
+<li><p>&lt;webview&gt;模块</p>
+<ul>
+<li><p>一系列&lt;web&gt;组件的操作接口，可以通过this.$refs.el来获取元素的引用</p>
+</li>
+<li><p>引入</p>
+</li>
+</ul>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> webview = weex.requireModule(<span class="string">'webview'</span>);</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>API</p>
+<ul>
+<li><p>goBack(webElement)，加载历史记录里的前一个资源地址</p>
+</li>
+<li><p>goForward(webElement)，加载历史记录里的下一个资源地址</p>
+</li>
+<li><p>reload(webElement)，刷新当前页面</p>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<h3 id="3-4-lt-list-gt-组件——实现下拉刷新和上拉加载"><a href="#3-4-lt-list-gt-组件——实现下拉刷新和上拉加载" class="headerlink" title="3-4 &lt;list&gt;组件——实现下拉刷新和上拉加载"></a>3-4 &lt;list&gt;组件——实现下拉刷新和上拉加载</h3><ul>
+<li><p>&lt;list&gt;组件</p>
+<ul>
+<li><p>&lt;list&gt;组件是垂直列表功能的核心组件</p>
+</li>
+<li><p>&lt;cell&gt;组件，列表中的子项；类似于html中的ul和li的关系</p>
+</li>
+<li><p>&lt;header&gt;到达屏幕顶部时，吸附在屏幕顶部</p>
+</li>
+<li><p>&lt;refresh&gt;给列表加下拉刷新的功能</p>
+</li>
+<li><p>loadmore事件，loadmoreoffset{number}触发事件所需距离</p>
+</li>
+<li><p>scroll事件列表滚动时触发该事件</p>
+</li>
+<li><p>offset-accuracy{number}控制scroll事件发生的频率。（默认10px）</p>
+</li>
+</ul>
+</li>
+<li><p>&lt;refresh&gt;组件</p>
+<ul>
+<li><p>用于提供下拉加载功能。&lt;scroller&gt;和&lt;list&gt;的子组件，只有被这两个组件包含时才能正常展示</p>
+</li>
+<li><p>refresh事件，当list组件和scroller组件被下拉时触发</p>
+</li>
+<li><p>pullingdown事件</p>
+</li>
+</ul>
+</li>
+</ul>
+<h2 id="vue基础知识"><a href="#vue基础知识" class="headerlink" title="vue基础知识"></a>vue基础知识</h2><h3 id="vue-router介绍"><a href="#vue-router介绍" class="headerlink" title="vue-router介绍"></a>vue-router介绍</h3><ul>
+<li><p>vue-router介绍</p>
+<ul>
+<li><p>针对vue.js开发的一个前端路由工具，可以方便快速的开发单页应用</p>
+</li>
+<li><p>vue-router是以vue.js插件的形式存在的，我们在使用vue-router之前需要先引入vue文件。因为vue是weex内置的前端框架，所以不需要再引入一次了，只需要引入vue-router并注册就可以了</p>
+</li>
+<li><p>我们需要在template模板中添加&lt;router-view&gt;的方式定了路由的出口，路由匹配到了对应的vue文件就会替换这个标签</p>
+</li>
+<li><p>在我们向应用中注册router之前，需要先创建一个路由实例，并且配置对应的路由规则</p>
+</li>
+<li><p>在应用中注入路由功能，我们还需要给入口组件添加router属性，使应用和路由建立联系</p>
+</li>
+</ul>
+</li>
+</ul>
+
+        </div>
+
+        
+            <section class="post-copyright">
+                
+                    <p class="copyright-item">
+                        <span>Author:</span>
+                        <span>Mosan</span>
+                    </p>
+                
+                
+                    <p class="copyright-item">
+                        <span>Permalink:</span>
+                        <span><a href="https://mengsha97.github.io/2020/12/13/imooc-weex-entry/">https://mengsha97.github.io/2020/12/13/imooc-weex-entry/</a></span>
+                    </p>
+                
+                
+                
+
+            </section>
+        
+        <section class="post-tags">
+            <div>
+                <span>Tag(s):</span>
+                <span class="tag">
+                    
+                    
+                        <a href="/tags/vue/"># vue</a>
+                    
+                        <a href="/tags/weex/"># weex</a>
+                    
+                        <a href="/tags/APP%E5%BC%80%E5%8F%91/"># APP开发</a>
+                    
+                        <a href="/tags/rax/"># rax</a>
+                    
+                        
+                </span>
+            </div>
+            <div>
+                <a href="javascript:window.history.back();">back</a>
+                <span>· </span>
+                <a href="/">home</a>
+            </div>
+        </section>
+        <section class="post-nav">
+            
+            
+            <a class="next" rel="next" href="/2020/12/05/imooc-es6fast/">【慕课网】带你快速入坑ES6</a>
+            
+        </section>
+
+
+    </article>
+</div>
+
+        </div>
+        <footer id="footer" class="footer">
+    <div class="copyright">
+        <span>© Mosan | Powered by <a href="https://hexo.io" target="_blank">Hexo</a> & <a href="https://github.com/Siricee/hexo-theme-Chic" target="_blank">Chic</a></span>
+    </div>
+</footer>
+
+    </div>
+</body>
+</html>
