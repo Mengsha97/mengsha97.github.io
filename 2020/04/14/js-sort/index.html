@@ -12,7 +12,7 @@
 
 
 
-<title>JavaScript中数组的sort函数 | Mosan&#39;s blog</title>
+<title>【学习记录】JavaScript中数组的sort函数 | Mosan&#39;s blog</title>
 
 
 
@@ -148,7 +148,7 @@
     
     <article class="post-wrap">
         <header class="post-header">
-            <h1 class="post-title">JavaScript中数组的sort函数</h1>
+            <h1 class="post-title">【学习记录】JavaScript中数组的sort函数</h1>
             
                 <div class="post-meta">
                     
@@ -174,16 +174,18 @@
 
         <div class="post-content">
             <p>JavaScript中的数组的sort函数使用示例<br>假如数组一开始是这样的</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">items:[23,23,11,2,41,67,23,23231]</span><br></pre></td></tr></table></figure>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">items:[<span class="number">23</span>,<span class="number">23</span>,<span class="number">11</span>,<span class="number">2</span>,<span class="number">41</span>,<span class="number">67</span>,<span class="number">23</span>,<span class="number">23231</span>]</span><br></pre></td></tr></table></figure>
+
 <p>使用完sort后</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">sortitems:function()&#123;</span><br><span class="line">    return this.items.sort()</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">sortitems:<span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;</span><br><span class="line">    <span class="keyword">return</span> <span class="keyword">this</span>.items.sort()</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
 <p>结果</p>
 <p><img src="/image/jssort1.png" alt="jssort1"></p>
 <p>显然可以看出它的排序结果是一个一个位的数字来排的，从第一位（左边第一位）开始排，为了让它能够实现我们想要的效果，可以添加一个这样的函数：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">function sortNumber(a,b)&#123;</span><br><span class="line">    return a-b;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">sortNumber</span>(<span class="params">a,b</span>)</span>&#123;</span><br><span class="line">    <span class="keyword">return</span> a-b;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 
 <p>然后在使用sort时，把函数名放在sort函数的调用里，即</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">sortitems:function()&#123;</span><br><span class="line">    return this.items.sort(sortNumber)</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">sortitems:<span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;</span><br><span class="line">    <span class="keyword">return</span> <span class="keyword">this</span>.items.sort(sortNumber)</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 
 <p>就可以得到想要的结果了</p>
 <p><img src="/image/jssort2.png" alt="jssort2"></p>
@@ -232,7 +234,7 @@
         </section>
         <section class="post-nav">
             
-                <a class="prev" rel="prev" href="/2020/04/15/interview-record/">面试记录</a>
+                <a class="prev" rel="prev" href="/2020/04/15/interview-record/">【面试记录】</a>
             
             
             <a class="next" rel="next" href="/2020/04/14/jspang-basic-vue/">【技术胖】vue2.X</a>

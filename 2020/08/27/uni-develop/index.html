@@ -12,7 +12,7 @@
 
 
 
-<title>uniapp开发技巧 | Mosan&#39;s blog</title>
+<title>【uniapp】uniapp开发技巧 | Mosan&#39;s blog</title>
 
 
 
@@ -210,7 +210,7 @@
     
     <article class="post-wrap">
         <header class="post-header">
-            <h1 class="post-title">uniapp开发技巧</h1>
+            <h1 class="post-title">【uniapp】uniapp开发技巧</h1>
             
                 <div class="post-meta">
                     
@@ -239,10 +239,10 @@
 <h2 id="2020年8月27日"><a href="#2020年8月27日" class="headerlink" title="2020年8月27日"></a>2020年8月27日</h2><ul>
 <li><p>cover-view不能用flex，不能设置backgroundImage，不能用v-if(之后是否能解决用我们拭目以待)</p>
 </li>
-<li><p>在<router-link>标签上定义样式，在h5中有效，但是在微信小程序中无效</p>
+<li><p>在&lt;router-link&gt;标签上定义样式，在h5中有效，但是在微信小程序中无效</p>
 </li>
 <li><p>用scroll-view组件并且要动态改变scrollTop时，要用下面的方法改变</p>
-  <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">this.scrollTop &#x3D; this.nowScrollTop</span><br><span class="line">this.$nextTick(() &#x3D;&gt; &#123;</span><br><span class="line">    this.scrollTop &#x3D; this.navTop + this.goodsHeght</span><br><span class="line">&#125;)</span><br></pre></td></tr></table></figure>
+  <figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">this</span>.scrollTop = <span class="keyword">this</span>.nowScrollTop</span><br><span class="line"><span class="keyword">this</span>.$nextTick(<span class="function"><span class="params">()</span> =&gt;</span> &#123;</span><br><span class="line">    <span class="keyword">this</span>.scrollTop = <span class="keyword">this</span>.navTop + <span class="keyword">this</span>.goodsHeght</span><br><span class="line">&#125;)</span><br></pre></td></tr></table></figure>
 
 <p>  即要先把现在的高度赋给scrollTop再重新把要赋的值赋给它，这是因为，在页面进行滚动时，scrollTop的值不会发生变化，如果要赋的值跟scrollTop本身的值相同，则scroll-view不进行滚动</p>
 </li>
@@ -290,10 +290,10 @@
         </section>
         <section class="post-nav">
             
-                <a class="prev" rel="prev" href="/2020/08/27/applet-of-wechat-dev/">微信小程序开发技巧</a>
+                <a class="prev" rel="prev" href="/2020/08/27/applet-of-wechat-dev/">【学习记录】微信小程序开发技巧</a>
             
             
-            <a class="next" rel="next" href="/2020/07/19/hideElement/">用CSS隐藏一个元素的方法</a>
+            <a class="next" rel="next" href="/2020/07/19/hideElement/">【学习记录】用CSS隐藏一个元素的方法</a>
             
         </section>
 

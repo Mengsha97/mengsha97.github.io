@@ -12,7 +12,7 @@
 
 
 
-<title>一些跨浏览器的方法 | Mosan&#39;s blog</title>
+<title>【学习记录】一些跨浏览器的方法 | Mosan&#39;s blog</title>
 
 
 
@@ -210,7 +210,7 @@
     
     <article class="post-wrap">
         <header class="post-header">
-            <h1 class="post-title">一些跨浏览器的方法</h1>
+            <h1 class="post-title">【学习记录】一些跨浏览器的方法</h1>
             
                 <div class="post-meta">
                     
@@ -235,14 +235,11 @@
         </header>
 
         <div class="post-content">
-            <h1 id="SVG跨浏览器支持"><a href="#SVG跨浏览器支持" class="headerlink" title="SVG跨浏览器支持"></a>SVG跨浏览器支持</h1><h2 id="方法一"><a href="#方法一" class="headerlink" title="方法一"></a>方法一</h2><p>在img元素内使用“src”属性引用PNG或JPG等低版本浏览器支持的类型，并且用“srcset”属性引用SVG类型，这种情况，支持的浏览器将加载SVG，较旧的浏览器将加载PNG等。例如，</p>
+            <h2 id="SVG跨浏览器支持"><a href="#SVG跨浏览器支持" class="headerlink" title="SVG跨浏览器支持"></a>SVG跨浏览器支持</h2><h3 id="方法一"><a href="#方法一" class="headerlink" title="方法一"></a>方法一</h3><p>在img元素内使用“src”属性引用PNG或JPG等低版本浏览器支持的类型，并且用“srcset”属性引用SVG类型，这种情况，支持的浏览器将加载SVG，较旧的浏览器将加载PNG等。例如，</p>
 <figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">img</span> <span class="attr">src</span>=<span class="string">"equilateral.png"</span> <span class="attr">alt</span>=<span class="string">"triangle with equal sides"</span> <span class="attr">srcset</span>=<span class="string">"equilateral.svg"</span>&gt;</span></span><br></pre></td></tr></table></figure>
 
-<h2 id="方法二"><a href="#方法二" class="headerlink" title="方法二"></a>方法二</h2><p>将SVG作为CSS背景图像，如下,旧浏览器会坚持PNG等，支持SVG的浏览器将加载SVG</p>
-<figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="selector-tag">background</span>: <span class="selector-tag">url</span>("<span class="selector-tag">fallback</span><span class="selector-class">.png</span>") <span class="selector-tag">no-repeat</span> <span class="selector-tag">center</span>;</span><br><span class="line"><span class="selector-tag">background-image</span>: <span class="selector-tag">url</span>("<span class="selector-tag">image</span><span class="selector-class">.svg</span>");</span><br><span class="line"><span class="selector-tag">background-size</span>: <span class="selector-tag">contain</span>;</span><br></pre></td></tr></table></figure>
-
-
-
+<h3 id="方法二"><a href="#方法二" class="headerlink" title="方法二"></a>方法二</h3><p>将SVG作为CSS背景图像，如下,旧浏览器会坚持PNG等，支持SVG的浏览器将加载SVG</p>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">background: url("fallback.png") no-repeat center;</span><br><span class="line">background-image: url("image.svg");</span><br><span class="line">background-size: contain;</span><br></pre></td></tr></table></figure>
 
         </div>
 
@@ -289,7 +286,7 @@
                 <a class="prev" rel="prev" href="/2020/03/31/log-css/">【学习记录】CSS</a>
             
             
-            <a class="next" rel="next" href="/2020/03/29/log-iknow/">“文盲”时刻</a>
+            <a class="next" rel="next" href="/2020/03/29/log-iknow/">【学习记录】“文盲”时刻</a>
             
         </section>
 

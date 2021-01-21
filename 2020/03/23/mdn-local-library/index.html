@@ -236,7 +236,7 @@
 
         <div class="post-content">
             <p>实战网址：<a href="https://developer.mozilla.org/zh-CN/docs/Learn/Server-side/Express_Nodejs" target="_blank" rel="noopener">https://developer.mozilla.org/zh-CN/docs/Learn/Server-side/Express_Nodejs</a><br>源码：<a href="https://github.com/mdn/express-locallibrary-tutorial" target="_blank" rel="noopener">https://github.com/mdn/express-locallibrary-tutorial</a></p>
-<h1 id="搭建开发环境"><a href="#搭建开发环境" class="headerlink" title="搭建开发环境"></a>搭建开发环境</h1><h2 id="安装Node"><a href="#安装Node" class="headerlink" title="安装Node"></a>安装Node</h2><ol>
+<h2 id="搭建开发环境"><a href="#搭建开发环境" class="headerlink" title="搭建开发环境"></a>搭建开发环境</h2><h3 id="安装Node"><a href="#安装Node" class="headerlink" title="安装Node"></a>安装Node</h3><ol>
 <li>下载安装包<ul>
 <li>访问 <a href="https://nodejs.org/zh-cn/" target="_blank" rel="noopener">https://nodejs.org/zh-cn/</a></li>
 <li>点击“推荐多数用户使用”（LTS），下载。</li>
@@ -246,47 +246,55 @@
 <li>测试Node.js与npm是否安装成功</li>
 </ol>
 <p>在命令行种输入：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ node -v</span><br></pre></td></tr></table></figure>
+<figure class="highlight powershell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="variable">$</span> node <span class="literal">-v</span></span><br></pre></td></tr></table></figure>
+
 <p>与：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ npm -v</span><br></pre></td></tr></table></figure>
+<figure class="highlight powershell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="variable">$</span> npm <span class="literal">-v</span></span><br></pre></td></tr></table></figure>
+
 <p>看是否返回结果</p>
-<h2 id="安装Express应用生成器"><a href="#安装Express应用生成器" class="headerlink" title="安装Express应用生成器"></a>安装Express应用生成器</h2><p>Express应用生成器工具可以生成一个Express应用的“框架”，用npm全局安装（-g 参数可以将该工具全局安装，这样就可以在任意应用中使用了）</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ npm install express-generator -g</span><br></pre></td></tr></table></figure>
-<h3 id="示例："><a href="#示例：" class="headerlink" title="示例："></a>示例：</h3><p>创建一个名为“helloword”的Express应用</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ express helloword</span><br></pre></td></tr></table></figure>
+<h3 id="安装Express应用生成器"><a href="#安装Express应用生成器" class="headerlink" title="安装Express应用生成器"></a>安装Express应用生成器</h3><p>Express应用生成器工具可以生成一个Express应用的“框架”，用npm全局安装（-g 参数可以将该工具全局安装，这样就可以在任意应用中使用了）</p>
+<figure class="highlight powershell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="variable">$</span> npm install express<span class="literal">-generator</span> <span class="literal">-g</span></span><br></pre></td></tr></table></figure>
+
+<h4 id="示例"><a href="#示例" class="headerlink" title="示例"></a>示例</h4><p>创建一个名为“helloword”的Express应用</p>
+<figure class="highlight powershell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="variable">$</span> express helloword</span><br></pre></td></tr></table></figure>
+
 <p>安装应用的所有依赖</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">$ cd helloworld</span><br><span class="line">$ npm install</span><br></pre></td></tr></table></figure>
+<figure class="highlight powershell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="variable">$</span> cd helloworld</span><br><span class="line"><span class="variable">$</span> npm install</span><br></pre></td></tr></table></figure>
+
 <p>运行这个应用（Windows环境）：</p>
 <figure class="highlight powershell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&gt; SET DEBUG=helloworld:* &amp; npm start</span><br></pre></td></tr></table></figure>
+
 <p>(Linux/macOS环境)</p>
 <figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">$</span><span class="bash"> DEBUG=helloworld:* npm start</span></span><br></pre></td></tr></table></figure>
+
 <p>这样设置之后，只要执行下面的命令，应用即启动，默认是3000端口</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ npm start</span><br></pre></td></tr></table></figure>
+<figure class="highlight powershell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="variable">$</span> npm start</span><br></pre></td></tr></table></figure>
 
+<h3 id="开发依赖"><a href="#开发依赖" class="headerlink" title="开发依赖"></a>开发依赖</h3><h4 id="eslint-一款流行的JavaScript-lint工具"><a href="#eslint-一款流行的JavaScript-lint工具" class="headerlink" title="eslint(一款流行的JavaScript lint工具)"></a>eslint(一款流行的JavaScript lint工具)</h4><p>在当前项目的根目录下调用npm</p>
+<figure class="highlight powershell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="variable">$</span> npm install eslint -<span class="literal">-save</span><span class="literal">-dev</span></span><br></pre></td></tr></table></figure>
 
-<h2 id="开发依赖"><a href="#开发依赖" class="headerlink" title="开发依赖"></a>开发依赖</h2><h3 id="eslint-一款流行的JavaScript-lint工具"><a href="#eslint-一款流行的JavaScript-lint工具" class="headerlink" title="eslint(一款流行的JavaScript lint工具)"></a>eslint(一款流行的JavaScript lint工具)</h3><p>在当前项目的根目录下调用npm</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ npm install eslint --save-dev</span><br></pre></td></tr></table></figure>
-
-<h1 id="创建站点框架"><a href="#创建站点框架" class="headerlink" title="创建站点框架"></a>创建站点框架</h1><h2 id="Pug——选择视图引擎"><a href="#Pug——选择视图引擎" class="headerlink" title="Pug——选择视图引擎"></a>Pug——选择视图引擎</h2><p>Express 应用生成器支持多款流行的视图/模板引擎，包括 EJS、Hbs、Pug (Jade)、Twig 和 Vash，缺省选项是 Jade。Express 本身也支持大量其他模板语言，开箱即用。<br>本项目选用 Pug 模板引擎（Jade 是它不久前的曾用名），它是最流行的 Express / JavaScript 模板语言之一，且对 Express 生成器 开箱即用。</p>
-<h2 id="创建项目"><a href="#创建项目" class="headerlink" title="创建项目"></a>创建项目</h2><p>为本地图书馆应用创建一个名为 express-locallibrary-tutorial 的项目，使用 Pug 模板库，不使用 CSS 引擎。<br>进入要创建项目的文件根目录，执行下列命令</p>
+<h2 id="创建站点框架"><a href="#创建站点框架" class="headerlink" title="创建站点框架"></a>创建站点框架</h2><h3 id="Pug——选择视图引擎"><a href="#Pug——选择视图引擎" class="headerlink" title="Pug——选择视图引擎"></a>Pug——选择视图引擎</h3><p>Express 应用生成器支持多款流行的视图/模板引擎，包括 EJS、Hbs、Pug (Jade)、Twig 和 Vash，缺省选项是 Jade。Express 本身也支持大量其他模板语言，开箱即用。<br>本项目选用 Pug 模板引擎（Jade 是它不久前的曾用名），它是最流行的 Express / JavaScript 模板语言之一，且对 Express 生成器 开箱即用。</p>
+<h3 id="创建项目"><a href="#创建项目" class="headerlink" title="创建项目"></a>创建项目</h3><p>为本地图书馆应用创建一个名为 express-locallibrary-tutorial 的项目，使用 Pug 模板库，不使用 CSS 引擎。<br>进入要创建项目的文件根目录，执行下列命令</p>
 <figure class="highlight powershell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="variable">$</span> mkdir express<span class="literal">-locallibrary</span><span class="literal">-tutorial</span></span><br><span class="line"><span class="variable">$</span> cd express<span class="literal">-locallibrary</span><span class="literal">-tutorial</span></span><br><span class="line"><span class="variable">$</span> express -<span class="literal">-view</span>=pug</span><br><span class="line"><span class="variable">$</span> npm install</span><br><span class="line"><span class="variable">$</span> DEBUG=express<span class="literal">-locallibrary</span><span class="literal">-tutorial</span>:* npm start</span><br></pre></td></tr></table></figure>
+
 <p>一个Express应用就配置成功了，它托管于localhost:3000</p>
-<h2 id="nodemon——文件改动时重启服务器"><a href="#nodemon——文件改动时重启服务器" class="headerlink" title="nodemon——文件改动时重启服务器"></a>nodemon——文件改动时重启服务器</h2><p>nodemon是最简便的服务器重启自动化工具。通常将其全局安装（因为它是一个“工具”）</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ npm install nodemon -g</span><br></pre></td></tr></table></figure>
+<h3 id="nodemon——文件改动时重启服务器"><a href="#nodemon——文件改动时重启服务器" class="headerlink" title="nodemon——文件改动时重启服务器"></a>nodemon——文件改动时重启服务器</h3><p>nodemon是最简便的服务器重启自动化工具。通常将其全局安装（因为它是一个“工具”）</p>
+<figure class="highlight powershell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="variable">$</span> npm install nodemon <span class="literal">-g</span></span><br></pre></td></tr></table></figure>
 
 <p>通过以下命令将其安装在骨架项目的根目录：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ npm install --save-dev nodemon</span><br></pre></td></tr></table></figure>
+<figure class="highlight powershell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="variable">$</span> npm install -<span class="literal">-save</span><span class="literal">-dev</span> nodemon</span><br></pre></td></tr></table></figure>
 
 <p>找的package.json的scripts部分。在”start”一行的末尾添加都好，并在新的一行中添加”devstart”，如下：</p>
 <figure class="highlight"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">"scripts":&#123;</span><br><span class="line">    "start":"node ./bin/www",</span><br><span class="line">    "devstart":"nodemon ./bin/www"</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 
 <p>新建devstart命令</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ DEBUG&#x3D;express-locallibrary-tutorial:* npm run devstart</span><br></pre></td></tr></table></figure>
+<figure class="highlight powershell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="variable">$</span> DEBUG=express<span class="literal">-locallibrary</span><span class="literal">-tutorial</span>:* npm run devstart</span><br></pre></td></tr></table></figure>
 
 <p>之后用</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ npm run devstart</span><br></pre></td></tr></table></figure>
+<figure class="highlight powershell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="variable">$</span> npm run devstart</span><br></pre></td></tr></table></figure>
+
 <p>即可启动应用，并且在文件更改后，服务器会重启</p>
-<h1 id="使用数据库（Mongoose）"><a href="#使用数据库（Mongoose）" class="headerlink" title="使用数据库（Mongoose）"></a>使用数据库（Mongoose）</h1>
+<h2 id="使用数据库（Mongoose）"><a href="#使用数据库（Mongoose）" class="headerlink" title="使用数据库（Mongoose）"></a>使用数据库（Mongoose）</h2>
         </div>
 
         

@@ -236,28 +236,29 @@
 
         <div class="post-content">
             <p>讲师：Bosn<br>课程：<a href="https://www.imooc.com/learn/277" target="_blank" rel="noopener">https://www.imooc.com/learn/277</a></p>
-<h1 id="第一章-数据类型"><a href="#第一章-数据类型" class="headerlink" title="第一章 数据类型"></a>第一章 数据类型</h1><p>弱类型特性</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">32+32 &#x2F;&#x2F;64</span><br><span class="line">&quot;32&quot;+32 &#x2F;&#x2F;&quot;3232&quot;</span><br><span class="line">&quot;32&quot;-32 &#x2F;&#x2F;0</span><br></pre></td></tr></table></figure>
-<h2 id="数据类型"><a href="#数据类型" class="headerlink" title="数据类型"></a>数据类型</h2><h3 id="原始类型"><a href="#原始类型" class="headerlink" title="原始类型"></a>原始类型</h3><ul>
+<h2 id="第一章-数据类型"><a href="#第一章-数据类型" class="headerlink" title="第一章 数据类型"></a>第一章 数据类型</h2><p>弱类型特性</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="number">32</span>+<span class="number">32</span> <span class="comment">//64</span></span><br><span class="line"><span class="string">"32"</span>+<span class="number">32</span> <span class="comment">//"3232"</span></span><br><span class="line"><span class="string">"32"</span><span class="number">-32</span> <span class="comment">//0</span></span><br></pre></td></tr></table></figure>
+
+<h3 id="数据类型"><a href="#数据类型" class="headerlink" title="数据类型"></a>数据类型</h3><h4 id="原始类型"><a href="#原始类型" class="headerlink" title="原始类型"></a>原始类型</h4><ul>
 <li>number</li>
 <li>string</li>
 <li>boolean</li>
 <li>null</li>
 <li>undefined</li>
 </ul>
-<h3 id="对象类型"><a href="#对象类型" class="headerlink" title="对象类型"></a>对象类型</h3><ul>
+<h4 id="对象类型"><a href="#对象类型" class="headerlink" title="对象类型"></a>对象类型</h4><ul>
 <li>Function</li>
 <li>Array</li>
 <li>Date</li>
 <li>……</li>
 </ul>
-<h2 id="隐式转换"><a href="#隐式转换" class="headerlink" title="隐式转换"></a>隐式转换</h2><h3 id="和"><a href="#和" class="headerlink" title="+和-"></a>+和-</h3><p>巧用+/-规则转换类型</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">num-0 &#x2F;&#x2F;将字符转换成数字</span><br><span class="line">num+&#39;&#39; &#x2F;&#x2F;将数字转换成字符</span><br></pre></td></tr></table></figure>
+<h3 id="隐式转换"><a href="#隐式转换" class="headerlink" title="隐式转换"></a>隐式转换</h3><h4 id="和"><a href="#和" class="headerlink" title="+和-"></a>+和-</h4><p>巧用+/-规则转换类型</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">num<span class="number">-0</span> <span class="comment">//将字符转换成数字</span></span><br><span class="line">num+<span class="string">''</span> <span class="comment">//将数字转换成字符</span></span><br></pre></td></tr></table></figure>
 
-<h3 id="a-b"><a href="#a-b" class="headerlink" title="a==b"></a>a==b</h3><p>以下都为true</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">&quot;1.23&quot; &#x3D;&#x3D; 1.23</span><br><span class="line">0 &#x3D;&#x3D; false</span><br><span class="line">null &#x3D;&#x3D; undefined</span><br><span class="line">new Object() &#x3D;&#x3D; new Object()</span><br><span class="line">[1,2] &#x3D;&#x3D; [1,2]</span><br></pre></td></tr></table></figure>
+<h4 id="a-b"><a href="#a-b" class="headerlink" title="a==b"></a>a==b</h4><p>以下都为true</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="string">"1.23"</span> == <span class="number">1.23</span></span><br><span class="line"><span class="number">0</span> == <span class="literal">false</span></span><br><span class="line"><span class="literal">null</span> == <span class="literal">undefined</span></span><br><span class="line"><span class="keyword">new</span> <span class="built_in">Object</span>() == <span class="keyword">new</span> <span class="built_in">Object</span>()</span><br><span class="line">[<span class="number">1</span>,<span class="number">2</span>] == [<span class="number">1</span>,<span class="number">2</span>]</span><br></pre></td></tr></table></figure>
 
-<h3 id="a-b-1"><a href="#a-b-1" class="headerlink" title="a === b"></a>a === b</h3><p>先比较类型</p>
+<h4 id="a-b-1"><a href="#a-b-1" class="headerlink" title="a === b"></a>a === b</h4><p>先比较类型</p>
 <ul>
 <li>类型不同，返回false</li>
 <li>类型相同：（以下为true)<ul>
@@ -269,13 +270,13 @@
 </ul>
 </li>
 </ul>
-<h3 id="类型转换和比较"><a href="#类型转换和比较" class="headerlink" title="类型转换和比较"></a>类型转换和比较</h3><ul>
+<h4 id="类型转换和比较"><a href="#类型转换和比较" class="headerlink" title="类型转换和比较"></a>类型转换和比较</h4><ul>
 <li>null == undefined 相等</li>
 <li>number == string 转number 1 == “1.0” //true</li>
 <li>boolean == ? 转number 1 == true //true</li>
 <li>object == number|string 尝试对象转为基本类型，new String(“hi”) == “hi” //true<br>其他false</li>
 </ul>
-<h2 id="包装对象"><a href="#包装对象" class="headerlink" title="包装对象"></a>包装对象</h2><h1 id="第二章-表达式和运算符"><a href="#第二章-表达式和运算符" class="headerlink" title="第二章 表达式和运算符"></a>第二章 表达式和运算符</h1><h1 id="第三章-语句"><a href="#第三章-语句" class="headerlink" title="第三章 语句"></a>第三章 语句</h1><h1 id="第四章-对象"><a href="#第四章-对象" class="headerlink" title="第四章 对象"></a>第四章 对象</h1><h1 id="第五章-数组"><a href="#第五章-数组" class="headerlink" title="第五章 数组"></a>第五章 数组</h1><h1 id="第六章-函数和作用域（函数、this）"><a href="#第六章-函数和作用域（函数、this）" class="headerlink" title="第六章 函数和作用域（函数、this）"></a>第六章 函数和作用域（函数、this）</h1><h1 id="第七章-函数和作用域（闭包、作用域）"><a href="#第七章-函数和作用域（闭包、作用域）" class="headerlink" title="第七章 函数和作用域（闭包、作用域）"></a>第七章 函数和作用域（闭包、作用域）</h1><h1 id="第八章-OOP（上）"><a href="#第八章-OOP（上）" class="headerlink" title="第八章 OOP（上）"></a>第八章 OOP（上）</h1><h1 id="第九章-OOP（下）"><a href="#第九章-OOP（下）" class="headerlink" title="第九章 OOP（下）"></a>第九章 OOP（下）</h1>
+<h3 id="包装对象"><a href="#包装对象" class="headerlink" title="包装对象"></a>包装对象</h3><h2 id="第二章-表达式和运算符"><a href="#第二章-表达式和运算符" class="headerlink" title="第二章 表达式和运算符"></a>第二章 表达式和运算符</h2><h2 id="第三章-语句"><a href="#第三章-语句" class="headerlink" title="第三章 语句"></a>第三章 语句</h2><h2 id="第四章-对象"><a href="#第四章-对象" class="headerlink" title="第四章 对象"></a>第四章 对象</h2><h2 id="第五章-数组"><a href="#第五章-数组" class="headerlink" title="第五章 数组"></a>第五章 数组</h2><h2 id="第六章-函数和作用域（函数、this）"><a href="#第六章-函数和作用域（函数、this）" class="headerlink" title="第六章 函数和作用域（函数、this）"></a>第六章 函数和作用域（函数、this）</h2><h2 id="第七章-函数和作用域（闭包、作用域）"><a href="#第七章-函数和作用域（闭包、作用域）" class="headerlink" title="第七章 函数和作用域（闭包、作用域）"></a>第七章 函数和作用域（闭包、作用域）</h2><h2 id="第八章-OOP（上）"><a href="#第八章-OOP（上）" class="headerlink" title="第八章 OOP（上）"></a>第八章 OOP（上）</h2><h2 id="第九章-OOP（下）"><a href="#第九章-OOP（下）" class="headerlink" title="第九章 OOP（下）"></a>第九章 OOP（下）</h2>
         </div>
 
         

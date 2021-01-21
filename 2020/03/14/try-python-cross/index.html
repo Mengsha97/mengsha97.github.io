@@ -188,7 +188,7 @@
 <li><p>打开命令提示符，检查Python是否安装，输入以下命令：（“V”是大写）</p>
 </li>
 </ol>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">python -V</span><br></pre></td></tr></table></figure>
+<figure class="highlight powershell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">python <span class="literal">-V</span></span><br></pre></td></tr></table></figure>
 
 <ol start="3">
 <li><p>使用cd命令导航到示例所在的目录。</p>
@@ -196,7 +196,7 @@
 <li><p>输入命令在该目录中启动服务器：</p>
 </li>
 </ol>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">#如果上面返回的Python版本是3.X</span><br><span class="line">python -m http.server</span><br><span class="line">#如果上面返回的Python版本是2.X</span><br><span class="line">python -m SimpleHTTPServer</span><br></pre></td></tr></table></figure>
+<figure class="highlight powershell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">#如果上面返回的Python版本是3.X</span></span><br><span class="line">python <span class="literal">-m</span> http.server</span><br><span class="line"><span class="comment">#如果上面返回的Python版本是2.X</span></span><br><span class="line">python <span class="literal">-m</span> SimpleHTTPServer</span><br></pre></td></tr></table></figure>
 
 <ol start="5">
 <li>默认情况下这将在本地Web服务器上的端口8000上运行目录的内容，可以通过转到localhost:8000Web浏览器中的URL来访问此服务器。在这里可以看到列出的目录的内容，点击想运行的HTML文件。</li>

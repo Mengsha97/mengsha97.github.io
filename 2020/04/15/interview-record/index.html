@@ -12,7 +12,7 @@
 
 
 
-<title>面试记录 | Mosan&#39;s blog</title>
+<title>【面试记录】 | Mosan&#39;s blog</title>
 
 
 
@@ -210,7 +210,7 @@
     
     <article class="post-wrap">
         <header class="post-header">
-            <h1 class="post-title">面试记录</h1>
+            <h1 class="post-title">【面试记录】</h1>
             
                 <div class="post-meta">
                     
@@ -310,11 +310,12 @@
 </tbody></table>
 <h2 id="JavaScript"><a href="#JavaScript" class="headerlink" title="JavaScript"></a>JavaScript</h2><h2 id="Vue-js"><a href="#Vue-js" class="headerlink" title="Vue.js"></a>Vue.js</h2><h3 id="对单页面（SPA）的理解"><a href="#对单页面（SPA）的理解" class="headerlink" title="对单页面（SPA）的理解"></a>对单页面（SPA）的理解</h3><h3 id="单页面和多页面的区别"><a href="#单页面和多页面的区别" class="headerlink" title="单页面和多页面的区别"></a>单页面和多页面的区别</h3><h3 id="什么时候用单页面，什么时候用多页面"><a href="#什么时候用单页面，什么时候用多页面" class="headerlink" title="什么时候用单页面，什么时候用多页面"></a>什么时候用单页面，什么时候用多页面</h3><h3 id="vue中构造器的选项computed和watch的区别"><a href="#vue中构造器的选项computed和watch的区别" class="headerlink" title="vue中构造器的选项computed和watch的区别"></a>vue中构造器的选项computed和watch的区别</h3><p>简单来说就是computed是监听被多个值影响的一个值，watch是监听一个值影响多个值的值，比如：</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">watch:&#123;</span><br><span class="line">    temp:function(newVal,oldVal)&#123;</span><br><span class="line">        if(newVal&gt;&#x3D;26)&#123;</span><br><span class="line">            this.advise &#x3D; advisearray[0]</span><br><span class="line">        &#125;else if(newVal&lt;26&amp;&amp;newVal&gt;0)&#123;</span><br><span class="line">            this.advise &#x3D; advisearray[1]</span><br><span class="line">        &#125;else&#123;</span><br><span class="line">            this.advise &#x3D; advisearray[2]</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
 <p>temp是在data中已经定义过的值，此处监听temp的变化，如果temp变化了则执行函数</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">computed:&#123;</span><br><span class="line">    newPrice:function()&#123;</span><br><span class="line">        return &#39;￥&#39;+this.price+&#39;元&#39;</span><br><span class="line">    &#125;,</span><br><span class="line">    reverseNews:function()&#123;</span><br><span class="line">        return this.newsList.reverse();</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
 <p>computed监听的值不能在data中定义过，如果computed中监听的值的依赖值（即函数内调用过的值）发生了变化，则执行函数，该值也会发生变化</p>
 <h3 id="v-show和v-if的区别"><a href="#v-show和v-if的区别" class="headerlink" title="v-show和v-if的区别"></a>v-show和v-if的区别</h3><h2 id="React"><a href="#React" class="headerlink" title="React"></a>React</h2><h2 id="MongoDB"><a href="#MongoDB" class="headerlink" title="MongoDB"></a>MongoDB</h2><h2 id="Node-js"><a href="#Node-js" class="headerlink" title="Node.js"></a>Node.js</h2><h3 id="模块系统的文件查找机制"><a href="#模块系统的文件查找机制" class="headerlink" title="模块系统的文件查找机制"></a>模块系统的文件查找机制</h3><div id="flowchart-0" class="flow-chart"></div>
-
 
 <h2 id="Linux"><a href="#Linux" class="headerlink" title="Linux"></a>Linux</h2><h2 id="其他"><a href="#其他" class="headerlink" title="其他"></a>其他</h2><h3 id="遇到过印象深刻的bug，是怎么解决的"><a href="#遇到过印象深刻的bug，是怎么解决的" class="headerlink" title="遇到过印象深刻的bug，是怎么解决的"></a>遇到过印象深刻的bug，是怎么解决的</h3><script src="https://cdnjs.cloudflare.com/ajax/libs/raphael/2.2.7/raphael.min.js"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/flowchart/1.6.5/flowchart.min.js"></script><textarea id="flowchart-0-code" style="display: none">st=>start: 开始
 cond1=>condition: 不在文件模块缓存区中?
@@ -381,7 +382,7 @@ op5->e</textarea><textarea id="flowchart-0-options" style="display: none">{"scal
                 <a class="prev" rel="prev" href="/2020/04/15/imooc-csslayout/">【慕课网】一课全面掌握主流CSS布局</a>
             
             
-            <a class="next" rel="next" href="/2020/04/14/js-sort/">JavaScript中数组的sort函数</a>
+            <a class="next" rel="next" href="/2020/04/14/js-sort/">【学习记录】JavaScript中数组的sort函数</a>
             
         </section>
 
