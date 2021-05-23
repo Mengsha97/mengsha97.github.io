@@ -1,1 +1,20 @@
-<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>学习记录 on Simona's Blog</title><link>https://mengsha97.github.io/categories/%E5%AD%A6%E4%B9%A0%E8%AE%B0%E5%BD%95/</link><description>Recent content in 学习记录 on Simona's Blog</description><generator>Hugo -- gohugo.io</generator><language>zh-CN</language><lastBuildDate>Tue, 17 Mar 2020 20:27:28 +0000</lastBuildDate><atom:link href="https://mengsha97.github.io/categories/%E5%AD%A6%E4%B9%A0%E8%AE%B0%E5%BD%95/index.xml" rel="self" type="application/rss+xml"/><item><title>【学习记录】初试Atom</title><link>https://mengsha97.github.io/posts/atomlog/</link><pubDate>Tue, 17 Mar 2020 20:27:28 +0000</pubDate><guid>https://mengsha97.github.io/posts/atomlog/</guid><description>处理CSS前缀 安装Autoprefixer插件 在代码中，选择要添加前缀的CSS部分，打开命令面板（Cmd/Ctrl+Shift+P），然后输</description></item></channel></rss>
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>学习记录 on Simona&#39;s Blog</title>
+    <link>https://mengsha97.github.io/categories/%E5%AD%A6%E4%B9%A0%E8%AE%B0%E5%BD%95/</link>
+    <description>Recent content in 学习记录 on Simona&#39;s Blog</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>zh-CN</language>
+    <lastBuildDate>Tue, 17 Mar 2020 20:27:28 +0000</lastBuildDate><atom:link href="https://mengsha97.github.io/categories/%E5%AD%A6%E4%B9%A0%E8%AE%B0%E5%BD%95/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>【学习记录】初试Atom</title>
+      <link>https://mengsha97.github.io/posts/atomlog/</link>
+      <pubDate>Tue, 17 Mar 2020 20:27:28 +0000</pubDate>
+      
+      <guid>https://mengsha97.github.io/posts/atomlog/</guid>
+      <description>处理CSS前缀 安装Autoprefixer插件 在代码中，选择要添加前缀的CSS部分，打开命令面板（Cmd/Ctrl+Shift+P），然后输</description>
+    </item>
+    
+  </channel>
+</rss>
