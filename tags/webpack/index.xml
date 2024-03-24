@@ -1,15 +1,1 @@
-<rss xmlns:atom="http://www.w3.org/2005/Atom" version="2.0"><channel><title>webpack - 标签 - Simona's Blog</title><link>http://mengsha97.github.io/tags/webpack/</link><description>webpack - 标签 - Simona's Blog</description><generator>Hugo -- gohugo.io</generator><language>zh-cn</language><lastBuildDate>Wed, 01 Apr 2020 21:40:59 +0000</lastBuildDate><atom:link href="http://mengsha97.github.io/tags/webpack/" rel="self" type="application/rss+xml"/><item><title>【慕课网】从基础到实战 手把手带你掌握新版Webpack4.0</title><link>http://mengsha97.github.io/posts/imooc-webpack4/</link><pubDate>Wed, 01 Apr 2020 21:40:59 +0000</pubDate><author><name>Simona</name><uri>https://github.com/Mengsha97</uri><email>laimengsha@qq.com</email></author><guid>http://mengsha97.github.io/posts/imooc-webpack4/</guid><description><![CDATA[讲师：Dell 课程：https://coding.imooc.com/class/chapter/316.html#Anchor webpack 的两种安装方式 全局安装 npm install webpack webpack-cli -g 尽量不要全局安装，因为有时不同的项目是用不同版本的 webpack 打包的
-卸载 webpack
-npm uninstall webpack webpack-cli -g 在命令行输入
-webpack -v 检验是否安装成功
-在项目内安装 npm install webpack webpack-cli -D 或
-npm install webpack webpack-cli --save-dev &ldquo;&ndash;save-dev&quot;等价于&rdquo;-D&quot;
-在命令行输入
-npx webpack -v 检验是否安装成功，使用 npx 是在当前目录下找命令
-安装固定版本号的 webpack
-npm install webpack@XX.XX.XX webpack-cli -D 安装前可以输入
-npm info webpack 检验该版本是否存在
-更改 webpack 的配置文件webpack 的默认配置文件是 webpack.config.js，如果要将它改成 webpackconfig.js，需要执行下条命令
-npx webpack --config webpackconfig.js 模块导出/引入方式 模块导出 //ES Moudule 模块导出方式 export default Header; //CommonJS 模块导出 module.]]></description></item><item><title>【慕课网】Vue+Webpack打造todo应用</title><link>http://mengsha97.github.io/posts/imooc-webpack-vue/</link><pubDate>Tue, 31 Mar 2020 21:16:59 +0000</pubDate><author><name>Simona</name><uri>https://github.com/Mengsha97</uri><email>laimengsha@qq.com</email></author><guid>http://mengsha97.github.io/posts/imooc-webpack-vue/</guid><description>讲师：Jokcy 课程：https://www.imooc.com/learn/935 课程介绍 课程目标 配置开发时前端工程 实现一个简单的 TODO 应用 优化配置达到上线标准 步骤 1. 创建一个新项目 2. 在命令行输入npm init 生成 package.json 文件，
-3. 然后安装 webpack,vue,vue-loader，在命令行输入npm i webpack vue vue-loader 产生 WARN 警告一Legacy versions of mkdirp are no longer supported. Please update to mkdirp 1.x. (Note that the API surface has changed to use Promises in 1.x.) mkdirp 旧版本已经移除，要更新到新版本，在命令行输入命令更新：
-npm install -g mkdirp 警告二npm WARN vue-loader@15.9.1 requires a peer of css-loader@* but none is installed. You must install peer dependencies yourself.</description></item></channel></rss>
+<rss xmlns:atom="http://www.w3.org/2005/Atom" version="2.0"><channel><title>webpack - 标签 - Simona's Blog</title><link>http://mengsha97.github.io/tags/webpack/</link><description>webpack - 标签 - Simona's Blog</description><generator>Hugo -- gohugo.io</generator><language>zh-cn</language><lastBuildDate>Wed, 01 Apr 2020 21:40:59 +0000</lastBuildDate><atom:link href="http://mengsha97.github.io/tags/webpack/" rel="self" type="application/rss+xml"/><item><title>【慕课网】从基础到实战 手把手带你掌握新版Webpack4.0</title><link>http://mengsha97.github.io/posts/imooc/imooc-webpack4/</link><pubDate>Wed, 01 Apr 2020 21:40:59 +0000</pubDate><author><name>作者</name></author><guid>http://mengsha97.github.io/posts/imooc/imooc-webpack4/</guid><description></description></item></channel></rss>

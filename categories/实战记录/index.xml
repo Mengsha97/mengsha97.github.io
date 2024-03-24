@@ -1,9 +1,0 @@
-<rss xmlns:atom="http://www.w3.org/2005/Atom" version="2.0"><channel><title>实战记录 - 分类 - Simona's Blog</title><link>http://mengsha97.github.io/categories/%E5%AE%9E%E6%88%98%E8%AE%B0%E5%BD%95/</link><description>实战记录 - 分类 - Simona's Blog</description><generator>Hugo -- gohugo.io</generator><language>zh-cn</language><lastBuildDate>Mon, 23 Mar 2020 23:23:30 +0000</lastBuildDate><atom:link href="http://mengsha97.github.io/categories/%E5%AE%9E%E6%88%98%E8%AE%B0%E5%BD%95/" rel="self" type="application/rss+xml"/><item><title>【实战记录】MDN-Express Web Framework (Node.js/JavaScript)</title><link>http://mengsha97.github.io/posts/mdn-local-library/</link><pubDate>Mon, 23 Mar 2020 23:23:30 +0000</pubDate><author><name>Simona</name><uri>https://github.com/Mengsha97</uri><email>laimengsha@qq.com</email></author><guid>http://mengsha97.github.io/posts/mdn-local-library/</guid><description>实战网址：https://developer.mozilla.org/zh-CN/docs/Learn/Server-side/Express_Nodejs 源码：https://github.com/mdn/express-locallibrary-tutorial 搭建开发环境 安装 Node 下载安装包 访问 https://nodejs.org/zh-cn/ 点击“推荐多数用户使用”（LTS），下载。 安装（Node.js 与 npm 同时安装） 测试 Node.js 与 npm 是否安装成功 在命令行种输入：
-$ node -v 与：
-$ npm -v 看是否返回结果
-安装 Express 应用生成器Express 应用生成器工具可以生成一个 Express 应用的“框架”，用 npm 全局安装（-g 参数可以将该工具全局安装，这样就可以在任意应用中使用了）
-$ npm install express-generator -g 示例创建一个名为“helloword”的 Express 应用
-$ express helloword 安装应用的所有依赖
-$ cd helloworld $ npm install 运行这个应用（Windows 环境）：
-&amp;gt; SET DEBUG=helloworld:* &amp;amp; npm start (Linux/macOS 环境)
-$ DEBUG=helloworld:* npm start 这样设置之后，只要执行下面的命令，应用即启动，默认是 3000 端口</description></item></channel></rss>

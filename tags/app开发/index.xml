@@ -1,17 +1,1 @@
-<rss xmlns:atom="http://www.w3.org/2005/Atom" version="2.0"><channel><title>APP开发 - 标签 - Simona's Blog</title><link>http://mengsha97.github.io/tags/app%E5%BC%80%E5%8F%91/</link><description>APP开发 - 标签 - Simona's Blog</description><generator>Hugo -- gohugo.io</generator><language>zh-cn</language><lastBuildDate>Sun, 13 Dec 2020 10:51:37 +0000</lastBuildDate><atom:link href="http://mengsha97.github.io/tags/app%E5%BC%80%E5%8F%91/" rel="self" type="application/rss+xml"/><item><title>【慕课网】Weex入门</title><link>http://mengsha97.github.io/posts/imooc-weex-entry/</link><pubDate>Sun, 13 Dec 2020 10:51:37 +0000</pubDate><author><name>Simona</name><uri>https://github.com/Mengsha97</uri><email>laimengsha@qq.com</email></author><guid>http://mengsha97.github.io/posts/imooc-weex-entry/</guid><description>讲师：你好_方老师 课程：https://www.imooc.com/learn/948 第一章 weex 介绍 1-1 weex 介绍 weex 介绍
-2016 年 4 月阿里巴巴在 Qcon 大会上宣布开源的一套跨平台移动开发工具
-主要解决了频繁发版和多端研发的两大痛点，同时解决了前端语言性能差和显示效果受限的问题
-只需要在自己 app 中嵌入 weex 的 sdk，就可以通过撰写 html/css/javascript 来开发 native 级别的 weex 界面，weex 界面的生成码其实就是一段很小的 js，可以像发布网页一样轻松部署在服务端，然后在 app 中请求执行
-weex 优势
-支持 ES6 规范
-性能优异，开发简洁标准，体积小巧
-跨平台
-weex 调试工具
-weexplayground 1-2weex 开发环境的搭建 安装 node.js
-npm install -g weex-toolkit
-weex init (project.name)
-cd (project.name)
-npm install
-npm run serve //开启服务
-npm run dev //开启 APP
-npm run debug //开启调试</description></item></channel></rss>
+<rss xmlns:atom="http://www.w3.org/2005/Atom" version="2.0"><channel><title>APP开发 - 标签 - Simona's Blog</title><link>http://mengsha97.github.io/tags/app%E5%BC%80%E5%8F%91/</link><description>APP开发 - 标签 - Simona's Blog</description><generator>Hugo -- gohugo.io</generator><language>zh-cn</language><lastBuildDate>Sun, 13 Dec 2020 10:51:37 +0000</lastBuildDate><atom:link href="http://mengsha97.github.io/tags/app%E5%BC%80%E5%8F%91/" rel="self" type="application/rss+xml"/><item><title>【慕课网】Weex入门</title><link>http://mengsha97.github.io/posts/imooc/imooc-weex-entry/</link><pubDate>Sun, 13 Dec 2020 10:51:37 +0000</pubDate><author><name>作者</name></author><guid>http://mengsha97.github.io/posts/imooc/imooc-weex-entry/</guid><description></description></item></channel></rss>

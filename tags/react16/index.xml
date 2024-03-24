@@ -1,5 +1,0 @@
-<rss xmlns:atom="http://www.w3.org/2005/Atom" version="2.0"><channel><title>React16 - 标签 - Simona's Blog</title><link>http://mengsha97.github.io/tags/react16/</link><description>React16 - 标签 - Simona's Blog</description><generator>Hugo -- gohugo.io</generator><language>zh-cn</language><lastBuildDate>Fri, 10 Apr 2020 23:56:31 +0000</lastBuildDate><atom:link href="http://mengsha97.github.io/tags/react16/" rel="self" type="application/rss+xml"/><item><title>【技术胖】React16版基础</title><link>http://mengsha97.github.io/posts/jspang-react/</link><pubDate>Fri, 10 Apr 2020 23:56:31 +0000</pubDate><author><name>Simona</name><uri>https://github.com/Mengsha97</uri><email>laimengsha@qq.com</email></author><guid>http://mengsha97.github.io/posts/jspang-react/</guid><description> Props 的生命周期函数 componentWillReceiveProps该函数执行的话，要满足两个条件：
-组件第一次存在于 dom 中，函数是不会执行的 如果已经存在于 dom 中，函数才会被执行 获取远程数据的时刻推荐在这个生命周期函数里获取远程数据，只加载一次的数据
-componentDidMount(){ } 使用 EasyMock 模拟数据网站没打开，是第 24 节课，等网站能打开再看这节课
-推荐的 React 动画库——react-transition-group有三个基本库
-Transition CSSTransition TransitionGroup</description></item></channel></rss>

@@ -1,11 +1,1 @@
-<rss xmlns:atom="http://www.w3.org/2005/Atom" version="2.0"><channel><title>es6 - 标签 - Simona's Blog</title><link>http://mengsha97.github.io/tags/es6/</link><description>es6 - 标签 - Simona's Blog</description><generator>Hugo -- gohugo.io</generator><language>zh-cn</language><lastBuildDate>Sat, 05 Dec 2020 22:03:59 +0000</lastBuildDate><atom:link href="http://mengsha97.github.io/tags/es6/" rel="self" type="application/rss+xml"/><item><title>【慕课网】带你快速入坑ES6</title><link>http://mengsha97.github.io/posts/imooc-es6fast/</link><pubDate>Sat, 05 Dec 2020 22:03:59 +0000</pubDate><author><name>Simona</name><uri>https://github.com/Mengsha97</uri><email>laimengsha@qq.com</email></author><guid>http://mengsha97.github.io/posts/imooc-es6fast/</guid><description><![CDATA[讲师：谢成 课程：https://www.imooc.com/learn/1246 第一章 1-1 ES6 学习的正确姿势 ES6 和 ES2015 指的是同一个版本 安装 VSCode 编辑器的插件——Live Server（差量即时编译） 第二章 ES6 特性入坑 2-1 JS 中可以声明常量吗 常量是什么
-当前的量只可以读不可以写
-ES5 里声明常量的方法
-Object.defineProperty(window, &#34;es&#34;, { value: &#34;es6&#34;, writable: false, //不可写 }); console.log(res); //es6 es = &#34;es2015&#34;; //不会报错 console.log(res); //es6 ES6 声明常量要注意的
-声明 const 常量时就要赋值，不然会报错；
-通过 const 声明的常量不允许重复声明；
-通过 const 声明的常量不属于顶层对象 window，这样不会污染全局变量；
-当用 const 声明常量时，不存在变量提升，即下面所写会报错，要先定义，后使用
-console.log(str); const str = &#34;es6&#34;; const 变量具有块级作用域
-2-2 const 声明的常量真的不可以改变吗 例 1 对象的属性被改变
-const esObj = { name: &#34;es6&#34;, year: 2015, }; esObj.]]></description></item></channel></rss>
+<rss xmlns:atom="http://www.w3.org/2005/Atom" version="2.0"><channel><title>es6 - 标签 - Simona's Blog</title><link>http://mengsha97.github.io/tags/es6/</link><description>es6 - 标签 - Simona's Blog</description><generator>Hugo -- gohugo.io</generator><language>zh-cn</language><lastBuildDate>Sat, 05 Dec 2020 22:03:59 +0000</lastBuildDate><atom:link href="http://mengsha97.github.io/tags/es6/" rel="self" type="application/rss+xml"/><item><title>【慕课网】带你快速入坑ES6</title><link>http://mengsha97.github.io/posts/imooc/imooc-es6fast/</link><pubDate>Sat, 05 Dec 2020 22:03:59 +0000</pubDate><author><name>作者</name></author><guid>http://mengsha97.github.io/posts/imooc/imooc-es6fast/</guid><description></description></item></channel></rss>
